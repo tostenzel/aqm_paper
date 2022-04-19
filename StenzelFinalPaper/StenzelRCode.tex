@@ -206,7 +206,7 @@ urlcolor=mannheimblue}
 
 
 
-\usepackage{tikz, float, caption, amsthm}
+\usepackage{tikz, float, caption, amsthm, algorithm, algpseudocode}
 \floatplacement{figure}{H}
 \interfootnotelinepenalty=10000
 
@@ -362,7 +362,7 @@ P(X_{t+1} |X_{t}, X_{t-1}, ..., X_{0}) = P(X_{t+1} |X_{t}).
 \end{equation}
 
 \noindent
-Under some conditions, the stochastic process described by a Markov chain converges to a time-invariant probability distribution, i.e.~\(P(X_{t+k} |X_{t+k-1}) = P(X_{t} |X_{t-1}), \forall k>0\). The crucial step for understanding the MH is to see how it samples a Markov Chain that is certain to converge to a stable posterior distribution. Before exploring how the MH algorithm employs these conditions, however, it is necessary to understand them conceptually. To this end, we will use the example depicted by the following graph in Figure \ref{fig:ex1, do by hand at the end} that depicts the intertemporal transition probabilities between three states representing random events.
+Under some conditions, the stochastic process described by a Markov chain converges to a time-invariant probability distribution, i.e.~\(P(X_{t+k} |X_{t+k-1}) = P(X_{t} |X_{t-1}), \forall k>0\). The crucial step for understanding the MH is to see how it samples a Markov Chain that is certain to converge to a stable posterior distribution. Before exploring how the MH algorithm employs these conditions, however, it is necessary to understand them conceptually. To this end, we will use the example depicted by the following graph in Figure 1 that shows the intertemporal transition probabilities between three states representing random events.
 
 \begin{figure}[H]
 \label{fig:ex1}
@@ -505,31 +505,62 @@ $\pi^*$ is the stationary distribution of a Markov Chain with Transition matrix 
 \end{definition}
 
 \noindent
-Verbally, this means that the probability distribution in the next step does not change. Thus, stationarity is a sufficient condition for the statement hat \(pi*\) in some period \(t\) has converged. It is, however, a weaker statement than Aperiodicity, as it does not require that the \enquote{probability flux} out of state \(i\) goes into step \(i\) in the next period but only that the probability of state \(i\) does not change over time independent from which state the \enquote{probability flux} arrives.
+Verbally, this means that the probability distribution in the next step does not change. Thus, stationarity is a sufficient condition for the statement hat \(pi^*\) in some period \(t\) has converged. It is, however, a weaker statement than aperiodicity, as it does not require that the \enquote{probability flux} out of state \(i\) goes into step \(i\) in the next period but only that the probability of state \(i\) does not change over time independent from which states the \enquote{probability flux} into \(i\) arrives.
 
 These three definitions are enough to understand the next fundamental theorem.
 
 \hypertarget{basic-limit-theorem}{%
 \subsubsection{Basic Limit Theorem}\label{basic-limit-theorem}}
 
-The next theorem defines formally the condition when a Markov Chain converges to a unique stationary distribution.
+The next theorem defines formally the condition when a Markov Chain converges to a unique distribution.
 
 \begin{theorem}
-If a Markov chain is irreducible and aperiodic, then:\\
-\noindent
-1. There exists a stationary distribution $\pi^*$\\
-\noindent
-2. $\lim_{t \rightarrow \infty} P(X_t = i) = \pi_i^*, \forall i$
+If a Markov chain is irreducible and aperiodic with stationary distribution $\pi^*$\\
+
+Then $\lim_{t \rightarrow \infty} P(X_t = i) = \pi_i^*, \forall i$
 \end{theorem}
 
 \noindent
-Therefore, if we want to construct a stable distribution \(p(\theta)\) via Markov chains, we need to ensure that it is irreducible and aperiod with stationary distribution \(\pi^*=p(\theta)\).
+Therefore, if we want to construct a stable distribution \(p(\theta)\) via Markov chains, we need to ensure that it is irreducible and aperiodic with stationary distribution \(\pi^*=p(\theta)\). In the next subseciton, we substitute the stationarity condition by a stronger one before we finally come to the MH algorithm.
 
 \hypertarget{reversibility}{%
 \subsubsection{Reversibility}\label{reversibility}}
 
+\begin{definition}
+A Markov chain is reversible if there is a probability distribution $\pi$ over its states such that $\pi(i) T_{ij} = \pi(j)T_{j,i}, \forall i,j$ (reversibility condition).
+\end{definition}
+
+\begin{theorem}
+A sufficient condition for distribution $\pi^*$ to be a stationary distribution of a Markov chain with transition matrix T is that it fullfills the reversibility condition.
+\end{theorem}
+
+\begin{proof}
+$\sum_i \pi(i) T_{i,j} = \sum_i \pi(j) T_{j,i} = \pi(j) \sum_i  T_{j,i} = \pi(j) \implies \pi T = \pi$
+\end{proof}
+
+Reversibility is a stronger condition than stationarity because it requires that the probability flux from \(i\) to \(j\) is equal to the one from \(j\) to \(i\) for each possible pair of states. Recall, that stationarity only requires that the probibility flux to one state is equal on aggregate and not that it is symmetric between each pair of states over time.
+
 \hypertarget{the-algorithm}{%
 \subsection{The Algorithm}\label{the-algorithm}}
+
+Since we want to estimate model parameters we switch the notation of our markov chain back from \(x\) to \(\theta\).
+
+\begin{algorithm}
+\caption{Metropolis-Hastings algorithm}\label{alg:mh}
+\begin{algorithmic}
+\State {Initialize $\theta_0$}
+
+        \For{$t \gets 0$ to $T-1$} 
+          \State {Sample $u \sim \mathcal{U}_{[0,1]}$}
+          \State {Sample candidate $\theta^* \sim q(\theta^*|\theta_{t-1})$}
+          \If{$u < min\{1, \frac{p(\theta^*)q(\theta_t|\theta^*)}{p(\theta_t)q(\theta^*|\theta_t)}\}$} 
+              \State $\theta_{t+1} \gets \theta^*$
+          \Else
+              \State $\theta_{t+1} \gets \theta_t$
+\EndIf 
+        \EndFor   
+\end{algorithmic}
+\end{algorithm}
 
 \hypertarget{a-short-proof}{%
 \subsection{A short proof}\label{a-short-proof}}
