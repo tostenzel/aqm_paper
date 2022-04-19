@@ -297,7 +297,7 @@ Department of Political Science}}
 
 
          \vfill
-         Submission Date: April 18, 2022 \\ 
+         Submission Date: April 19, 2022 \\ 
         
 
 
@@ -344,29 +344,55 @@ Department of Political Science}}
 \hypertarget{introduction}{%
 \subsection{Introduction}\label{introduction}}
 
-The Metropolis-Hastings (MH) algorithm is a method for sampling data points from a probability distribution. It places among the top 10 algorithms with the greatest influence on science and engineering in the 20th century (insert reference). The MH algorithm belongs to the class of Markov chain Monte Carlo (MCMC) methods. In this section, I assume prior knowledge on Monte Carlo sampling. However, I will explain the basics of Markov Chains. This section is structured as follows. First, I motivate the usage of the MH algorithm. Second, I explain the basics of Markov Chains. Third, I present the algorithm and finally, I show why it works.
+The Metropolis-Hastings (MH) algorithm is a method for sampling data points from a probability distribution. It places among the top 10 algorithms with the greatest influence on science and engineering in the 20th century (Beichl and Sullivan 2000). The MH algorithm belongs to the class of Markov chain Monte Carlo (MCMC) methods. In my explanation I assume prior knowledge on Monte Carlo sampling. However, I will explain the basics of Markov Chains. This section is structured as follows. First, I motivate the usage of the MH algorithm. Second, I explain the basics of Markov Chains. Third, I present the algorithm, and finally, I show why it works.
 
 \hypertarget{motivation}{%
 \subsection{Motivation}\label{motivation}}
 
-One main application for the MH algorithm is Bayesian inference. Specifically, we want to estimate parameters \(\theta\) of some probabilistic model \(f\). We have only limited prior knowledge of the distribution of \(\theta\) and we have a likelihood sample of \(f\). The goal is to estimate the posterior distribution of \(\theta\) given all information that we have. In practice, we do not have a formal definition of the likelihood but only observations. Therefore, we can only approximate the posterior by numerical integration. This means, we can sample from the posterior and, for example, compute summary statistics like mean and variance of \(\theta\). Claassen (2019, insert reference) assumes a model \(f\) parametrized by \(\theta\) and uses incomplete panel data as the likelihood. Then, he estimates the parameter distribution from the posterior obtained by the MH algorithm. In a final step, he uses the parameter estimates and samples the missing observations from the probabilistic model \(f\).
+One main application for the MH algorithm is Bayesian inference. Specifically, we want to estimate parameters \(\theta\) of some probabilistic model \(f\). We have only limited prior knowledge of the distribution of \(\theta\) and we have a likelihood sample of \(f\). The goal is to estimate the posterior distribution of \(\theta\) given all information that we have. In practice, we do not have a formal definition of the likelihood but only observations. Therefore, we can only approximate the posterior by numerical integration. This means, we can sample from the posterior and, for example, compute summary statistics like mean and variance of \(\theta\). Claassen (2019) assumes a model \(f\) parametrized by \(\theta\) and uses incomplete panel data as the likelihood. Then, he estimates the parameter distribution from the posterior obtained by the MH algorithm. In a final step, he uses the parameter estimates and samples the missing observations from the probabilistic model \(f\).
 
 \hypertarget{markov-chains}{%
 \subsection{Markov Chains}\label{markov-chains}}
 
-A Markov chain is a stochastic process (over time) with the property that the probability of the realization in the next period depends solely on the realization in the current state and not the complete history. This is called the Markov property. Because discrete Markov chains are much more accessible than their continuous variant, we will look only on the discrete case in this chapter. Formally, the Markov property states that
+A Markov chain is a stochastic process (over time) with the property that the probability of the realization in the next period depends solely on the realization in the current state and not the complete history. This is called the Markov property. Because discrete Markov chains are much more accessible than their continuous variant, in this chapter we will only look at the discrete case. Formally, the Markov property writes
 
 \begin{equation}
-\tag{eq:markov-property}
+\label{eq:markov-property}
 P(X_{t+1} |X_{t}, X_{t-1}, ..., X_{0}) = P(X_{t+1} |X_{t}).
 \end{equation}
 
-Under specific condition, the stochastic process described by a Markov chain converges to a time-invariant probability distribution, i.e.~\(P(X_{t+k} |X_{t+l}) = P(X_{t} |X_{t-1}) \forall k,l \geq 0, l < k\). The crucial step for understanding the MH is to see how it is able to generate a stable posterior distribution that has converged. Before exploring how the MH algorithm employs these conditions it is thus necessary to understand them conceptually. To this end, we will use the example depicted by the following graph showing the intertemporal transition probabilities between three states:
+\noindent
+Under some conditions, the stochastic process described by a Markov chain converges to a time-invariant probability distribution, i.e.~\(P(X_{t+k} |X_{t+k-1}) = P(X_{t} |X_{t-1}), \forall k>0\). The crucial step for understanding the MH is to see how it samples a Markov Chain that is certain to converge to a stable posterior distribution. Before exploring how the MH algorithm employs these conditions, however, it is necessary to understand them conceptually. To this end, we will use the example depicted by the following graph in Figure \ref{fig:ex1, do by hand at the end} that depicts the intertemporal transition probabilities between three states representing random events.
 
-This transition graph can be summarized by a 3x3 transition matrix T where each element \((i,j)\) represents the probability of moving from state \(i\) in period \(t\) to state \(k\) in period \(t+1\), i.e \(T_{i,j} = P(X_{t+1}=j | X_t = i)\). For our example, we have
+\begin{figure}[H]
+\label{fig:ex1}
+
+
+\centering
+
+\begin{tikzpicture}[->,shorten >=1pt,auto,node distance=4cm,
+                thick,main node/.style={circle,draw,font=\Large\bfseries}]
+
+  \node[main node] (2) {2};
+  \node[main node] (1) [below left of=2] {1};
+  \node[main node] (3) [below right of=2] {3};
+
+  \path
+    (2) edge [loop above] node {0.1} (2)
+        edge [bend left] node {0.9} (3)
+    (1) edge [bend left] node {1} (2)
+    (3) edge [bend left] node {0.6} (1)
+        edge [bend left] node {0.4} (2);      
+\end{tikzpicture}
+
+\caption{Transition Graph for Markov Chain with 3 states.}
+\end{figure}
+
+\noindent
+This transition graph can be summarized by the \(n \times n\) transition matrix T where each element \((i,j)\) represents the probability of moving from state \(i\) in period \(t\) to state \(k\) in period \(t+1\), and where \(n\) represents the number of states, i.e \(T_{i,j} = P(X_{t+1}=j | X_t = i)\). For our example, we have
 
 \begin{equation}
-\tag{eq:markov-property}
+\label{eq:transition-matrix}
 T=
 \begin{pmatrix}
 0 & 1 & 0\\
@@ -377,23 +403,25 @@ T=
 \hypertarget{limit-distribution}{%
 \subsubsection{Limit Distribution}\label{limit-distribution}}
 
-As touched in the previous section, one interesting question can be what the probability of each state \(j \in \{1, ..., s\}\) is after infinitely many steps. For this purpose let \(\pi (j) = P(X_t = j)\) be the probability of being in state \(j\) in period \(t\). Of course, the outcome will depend on the initial state \(\pi_0\) - or the probabilities of the respective state in \(t=0\). Then we can use the law of total probability to calculate the probability of each state for the next period \(t=1\) by
+As touched upon in the previous subsection, interesting questions can be what the probabilities of each state \(j \in \{1, ..., s\}\) are after a finite number or infinitely many steps. For this purpose let \(\pi (j) = P(X_t = j)\) denote the probability of being in state \(j\) in period \(t\). Of course, the probabilities in \$t\textgreater0 \$depend on the probabilities for the the initial state \(\pi_0\). We can use the law of total probability to calculate the probability of each state for the next period \(t=1\) by
 
 \begin{equation}
-\tag{eq:tot-prob}
+\label{eq:tot-prob}
 P(X_1 = j) = \sum_{i=1}^{3} P(X_1 = j | X_0 = i) \pi_0(i).
 \end{equation}
 
-I.e., to compute the probability of being in state \(j\) in \(t=1\), for each initial state \(i\), we multiply its probability by the probability of moving from \(i\) to state \(j\). This is equivalent to \(\pi_1 = \pi_0 T\) in vector notation. Further, we can compute the distributions for more distant distributions by repeating the matrix multiplication, e.g, \(\pi_2 = \pi_0 T T\), or more general, \(\pi_t = \pi_0 T^t\).
+\noindent
+I.e., to compute the probability of being in state \(j\) in \(t=1\), for each initial state \(i\), we multiply its probability \(\pi_0(i)\) by the probability of moving from \(i\) to state \(j\). This is equivalent to \(\pi_1 = \pi_0 T\) in vector notation. Further, we can compute the distributions for distributions locatet in more distant time by repeating the matrix multiplication, e.g, \(\pi_2 = \pi_0 T T\), or in general, \(\pi_t = \pi_0 T^t\).
 
-We can now define a limit distribution that describes the probability distribution after infinitely many periods as
+Now we are ready to define the limit distribution that describes the probability distribution after infinitely many periods by
 
 \begin{equation}
-\tag{eq:lim-dist}
+\label{eq:lim-dist}
 \pi_{\infty} = lim_{t \rightarrow \infty} \pi_t = lim_{t \rightarrow \infty} \pi_0 T^t.
 \end{equation}
 
-Two important question about a well-defined Markov chain is, (i) does a limit distribution exist?, and (ii), is it unique? In our example, there does not only exist a limit distrubtion with \(\pi_{infty} = (0.2, 0.4, 0.4)\), it is even unique regardless of start distribution \(\pi_0\)!. This means that regardless of the start state, the probability of each state converges to the same number. For the context of the MH algorithm, this is an important property because we always want to compute the same estimates, regardless of the starting values of our simulation. The next sections introduce and simplify conditions that guarantee a unique limit distribution.
+\noindent
+We can further ask two additional important questions. First, does a limit distribution exist? And second, is it unique, or in other word, do we have the same limit distribution independent from the realization of the initial state \(X_0\)? In our example, there does not only exist a limit distrubtion with \(\pi_{\infty} = (0.2, 0.4, 0.4)\), it is even unique regardless of start distribution \(\pi_0\)!. This means that regardless of the start state, the probability of each state converges to the same number. For the context of the MH algorithm, this is an important property because we always want to compute the same estimates for our parameters \(\theta\), regardless of the starting values of our simulation. In the next section, we introduce and simplify conditions that guarantee a unique limit distribution.
 
 \hypertarget{irreducibility-periodicity-and-stationarity}{%
 \subsubsection{Irreducibility, Periodicity and Stationarity}\label{irreducibility-periodicity-and-stationarity}}
@@ -402,30 +430,8 @@ Two important question about a well-defined Markov chain is, (i) does a limit di
 A Markov chain is called irreducible if each state is reachable from any other state in a finite number of steps.
 \end{definition}
 
-\begin{figure}[H]
-\label{fig:ex1}
-\centering
-
-\begin{tikzpicture}[->,shorten >=1pt,auto,node distance=4cm,
-                thick,main node/.style={circle,draw,font=\Large\bfseries}]
-
-  \node[main node] (B) {B};
-  \node[main node] (A) [below left of=B] {A};
-  \node[main node] (C) [below right of=B] {C};
-
-  \path
-    (B) edge [loop above] node {0.1} (B)
-        edge [bend left] node {0.9} (C)
-    (A) edge [bend left] node {1} (B)
-    (C) edge [bend left] node {0.6} (A)
-        edge [bend left] node {0.4} (B);      
-\end{tikzpicture}
-
-\caption{Transition Graph for Markov Chain with 3 states.}
-
-\end{figure}
-
-Figure 2 shows two times our example Markov chain. Obviously, this Markov chain is not irreducible because the initial state impacts all future distributions because starting in one subgraphs sets the probability of reaching states in the other subgraph to zero. Therefore, a Markov Chain is not irreducible if there is no indicrect link between every pair of states.
+\noindent
+Figure 2 shows two times the graph in Figure 1 combined to one Markov chain represented by a bipartite graph. Obviously, this chain is not irreducible because the initial state impacts all future distributions. More precisely, starting in one subgraphs sets the probability of reaching states in the other subgraph to zero. We see that a Markov Chain is only irreducible if there is an indirect link between every pair of states. We also observe that there can be no limit distribution if the Markov Chain is not irreducible.
 
 \begin{figure}[H]
 \label{fig:ex2}
@@ -433,25 +439,25 @@ Figure 2 shows two times our example Markov chain. Obviously, this Markov chain 
 
 \begin{tikzpicture}[->,shorten >=1pt,auto,node distance=3cm,thick,main node/.style={circle,draw,font=\Large\bfseries}]
 
-  \node[main node] (B) {B};
-  \node[main node] (A) [below left of=B] {A};
-  \node[main node] (C) [below right of=B] {C};
-  \node[main node] (D) [right of=C]{D};
-  \node[main node] (E) [above right of=D] {E};
-  \node[main node] (F) [below right of=E] {F};
+  \node[main node] (2) {2};
+  \node[main node] (1) [below left of=2] {1};
+  \node[main node] (3) [below right of=2] {3};
+  \node[main node] (4) [right of=3]{4};
+  \node[main node] (5) [above right of=4] {5};
+  \node[main node] (6) [below right of=5] {6};
 
 
   \path
-    (B) edge [loop above] node {0.1} (B)
-        edge [bend left] node {0.9} (C)
-    (A) edge [bend left] node {1} (B)
-    (C) edge [bend left] node {0.6} (A)
-        edge [bend left] node {0.4} (B)
-    (E) edge [loop above] node {0.1} (E)
-        edge [bend left] node {0.9} (F)
-    (D) edge [bend left] node {1} (E)
-    (F) edge [bend left] node {0.6} (D)
-        edge [bend left] node {0.4} (E); 
+    (2) edge [loop above] node {0.1} (2)
+        edge [bend left] node {0.9} (3)
+    (1) edge [bend left] node {1} (2)
+    (3) edge [bend left] node {0.6} (1)
+        edge [bend left] node {0.4} (2)
+    (5) edge [loop above] node {0.1} (5)
+        edge [bend left] node {0.9} (6)
+    (4) edge [bend left] node {1} (5)
+    (6) edge [bend left] node {0.6} (4)
+        edge [bend left] node {0.4} (5); 
 \end{tikzpicture}
 
 \caption{Transition Graph for Irreducible Markov Chain.}
@@ -462,6 +468,9 @@ Figure 2 shows two times our example Markov chain. Obviously, this Markov chain 
 A state $i$ has a period k if any return to state $i$ must occur in $k$ time periods. A Markov chain is aperiodic if the period of all its states is 1.
 \end{definition}
 
+\noindent
+Consider the four-state Markov chain in Figure 3 as an illustration for the above definition and suppose we start in state 1. Observe that, independent of the random draw for next period, we will arive again in state 1 after 3 steps. Therefore, state 1 has a period of 3 (as has state 2). Also note that a Markov chain has converged if it is aperiodic (and not vice versa).
+
 \begin{figure}[H]
 \label{fig:ex3}
 \centering
@@ -469,21 +478,21 @@ A state $i$ has a period k if any return to state $i$ must occur in $k$ time per
 \begin{tikzpicture}[->,shorten >=1pt,auto,node distance=3cm,thick,main node/.style={circle,draw,font=\Large\bfseries}]
   
   
-    \node[main node] (A) {A}; 
-    \node[main node] (B) [right of=A] {B};
-    \node[main node] (C) [below of=A] {C};  
-    \node[main node] (D) [below of=B] {D}; 
+    \node[main node] (1) {1}; 
+    \node[main node] (2) [right of=1] {2};
+    \node[main node] (3) [below of=1] {3};  
+    \node[main node] (4) [below of=2] {4}; 
   
 
    \path
-    (A) edge node {1/3} (B)
-    (A) edge node[left] {2/3} (C)
+    (1) edge node {1/3} (2)
+    (1) edge node[left] {2/3} (3)
     
-    (B) edge node {1} (D)
+    (2) edge node {1} (4)
     
-    (C) edge node[below] {1} (D)
+    (3) edge node[below] {1} (4)
 
-    (D) edge node[above] {1} (A);  
+    (4) edge node[above] {1} (1);  
 
   \end{tikzpicture}
   
@@ -492,11 +501,29 @@ A state $i$ has a period k if any return to state $i$ must occur in $k$ time per
 \end{figure}
 
 \begin{definition}
-$\pi^*$ is the stationary distribution of a Markoc Chain with Transition matrix T if $\pi^* = \pi^* T$ and $\pi^*$ is a probability vector.
+$\pi^*$ is the stationary distribution of a Markov Chain with Transition matrix T if $\pi^* = \pi^* T$ and $\pi^*$ is a probability vector.
 \end{definition}
+
+\noindent
+Verbally, this means that the probability distribution in the next step does not change. Thus, stationarity is a sufficient condition for the statement hat \(pi*\) in some period \(t\) has converged. It is, however, a weaker statement than Aperiodicity, as it does not require that the \enquote{probability flux} out of state \(i\) goes into step \(i\) in the next period but only that the probability of state \(i\) does not change over time independent from which state the \enquote{probability flux} arrives.
+
+These three definitions are enough to understand the next fundamental theorem.
 
 \hypertarget{basic-limit-theorem}{%
 \subsubsection{Basic Limit Theorem}\label{basic-limit-theorem}}
+
+The next theorem defines formally the condition when a Markov Chain converges to a unique stationary distribution.
+
+\begin{theorem}
+If a Markov chain is irreducible and aperiodic, then:\\
+\noindent
+1. There exists a stationary distribution $\pi^*$\\
+\noindent
+2. $\lim_{t \rightarrow \infty} P(X_t = i) = \pi_i^*, \forall i$
+\end{theorem}
+
+\noindent
+Therefore, if we want to construct a stable distribution \(p(\theta)\) via Markov chains, we need to ensure that it is irreducible and aperiod with stationary distribution \(\pi^*=p(\theta)\).
 
 \hypertarget{reversibility}{%
 \subsubsection{Reversibility}\label{reversibility}}
@@ -516,7 +543,13 @@ $\pi^*$ is the stationary distribution of a Markoc Chain with Transition matrix 
 \singlespacing
 
 \hypertarget{refs}{}
-\begin{CSLReferences}{0}{0}
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-beichl2000metropolis}{}}%
+Beichl, Isabel, and Francis Sullivan. 2000. {``The Metropolis Algorithm.''} \emph{Computing in Science \& Engineering} 2(1): 65--69.
+
+\leavevmode\vadjust pre{\hypertarget{ref-claassen2019estimating}{}}%
+Claassen, Christopher. 2019. {``Estimating Smooth Country--Year Panels of Public Opinion.''} \emph{Political Analysis} 27(1): 1--20.
+
 \end{CSLReferences}
 
 \clearpage
