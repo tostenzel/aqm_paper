@@ -1,0 +1,39 @@
+
+\usepackage{booktabs}
+\usepackage{dcolumn}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{l D{.}{.}{4.4} D{.}{.}{4.4} D{.}{.}{4.4} D{.}{.}{4.4}}
+\toprule
+ & \multicolumn{1}{c}{Model 1} & \multicolumn{1}{c}{Model 2} & \multicolumn{1}{c}{Model 3} & \multicolumn{1}{c}{Model 4} \\
+\midrule
+Intercept                & -.033     & .018      & -.009^{*} & -.011^{*} \\
+                         & (.019)    & (.028)    & (.004)    & (.004)    \\
+Democratic mood\_t-1     & .473^{*}  & .433^{*}  &           &           \\
+                         & (.026)    & (.028)    &           &           \\
+Democratic mood\_t-2     & -.487^{*} & -.451^{*} &           &           \\
+                         & (.025)    & (.027)    &           &           \\
+Delta Liberal democracy  & -.058^{*} & -.067^{*} & -.076^{*} & -.082^{*} \\
+                         & (.023)    & (.031)    & (.028)    & (.034)    \\
+Liberal democracy\_t-1   & .007^{*}  & .002      &           &           \\
+                         & (.003)    & (.004)    &           &           \\
+Delta log GDP per capita & .063      & .037      & .108^{*}  & .089      \\
+                         & (.040)    & (.044)    & (.052)    & (.051)    \\
+log GDP per capita\_t-1  & .003      & -.003     &           &           \\
+                         & (.002)    & (.003)    &           &           \\
+Delta corruption         &           & -.008     &           & -.022     \\
+                         &           & (.016)    &           & (.017)    \\
+Corruption\_t-1          &           & -.012^{*} &           &           \\
+                         &           & (.004)    &           &           \\
+\midrule
+R$^2$                    & .256      & .220      & .007      & .007      \\
+Adj. R$^2$               & .254      & .217      & .006      & .006      \\
+Num. obs.                & 2300      & 1949      & 2435      & 2040      \\
+\bottomrule
+\multicolumn{5}{l}{\scriptsize{$^{*}p<0.05$}}
+\end{tabular}
+\caption{Statistical models}
+\label{table:coefficients}
+\end{center}
+\end{table}

@@ -1,0 +1,247 @@
+---
+title: "On Using the Metropolis-Hastings Algorithm for Data Imputation"
+author: "Tobias Stenzel"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+header-includes:
+   - \usepackage{tikz, float, caption, amsthm, algorithm, algpseudocode}
+   - \floatplacement{figure}{H}
+   #- \newtheorem{definition}{Definition}
+   - \interfootnotelinepenalty=10000 # no multi-page footnotes
+output:
+  bookdown::pdf_document2:
+    template: template.tex
+    latex_engine: xelatex
+    toc: yes
+    toc_depth: 2
+    keep_tex: yes
+  html_document:
+    toc: yes
+    toc_depth: '2'
+    df_print: paged
+bibliography: bibliography.bib
+csl-hanging-indent: yes
+fontsize: 12pt 
+linestretch: 2.0 # adjust for line spacing 
+geometry: left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm
+classoption:
+- a4paper
+- oneside
+lang: en-EN
+numbersections: yes
+csquotes: yes
+type: Final Paper for Course
+course: Advanced Quantitative Methods in Political Science
+subtitle: ''
+address: ''
+email: tobias.stenzel@students.uni-mannheim.de
+phone: ''
+examiner: Prof. Thomas Gschwend, Ph.D.
+chair: ''
+mp: 0.55
+ID: ''
+# STRONGLY BIASED wordcount: '*Wordcount excluding References: `r unima::count_words(knitr::current_input())`*' 
+csl: https://raw.githubusercontent.com/citation-style-language/styles/master/american-political-science-association.csl
+editor_options:
+  markdown:
+    wrap: sentence
+---
+ 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      include=FALSE,
+                      fig.path = "figs/",
+                      out.width="\\textwidth"
+                      )
+
+p_needed <- c(# all packages you need to install here
+  "knitr",
+  "bookdown", # referencing figures and tables by label
+  "remotes",
+  "ggplot2",
+  "stargazer",
+  "dplyr", # to compute leads values
+  "tidyr", # for dropping nans
+  "GGally", # correlation matrix style plots
+  "gridExtra", # grid for multiple plots
+  "cowplot",
+  "MASS", # glm
+  "janitor", # fd plot over range
+  #"countreg", # rootogram
+  "ggeasy", # remove axes
+  "latex2exp", # latex legend labels
+  "ggridges",
+  #christopher claassen's additional requirements
+  "arm",
+  "loo",
+  "rstan",
+  "RColorBrewer"
+  )
+
+
+# installs only the required packages 
+lapply(p_needed[!(p_needed %in% rownames(installed.packages()))], install.packages)
+lapply(p_needed, library, character.only = TRUE)
+
+# separately install for the correct wordcount package 
+if (!"unima" %in% rownames(installed.packages())){
+  remotes::install_github("vktrsmnv/unima-template", upgrade = "never", dependencies = TRUE)
+  }
+
+# this allows you to add notes to figures with a simple chunk option
+# you only need to add "notes="text" as a chunk option; 
+# the notes will only appear in PDF output
+hook_chunk = knit_hooks$get('chunk')
+knit_hooks$set(chunk = function(x, options) {
+  txt = hook_chunk(x, options)
+  # add chunk option 'description' which adds \Description{...} to figures
+  if (!is.null(options$notes)) {
+    latex_include <- paste0("\\\\vspace\\{0.5cm\\} \\\\\\footnotesize\\{\\\\textit\\{Notes: \\}", options$notes, "\\} \\1")
+    gsub('(\\\\end\\{figure\\})', latex_include, txt) 
+  } else {
+    return(txt)  # pass to default hook
+  }
+})
+if (knitr::is_latex_output()) knitr::knit_hooks$set(plot = knitr::hook_plot_tex)
+
+# This is an option for stargazer tables
+# It automatically adapts the output to html or latex,
+# depending on whether we want a html or pdf file
+stargazer_opt <- ifelse(knitr::is_latex_output(), "latex", "html")
+
+# This ensures that if the file is knitted to HTML,
+# significance notes are depicted correctly 
+if (stargazer_opt == "html"){
+  fargs <- formals(stargazer)
+  fargs$notes.append = FALSE
+  fargs$notes = c("<em>&#42;p&lt;0.1;&#42;&#42;p&lt;0.05;&#42;&#42;&#42;p&lt;0.01</em>")
+  formals(stargazer) <- fargs
+}
+
+# only relevant for ggplot2 plotting
+# setting a global ggplot theme for the entire document to avoid 
+# setting this individually for each plot 
+theme_set(theme_classic() + # start with classic theme 
+  theme(
+    plot.background = element_blank(),# remove all background 
+    plot.title.position = "plot", # move the plot title start slightly 
+    legend.position = "bottom" # by default, put legend on the bottom
+  ))
+
+set.seed(2021)
+```
+
+```{r configs}
+# stan options
+rstan_options(auto_write = TRUE)
+options(mc.cores = parallel::detectCores())
+
+# folders
+WD = rstudioapi::getActiveDocumentContext()$path 
+setwd(dirname(WD))
+print( getwd() )
+
+# read support for dem data. NOTE: We have RespN instead of RespPerc as in online material
+sddem1 = read.csv("raw-data/supdem raw survey marginals.csv")
+```
+
+```{r data-processing}
+# remove NAs
+sddem1 = sddem1[!sddem1$Response==0, ]
+
+# create year by country indicators
+year0 = 1987
+sddem1 = sddem1[sddem1$Year > year0,]
+sddem1 = unite(sddem1, YearCountry, c(Year, Country), sep = "_", remove = FALSE)
+
+# create item by country indicators
+sddem1 = unite(sddem1, ItemCnt, c(Item, Country), sep = "_", remove = FALSE)
+
+# create year by project indicators
+sddem1 = unite(sddem1, YrProj, c(Year, Project), sep = "_", remove = FALSE)
+
+# create year by project by country indicators
+sddem1 = unite(sddem1, YrProjCnt, c(YrProj, Country), sep = "_", remove = FALSE)
+
+
+# factorise
+sddem1$Country = as.factor(as.character(sddem1$Country))
+sddem1$Item = as.factor(as.character(sddem1$Item))
+sddem1$ItemCnt = as.factor(as.character(sddem1$ItemCnt))
+sddem1$Project = as.factor(as.character(sddem1$Project))
+sddem1$YrProj = as.factor(as.character(sddem1$YrProj))
+sddem1$YrProjCnt = as.factor(as.character(sddem1$YrProjCnt))
+sddem1$Year = sddem1$Year-year0
+
+# count data
+dim(sddem1)[1]                   # 3765 national responses
+length(unique(sddem1$Country))   # 150 countries
+length(unique(sddem1$Project))   # 14 projects
+length(unique(sddem1$Item))      # 52 items
+length(unique(sddem1$ItemCnt))   # 1453 item-country
+length(unique(sddem1$YrProjCnt)) # 1390 national surveys
+length(unique(sddem1$Year))      # 27 unique years (out of 30)
+sum(sddem1$Sample) / dim(sddem1)[1] * length(unique(sddem1$YrProjCnt))   # 1,804,450 respondents              
+```
+
+```{r drop-countries-with-only-1-year-of-survey-measures}
+# drop countries with less than 2 years of data
+cnt.obs.years = rowSums(table(sddem1$Country, sddem1$Year) > 0)
+sort(cnt.obs.years)
+sddem2 = sddem1[sddem1$Country %in% levels(sddem1$Country)[cnt.obs.years > 1], ]
+length(unique(sddem2$Country))   # 137 countries with 2+ years of data
+
+
+```
+
+
+
+```{r get-top5-data-countries}
+
+library(dplyr)
+
+sum_sample <- sddem2 %>%
+    group_by(Country) %>%
+    summarize(Sum_Sample = sum(Sample))
+
+sum_sample<-  tbl_df(sum_sample) %>%
+  arrange(Sum_Sample) %>%
+  top_n(5)
+
+
+cond <- unique(sum_sample$Country)
+
+unique(sum_sample$Country)
+
+```
+
+
+```{r get-simulated-support}
+#cond = c("Nigeria", "Colombia", "Mexico", "South Africa", "China")
+merged_df = read.csv("raw-data/merged_data_ajps.csv")
+
+
+smoothed_panel_top5 <- filter(merged_df, Country %in% cond) 
+smoothed_panel_top5 <- smoothed_panel_top5[c("Country","Year","SupDem_trim")]
+```
+
+
+```{r get-raw-data}
+
+raw_df = read.csv("raw-data/supdem raw survey marginals.csv")
+raw_df = raw_df[c("Country","Year", "Response", "Sample")]
+raw_df_top5 <- filter(raw_df, Country %in% cond) 
+
+
+sum_Sample= aggregate( Sample ~ Country + Year , raw_df_top5 , sum)
+sum_Response = aggregate( Response ~ Country + Year , raw_df_top5 , sum)
+
+sums = merge(sum_Sample, sum_Response, by=c("Country","Year")) # NA's match
+
+
+
+```
+
+
+
+
+

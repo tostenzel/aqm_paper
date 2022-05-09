@@ -1,0 +1,43 @@
+
+\usepackage{booktabs}
+\usepackage{dcolumn}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{l D{.}{.}{4.4} D{.}{.}{4.4} D{.}{.}{4.4} D{.}{.}{4.4}}
+\toprule
+ & \multicolumn{1}{c}{Model 1} & \multicolumn{1}{c}{Model 2} & \multicolumn{1}{c}{Model 3} & \multicolumn{1}{c}{Model 4} \\
+\midrule
+Intercept                    & -.042^{*} & .020      & -.008^{*} & -.011^{*} \\
+                             & (.019)    & (.026)    & (.004)    & (.003)    \\
+Democratic mood\_t-1         & .473^{*}  & .432^{*}  &           &           \\
+                             & (.025)    & (.028)    &           &           \\
+Democratic mood\_t-2         & -.487^{*} & -.450^{*} &           &           \\
+                             & (.025)    & (.027)    &           &           \\
+Delta electoral democracy    & .014      & .028      & .011      & .021      \\
+                             & (.031)    & (.039)    & (.033)    & (.040)    \\
+Electoral democracy\_t-1     & .002      & .006      &           &           \\
+                             & (.006)    & (.006)    &           &           \\
+Delta minoritarian democracy & -.053^{*} & -.066^{*} & -.076^{*} & -.087^{*} \\
+                             & (.022)    & (.029)    & (.025)    & (.029)    \\
+Minoritarian democracy\_t-1  & .003      & -.004     &           &           \\
+                             & (.006)    & (.006)    &           &           \\
+Delta log GDP per capita     & .062      & .034      & .102      & .082      \\
+                             & (.040)    & (.045)    & (.053)    & (.051)    \\
+log GDP per capita\_t-1      & .004      & -.003     &           &           \\
+                             & (.002)    & (.003)    &           &           \\
+Delta corruption             &           & -.007     &           & -.021     \\
+                             &           & (.016)    &           & (.017)    \\
+Corruption\_t-1              &           & -.013^{*} &           &           \\
+                             &           & (.004)    &           &           \\
+\midrule
+R$^2$                        & .255      & .220      & .008      & .008      \\
+Adj. R$^2$                   & .252      & .216      & .006      & .006      \\
+Num. obs.                    & 2300      & 1949      & 2435      & 2040      \\
+\bottomrule
+\multicolumn{5}{l}{\scriptsize{$^{*}p<0.05$}}
+\end{tabular}
+\caption{Statistical models}
+\label{table:coefficients}
+\end{center}
+\end{table}

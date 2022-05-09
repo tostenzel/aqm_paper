@@ -1,0 +1,2015 @@
+Country,Year,Project,Response,Sample
+Afghanistan,2005,Satis_AsB,419,874
+Albania,1991,Satis1_CEEB,420,1000
+Albania,1992,Satis1_CEEB,445,1049
+Albania,1993,Satis1_CEEB,432,1054
+Albania,1994,Satis1_CEEB,350,1034
+Albania,1995,Satis1_CEEB,618,1003
+Albania,1996,Satis1_CEEB,770,1013
+Albania,2002,Satis_WVS,263,1000
+Albania,2005,Satis_CSES,398,1116
+Albania,2008,Satis_EVS,284,1534
+Albania,2012,Satis_ESS,341,1201
+Algeria,2002,Satis_WVS,481,1282
+Algeria,2013,Satis_AfB,737,1204
+Algeria,2015,Satis_AfB,545,1200
+Argentina,1995,Satis_LB,606,1200
+Argentina,1996,Satis_LB,409,1199
+Argentina,1997,Satis_LB,499,1196
+Argentina,1998,Satis_LB,595,1200
+Argentina,1999,Satis_WVS,536,1280
+Argentina,2000,Satis_LB,556,1200
+Argentina,2001,Satis_LB,243,1200
+Argentina,2002,Satis_LB,100,1200
+Argentina,2003,Satis_LB,407,1200
+Argentina,2004,Satis_LB,408,1200
+Argentina,2005,Satis_LB,404,1200
+Argentina,2006,Satis_LB,601,1200
+Argentina,2007,Satis_LB,401,1200
+Argentina,2008,Satis_LB,407,1200
+Argentina,2008,Satis_LAPOP,747,1486
+Argentina,2009,Satis_LB,434,1200
+Argentina,2010,Satis_LB,590,1200
+Argentina,2010,Satis_LAPOP,622,1410
+Argentina,2011,Satis_LB,692,1200
+Argentina,2012,Satis_LAPOP,1012,1500
+Argentina,2013,Satis_LB,616,1200
+Argentina,2013,Satis_Pew,467,819
+Argentina,2014,Satis_LAPOP,865,1512
+Argentina,2015,Satis_LB,647,1200
+Argentina,2017,Satis_Pew,466,1012
+Armenia,1992,Satis1_CEEB,127,918
+Armenia,1993,Satis1_CEEB,59,1000
+Armenia,1994,Satis1_CEEB,95,1000
+Armenia,1995,Satis1_CEEB,192,1000
+Armenia,1996,Satis1_CEEB,193,1000
+Armenia,1997,Satis_WVS,90,2000
+Armenia,2008,Satis_EVS,683,1477
+Australia,1996,Satis_CSES,1377,1798
+Australia,2004,Satis_CSES,1411,1769
+Australia,2007,Satis_CSES,1589,1873
+Australia,2013,Satis_CSES,2875,3952
+Australia,2017,Satis_Pew,580,1000
+Austria,1995,Satis_EB,1283,2093
+Austria,1997,Satis_EB,1200,2132
+Austria,1998,Satis_EB,1240,2059
+Austria,1999,Satis_EVS,1090,1522
+Austria,1999,Satis_EB,1349,2023
+Austria,2000,Satis_EB,1173,2005
+Austria,2001,Satis_EB,1200,2034
+Austria,2002,Satis_ESS,1104,2257
+Austria,2002,Satis_EB,1442,2010
+Austria,2003,Satis_EB,1324,2031
+Austria,2004,Satis_ESS,1246,2256
+Austria,2004,Satis_EB,1389,2059
+Austria,2005,Satis_EB,1376,2020
+Austria,2006,Satis_ESS,1379,2405
+Austria,2006,Satis_EB,1533,2033
+Austria,2007,Satis_EB,1613,2026
+Austria,2008,Satis_EVS,778,1510
+Austria,2009,Satis_CSES,838,1165
+Austria,2010,Satis_EB,1564,2000
+Austria,2011,Satis_EB,1466,2019
+Austria,2012,Satis_EB,1361,1986
+Austria,2013,Satis_CSES,665,1000
+Austria,2013,Satis_EB,1487,2031
+Austria,2014,Satis_ESS,858,1795
+Austria,2014,Satis_EB,1297,2032
+Austria,2015,Satis_EB,1276,2034
+Austria,2016,Satis_ESS,1154,1980
+Austria,2016,Satis_EB,1322,2051
+Austria,2017,Satis_EB,1454,2016
+Azerbaijan,1997,Satis_WVS,786,2002
+Azerbaijan,2008,Satis_EVS,1159,1505
+Bangladesh,2002,Satis_WVS,1141,1500
+Bangladesh,2005,Satis_AsB,541,1008
+Bangladesh,2005,Satis_SAB,632,1240
+Bangladesh,2013,Satis_SAB,535,1424
+Belarus,1992,Satis1_CEEB,111,1030
+Belarus,1993,Satis1_CEEB,156,1143
+Belarus,1994,Satis1_CEEB,128,1099
+Belarus,1995,Satis1_CEEB,131,1021
+Belarus,1996,Satis_WVS,287,2092
+Belarus,1996,Satis1_CEEB,173,1061
+Belarus,2000,Satis_EVS,254,1000
+Belarus,2001,Satis_CSES,382,1000
+Belarus,2008,Satis_EVS,761,1500
+Belarus,2009,Satis_CSES,526,1000
+Belgium,1973,Satis_EB,815,1266
+Belgium,1976,Satis_EB,1087,2040
+Belgium,1977,Satis_EB,1059,1994
+Belgium,1978,Satis_EB,986,2021
+Belgium,1979,Satis_EB,923,2015
+Belgium,1980,Satis_EB,670,2031
+Belgium,1981,Satis_EB,684,1922
+Belgium,1982,Satis_EB,977,2230
+Belgium,1983,Satis_EB,982,2033
+Belgium,1984,Satis_EB,965,2053
+Belgium,1985,Satis_EB,1121,2023
+Belgium,1986,Satis_EB,971,2006
+Belgium,1987,Satis_EB,993,2015
+Belgium,1988,Satis_EB,1074,2046
+Belgium,1989,Satis_EB,1200,2004
+Belgium,1990,Satis_EB,1189,1959
+Belgium,1991,Satis_EB,1224,2067
+Belgium,1992,Satis_EB,1058,2079
+Belgium,1993,Satis_EB,992,2025
+Belgium,1994,Satis_EB,1739,3111
+Belgium,1995,Satis_EB,1135,2071
+Belgium,1997,Satis_EB,488,2076
+Belgium,1998,Satis_EB,583,2025
+Belgium,1999,Satis_EVS,855,1912
+Belgium,1999,Satis_CSES,2413,4139
+Belgium,1999,Satis_EB,1101,2097
+Belgium,2000,Satis_EB,1271,2111
+Belgium,2001,Satis_EB,1078,2054
+Belgium,2002,Satis_ESS,975,1899
+Belgium,2002,Satis_EB,1457,2082
+Belgium,2003,Satis_EB,1319,2134
+Belgium,2004,Satis_ESS,939,1778
+Belgium,2004,Satis_CSES,1489,2225
+Belgium,2004,Satis_EB,1334,2019
+Belgium,2005,Satis_EB,1310,2024
+Belgium,2006,Satis_ESS,969,1798
+Belgium,2006,Satis_EB,1382,2023
+Belgium,2007,Satis_EB,1353,2033
+Belgium,2008,Satis_ESS,824,1760
+Belgium,2009,Satis_EVS,894,1507
+Belgium,2010,Satis_ESS,799,1704
+Belgium,2010,Satis_EB,1118,2016
+Belgium,2011,Satis_EB,1251,2048
+Belgium,2012,Satis_ESS,1153,1869
+Belgium,2012,Satis_EB,1325,2107
+Belgium,2013,Satis_EB,1419,2076
+Belgium,2014,Satis_ESS,875,1769
+Belgium,2014,Satis_EB,1295,2013
+Belgium,2015,Satis_EB,1382,2045
+Belgium,2016,Satis_ESS,982,1757
+Belgium,2016,Satis_EB,1328,2026
+Belgium,2017,Satis_EB,1462,2030
+Belize,2008,Satis_LAPOP,850,1552
+Belize,2010,Satis_LAPOP,770,1504
+Belize,2012,Satis_LAPOP,495,1501
+Belize,2014,Satis_LAPOP,764,1533
+Benin,2005,Satis_AfB,578,1198
+Benin,2008,Satis_AfB,823,1200
+Benin,2011,Satis_AfB,721,1200
+Benin,2014,Satis_AfB,722,1200
+Benin,2017,Satis_AfB,606,1200
+Bhutan,2005,Satis_AsB,457,801
+Bolivia,1996,Satis_LB,191,772
+Bolivia,1997,Satis_LB,266,796
+Bolivia,1998,Satis_LB,269,794
+Bolivia,2000,Satis_LB,241,1080
+Bolivia,2001,Satis_LB,175,1075
+Bolivia,2002,Satis_LB,299,1242
+Bolivia,2003,Satis_LB,297,1200
+Bolivia,2004,Satis_LB,198,1201
+Bolivia,2004,Satis_LAPOP,1539,3073
+Bolivia,2005,Satis_LB,286,1200
+Bolivia,2006,Satis_LB,468,1200
+Bolivia,2006,Satis_LAPOP,1703,3008
+Bolivia,2007,Satis_LB,493,1200
+Bolivia,2008,Satis_LB,394,1200
+Bolivia,2008,Satis_LAPOP,1473,3003
+Bolivia,2009,Satis_LB,594,1200
+Bolivia,2010,Satis_LB,389,1200
+Bolivia,2010,Satis_LAPOP,1890,3018
+Bolivia,2011,Satis_LB,333,1200
+Bolivia,2012,Satis_LAPOP,1418,3029
+Bolivia,2013,Satis_LB,455,1200
+Bolivia,2014,Satis_LAPOP,1666,3063
+Bolivia,2015,Satis_LB,573,1200
+Bosnia,2008,Satis_EVS,375,1512
+Bosnia and Herzegovina,2001,Satis_WVS,398,1200
+Bosnia and Herzegovina,2008,Satis_EVS,372,1512
+Botswana,2003,Satis_AfB,701,1200
+Botswana,2005,Satis_AfB,709,1200
+Botswana,2008,Satis_AfB,990,1200
+Botswana,2012,Satis_AfB,846,1200
+Botswana,2014,Satis_AfB,817,1200
+Botswana,2017,Satis_AfB,698,1198
+Brazil,1995,Satis_LB,606,1200
+Brazil,1996,Satis_LB,220,1080
+Brazil,1997,Satis_LB,230,1001
+Brazil,1998,Satis_LB,268,1000
+Brazil,2000,Satis_LB,192,1000
+Brazil,2001,Satis_LB,209,1000
+Brazil,2002,Satis_LB,207,1000
+Brazil,2002,Satis_CSES,707,2514
+Brazil,2003,Satis_LB,336,1200
+Brazil,2004,Satis_LB,332,1204
+Brazil,2005,Satis_LB,259,1204
+Brazil,2006,Satis_LB,437,1204
+Brazil,2006,Satis_CSES,1272,3000
+Brazil,2007,Satis_LB,364,1204
+Brazil,2008,Satis_LB,458,1204
+Brazil,2008,Satis_LAPOP,849,1497
+Brazil,2009,Satis_LB,573,1204
+Brazil,2010,Satis_LB,584,1204
+Brazil,2010,Satis_LAPOP,1525,2482
+Brazil,2010,Satis_CSES,959,2000
+Brazil,2011,Satis_LB,444,1204
+Brazil,2012,Satis_LAPOP,946,1500
+Brazil,2013,Satis_LB,313,1204
+Brazil,2013,Satis_Pew,634,960
+Brazil,2014,Satis_LAPOP,600,1500
+Brazil,2014,Satis_CSES,1195,3136
+Brazil,2015,Satis_LB,262,1250
+Brazil,2017,Satis_Pew,282,1008
+Bulgaria,1990,Satis1_CEEB,436,1492
+Bulgaria,1991,Satis1_CEEB,379,989
+Bulgaria,1992,Satis1_CEEB,469,1312
+Bulgaria,1993,Satis1_CEEB,252,1198
+Bulgaria,1994,Satis1_CEEB,40,1045
+Bulgaria,1995,Satis1_CEEB,145,1098
+Bulgaria,1996,Satis1_CEEB,59,1035
+Bulgaria,1997,Satis1_CEEB,99,507
+Bulgaria,1997,Satis2_CEEB,109,507
+Bulgaria,1999,Satis_EVS,271,1000
+Bulgaria,2001,Satis_CSES,281,1482
+Bulgaria,2004,Satis_EB,435,2004
+Bulgaria,2005,Satis_EB,405,2019
+Bulgaria,2006,Satis_ESS,127,1400
+Bulgaria,2006,Satis_EB,455,2050
+Bulgaria,2007,Satis_EB,527,2016
+Bulgaria,2008,Satis_EVS,138,1500
+Bulgaria,2008,Satis_ESS,141,2230
+Bulgaria,2010,Satis_ESS,301,2434
+Bulgaria,2010,Satis_EB,494,2000
+Bulgaria,2011,Satis_EB,537,2003
+Bulgaria,2012,Satis_ESS,232,2260
+Bulgaria,2012,Satis_EB,446,2036
+Bulgaria,2013,Satis_EB,294,2056
+Bulgaria,2014,Satis_EB,427,2080
+Bulgaria,2015,Satis_CSES,184,999
+Bulgaria,2015,Satis_EB,613,2098
+Bulgaria,2016,Satis_EB,618,2036
+Bulgaria,2017,Satis_EB,753,2083
+Burkina Faso,2008,Satis_AfB,606,1200
+Burkina Faso,2012,Satis_AfB,599,1200
+Burkina Faso,2014,Satis_AfB,598,1200
+Burkina Faso,2017,Satis_AfB,712,1200
+Burundi,2012,Satis_AfB,781,1200
+Burundi,2015,Satis_AfB,790,1201
+Cambodia,2004,Satis_AsB,314,812
+Cambodia,2007,Satis_AsB,535,1012
+Cambodia,2008,Satis_AsnB,770,1000
+Cameroon,2013,Satis_AfB,354,1200
+Cameroon,2014,Satis_AfB,433,1184
+Canada,1997,Satis_CSES,1314,1851
+Canada,2000,Satis_WVS,1244,1931
+Canada,2004,Satis_CSES,1178,1674
+Canada,2008,Satis_LAPOP,1684,2032
+Canada,2008,Satis_CSES,3319,4495
+Canada,2010,Satis_LAPOP,1070,1500
+Canada,2011,Satis_CSES,2219,3458
+Canada,2012,Satis_LAPOP,1049,1501
+Canada,2014,Satis_LAPOP,1149,1517
+Canada,2017,Satis_Pew,715,1022
+Cape Verde,2002,Satis_AfB,417,1268
+Cape Verde,2005,Satis_AfB,518,1123
+Cape Verde,2008,Satis_AfB,583,1264
+Cape Verde,2011,Satis_AfB,546,1208
+Cape Verde,2015,Satis_AfB,310,1200
+Cape Verde,2017,Satis_AfB,263,1200
+Chile,1995,Satis_LB,411,1240
+Chile,1996,Satis_LB,330,1200
+Chile,1997,Satis_LB,447,1200
+Chile,1998,Satis_LB,383,1200
+Chile,2000,Satis_LB,392,1183
+Chile,2000,Satis_WVS,690,1200
+Chile,2001,Satis_LB,268,1174
+Chile,2002,Satis_LB,325,1174
+Chile,2003,Satis_LB,399,1196
+Chile,2004,Satis_LB,488,1200
+Chile,2005,Satis_LB,514,1200
+Chile,2006,Satis_LB,506,1200
+Chile,2006,Satis_LAPOP,868,1517
+Chile,2007,Satis_LB,437,1200
+Chile,2008,Satis_LB,470,1200
+Chile,2008,Satis_LAPOP,719,1527
+Chile,2009,Satis_LB,635,1200
+Chile,2010,Satis_LB,674,1200
+Chile,2010,Satis_LAPOP,1211,1965
+Chile,2010,Satis_CSES,712,1200
+Chile,2011,Satis_LB,380,1200
+Chile,2012,Satis_LAPOP,720,1500
+Chile,2013,Satis_LB,462,1200
+Chile,2013,Satis_Pew,376,800
+Chile,2014,Satis_LAPOP,848,1572
+Chile,2015,Satis_LB,519,1200
+Chile,2017,Satis_Pew,168,987
+China,2001,Satis_WVS,744,1000
+China,2002,Satis_AsnB,2136,3183
+China,2003,Satis_AsB,239,800
+China,2006,Satis_AsB,355,2000
+China,2008,Satis_AsnB,3465,5098
+Colombia,1996,Satis_LB,191,1202
+Colombia,1997,Satis_LB,477,1200
+Colombia,1998,Satis_LB,290,1200
+Colombia,2000,Satis_LB,334,1200
+Colombia,2001,Satis_LB,153,1999
+Colombia,2002,Satis_LB,135,1200
+Colombia,2003,Satis_LB,264,1200
+Colombia,2004,Satis_LB,363,1200
+Colombia,2004,Satis_LAPOP,817,1479
+Colombia,2005,Satis_LB,352,1200
+Colombia,2005,Satis_LAPOP,794,1487
+Colombia,2006,Satis_LB,391,1200
+Colombia,2006,Satis_LAPOP,819,1491
+Colombia,2007,Satis_LB,391,1200
+Colombia,2007,Satis_LAPOP,761,1491
+Colombia,2008,Satis_LB,500,1200
+Colombia,2008,Satis_LAPOP,798,1503
+Colombia,2009,Satis_LB,504,1200
+Colombia,2009,Satis_LAPOP,818,1493
+Colombia,2010,Satis_LB,470,1200
+Colombia,2010,Satis_LAPOP,813,1506
+Colombia,2011,Satis_LB,318,1200
+Colombia,2012,Satis_LAPOP,761,1499
+Colombia,2013,Satis_LB,340,1200
+Colombia,2014,Satis_LAPOP,514,1496
+Colombia,2015,Satis_LB,322,1200
+Colombia,2017,Satis_Pew,180,1000
+Costa Rica,1996,Satis_LB,513,1001
+Costa Rica,1997,Satis_LB,687,1007
+Costa Rica,1998,Satis_LB,536,1000
+Costa Rica,2000,Satis_LB,590,981
+Costa Rica,2001,Satis_LB,506,1000
+Costa Rica,2002,Satis_LB,752,1006
+Costa Rica,2003,Satis_LB,466,1004
+Costa Rica,2004,Satis_LB,474,1000
+Costa Rica,2004,Satis_LAPOP,1117,1500
+Costa Rica,2005,Satis_LB,388,1000
+Costa Rica,2006,Satis_LB,484,1000
+Costa Rica,2006,Satis_LAPOP,859,1500
+Costa Rica,2007,Satis_LB,472,1000
+Costa Rica,2008,Satis_LB,438,1000
+Costa Rica,2008,Satis_LAPOP,1144,1500
+Costa Rica,2009,Satis_LB,629,1000
+Costa Rica,2010,Satis_LB,612,1000
+Costa Rica,2010,Satis_LAPOP,1028,1500
+Costa Rica,2011,Satis_LB,437,1000
+Costa Rica,2012,Satis_LAPOP,992,1500
+Costa Rica,2013,Satis_LB,349,1000
+Costa Rica,2014,Satis_LAPOP,1120,1537
+Costa Rica,2015,Satis_LB,458,1000
+Croatia,1995,Satis1_CEEB,481,990
+Croatia,1996,Satis1_CEEB,363,988
+Croatia,1999,Satis_EVS,176,1003
+Croatia,2004,Satis_EB,506,2000
+Croatia,2005,Satis_EB,404,2000
+Croatia,2006,Satis_EB,438,2000
+Croatia,2007,Satis_EB,642,2000
+Croatia,2008,Satis_EVS,367,1498
+Croatia,2008,Satis_ESS,309,1484
+Croatia,2008,Satis_CSES,249,1004
+Croatia,2010,Satis_ESS,313,1649
+Croatia,2010,Satis_EB,464,2000
+Croatia,2013,Satis_EB,383,2000
+Croatia,2014,Satis_EB,456,2030
+Croatia,2015,Satis_EB,731,2016
+Croatia,2016,Satis_EB,723,2092
+Croatia,2017,Satis_EB,597,2118
+Cyprus,2004,Satis_EB,945,1500
+Cyprus,2005,Satis_EB,1375,2007
+Cyprus,2006,Satis_ESS,642,995
+Cyprus,2006,Satis_EB,1257,2010
+Cyprus,2007,Satis_EB,1223,2002
+Cyprus,2008,Satis_EVS,663,999
+Cyprus,2008,Satis_ESS,808,1215
+Cyprus,2010,Satis_ESS,561,1083
+Cyprus,2010,Satis_EB,1083,2011
+Cyprus,2011,Satis_EB,867,2005
+Cyprus,2012,Satis_ESS,458,1116
+Cyprus,2012,Satis_EB,750,2008
+Cyprus,2013,Satis_EB,627,2008
+Cyprus,2014,Satis_EB,539,2010
+Cyprus,2015,Satis_EB,434,2010
+Cyprus,2016,Satis_EB,709,2004
+Cyprus,2017,Satis_EB,420,1000
+Czech Republic,1990,Satis1_CEEB,1162,1985
+Czech Republic,1991,Satis1_CEEB,241,722
+Czech Republic,1992,Satis1_CEEB,353,924
+Czech Republic,1993,Satis1_CEEB,393,817
+Czech Republic,1994,Satis1_CEEB,865,1962
+Czech Republic,1995,Satis1_CEEB,498,1075
+Czech Republic,1996,Satis_CSES,718,1229
+Czech Republic,1996,Satis1_CEEB,418,1021
+Czech Republic,1997,Satis1_CEEB,181,481
+Czech Republic,1997,Satis2_CEEB,150,486
+Czech Republic,1999,Satis_EVS,705,1908
+Czech Republic,2002,Satis_ESS,485,1360
+Czech Republic,2002,Satis_CSES,395,948
+Czech Republic,2004,Satis_ESS,994,3026
+Czech Republic,2004,Satis_EB,944,2075
+Czech Republic,2005,Satis_EB,1067,2244
+Czech Republic,2006,Satis_CSES,919,2002
+Czech Republic,2006,Satis_EB,1251,2159
+Czech Republic,2007,Satis_EB,1082,2149
+Czech Republic,2008,Satis_EVS,680,1793
+Czech Republic,2008,Satis_ESS,764,2018
+Czech Republic,2010,Satis_ESS,897,2386
+Czech Republic,2010,Satis_CSES,764,1857
+Czech Republic,2010,Satis_EB,927,2045
+Czech Republic,2011,Satis_EB,632,2024
+Czech Republic,2012,Satis_ESS,821,2009
+Czech Republic,2012,Satis_EB,607,2005
+Czech Republic,2013,Satis_CSES,546,1653
+Czech Republic,2013,Satis_EB,672,2001
+Czech Republic,2014,Satis_ESS,929,2148
+Czech Republic,2014,Satis_EB,920,2066
+Czech Republic,2015,Satis_EB,1019,2034
+Czech Republic,2016,Satis_ESS,1043,2244
+Czech Republic,2016,Satis_EB,1136,2048
+Czech Republic,2017,Satis_EB,1193,2033
+Denmark,1973,Satis_EB,536,1199
+Denmark,1976,Satis_EB,1074,1939
+Denmark,1977,Satis_EB,1297,2002
+Denmark,1978,Satis_EB,1302,1985
+Denmark,1979,Satis_EB,1421,2102
+Denmark,1980,Satis_EB,1217,2018
+Denmark,1981,Satis_EB,1350,2015
+Denmark,1982,Satis_EB,1319,2206
+Denmark,1983,Satis_EB,1447,2027
+Denmark,1984,Satis_EB,1407,1987
+Denmark,1985,Satis_EB,1450,2017
+Denmark,1986,Satis_EB,1446,2040
+Denmark,1987,Satis_EB,1416,2005
+Denmark,1988,Satis_EB,1489,2015
+Denmark,1989,Satis_EB,1313,2014
+Denmark,1990,Satis_EB,1440,2000
+Denmark,1991,Satis_EB,1546,2000
+Denmark,1992,Satis_EB,2334,3000
+Denmark,1993,Satis_EB,1586,2000
+Denmark,1994,Satis_EB,1611,2001
+Denmark,1995,Satis_EB,1660,2000
+Denmark,1997,Satis_EB,1625,2001
+Denmark,1998,Satis_CSES,1765,2001
+Denmark,1998,Satis_EB,1679,2004
+Denmark,1999,Satis_EVS,636,1023
+Denmark,1999,Satis_EB,1564,2002
+Denmark,2000,Satis_EB,1538,2000
+Denmark,2001,Satis_CSES,1874,2026
+Denmark,2001,Satis_EB,1662,2002
+Denmark,2002,Satis_ESS,1198,1506
+Denmark,2002,Satis_EB,1753,2000
+Denmark,2003,Satis_EB,1803,2000
+Denmark,2004,Satis_ESS,1186,1487
+Denmark,2004,Satis_EB,1841,2028
+Denmark,2005,Satis_EB,1912,2083
+Denmark,2006,Satis_ESS,1248,1505
+Denmark,2006,Satis_EB,1877,2011
+Denmark,2007,Satis_EB,1883,2001
+Denmark,2008,Satis_EVS,1117,1507
+Denmark,2008,Satis_ESS,1323,1610
+Denmark,2008,Satis_CSES,1210,1352
+Denmark,2010,Satis_ESS,1184,1576
+Denmark,2010,Satis_EB,1874,2056
+Denmark,2011,Satis_EB,1850,2016
+Denmark,2012,Satis_ESS,1347,1650
+Denmark,2012,Satis_EB,1783,2008
+Denmark,2013,Satis_EB,1740,2006
+Denmark,2014,Satis_ESS,1153,1502
+Denmark,2014,Satis_EB,1739,2010
+Denmark,2015,Satis_EB,1784,2021
+Denmark,2016,Satis_EB,1802,2013
+Denmark,2017,Satis_EB,1841,2016
+Dominican Republic,2004,Satis_LB,361,1000
+Dominican Republic,2004,Satis_LAPOP,895,4460
+Dominican Republic,2005,Satis_LB,432,1000
+Dominican Republic,2006,Satis_LB,491,1000
+Dominican Republic,2006,Satis_LAPOP,884,1516
+Dominican Republic,2007,Satis_LB,487,1000
+Dominican Republic,2008,Satis_LB,468,1000
+Dominican Republic,2008,Satis_LAPOP,899,1507
+Dominican Republic,2009,Satis_LB,530,1000
+Dominican Republic,2010,Satis_LB,386,1000
+Dominican Republic,2010,Satis_LAPOP,777,1500
+Dominican Republic,2011,Satis_LB,333,1000
+Dominican Republic,2012,Satis_LAPOP,754,1500
+Dominican Republic,2013,Satis_LB,455,1000
+Dominican Republic,2014,Satis_LAPOP,698,1520
+Dominican Republic,2015,Satis_LB,545,1000
+Ecuador,1996,Satis_LB,399,1200
+Ecuador,1997,Satis_LB,369,1200
+Ecuador,1998,Satis_LB,405,1200
+Ecuador,2000,Satis_LB,279,1200
+Ecuador,2001,Satis_LB,173,1200
+Ecuador,2002,Satis_LB,189,1200
+Ecuador,2003,Satis_LB,283,1200
+Ecuador,2004,Satis_LB,169,1200
+Ecuador,2004,Satis_LAPOP,920,3000
+Ecuador,2005,Satis_LB,169,1200
+Ecuador,2006,Satis_LB,263,1200
+Ecuador,2006,Satis_LAPOP,689,2925
+Ecuador,2007,Satis_LB,414,1200
+Ecuador,2008,Satis_LB,440,1200
+Ecuador,2008,Satis_LAPOP,1659,3000
+Ecuador,2009,Satis_LB,398,1200
+Ecuador,2010,Satis_LB,584,1200
+Ecuador,2010,Satis_LAPOP,1571,3000
+Ecuador,2011,Satis_LB,582,1200
+Ecuador,2012,Satis_LAPOP,888,1512
+Ecuador,2013,Satis_LB,711,1200
+Ecuador,2014,Satis_LAPOP,967,1489
+Ecuador,2015,Satis_LB,700,1200
+Egypt,2001,Satis_WVS,2844,3000
+Egypt,2013,Satis_AfB,373,1190
+Egypt,2015,Satis_AfB,669,1192
+El Salvador,1996,Satis_LB,261,1003
+El Salvador,1997,Satis_LB,482,1010
+El Salvador,1998,Satis_LB,473,1000
+El Salvador,2000,Satis_LB,275,1001
+El Salvador,2001,Satis_LB,214,1000
+El Salvador,2002,Satis_LB,389,1014
+El Salvador,2003,Satis_LB,335,1008
+El Salvador,2004,Satis_LB,370,1000
+El Salvador,2004,Satis_LAPOP,942,1589
+El Salvador,2005,Satis_LB,369,1010
+El Salvador,2006,Satis_LB,259,1020
+El Salvador,2006,Satis_LAPOP,783,1729
+El Salvador,2007,Satis_LB,329,1000
+El Salvador,2008,Satis_LB,380,1000
+El Salvador,2008,Satis_LAPOP,650,1549
+El Salvador,2009,Satis_LB,601,1000
+El Salvador,2010,Satis_LB,432,1000
+El Salvador,2010,Satis_LAPOP,986,1550
+El Salvador,2011,Satis_LB,353,1000
+El Salvador,2012,Satis_LAPOP,775,1499
+El Salvador,2013,Satis_LB,361,1000
+El Salvador,2014,Satis_LAPOP,891,1512
+El Salvador,2015,Satis_LB,289,1000
+Estonia,1991,Satis1_CEEB,309,999
+Estonia,1992,Satis1_CEEB,272,1000
+Estonia,1993,Satis1_CEEB,364,1011
+Estonia,1994,Satis1_CEEB,331,1002
+Estonia,1995,Satis1_CEEB,379,1001
+Estonia,1996,Satis_WVS,385,1021
+Estonia,1996,Satis1_CEEB,434,1071
+Estonia,1997,Satis1_CEEB,241,558
+Estonia,1997,Satis2_CEEB,177,449
+Estonia,1999,Satis_EVS,329,1005
+Estonia,2004,Satis_ESS,586,1989
+Estonia,2004,Satis_EB,899,2004
+Estonia,2005,Satis_EB,876,2001
+Estonia,2006,Satis_ESS,518,1517
+Estonia,2006,Satis_EB,852,2002
+Estonia,2007,Satis_EB,1060,2017
+Estonia,2008,Satis_EVS,636,1518
+Estonia,2008,Satis_ESS,530,1661
+Estonia,2010,Satis_ESS,714,1793
+Estonia,2010,Satis_EB,908,2000
+Estonia,2011,Satis_CSES,486,1000
+Estonia,2011,Satis_EB,931,2003
+Estonia,2012,Satis_ESS,908,2380
+Estonia,2012,Satis_EB,823,2003
+Estonia,2013,Satis_EB,787,2006
+Estonia,2014,Satis_ESS,748,2051
+Estonia,2014,Satis_EB,1073,2033
+Estonia,2015,Satis_EB,948,2005
+Estonia,2016,Satis_ESS,827,1947
+Estonia,2016,Satis_EB,1029,2017
+Estonia,2017,Satis_EB,1142,2019
+Finland,1993,Satis_EB,971,2028
+Finland,1994,Satis_EB,1110,2004
+Finland,1995,Satis_EB,1123,2092
+Finland,1997,Satis_EB,1160,2106
+Finland,1998,Satis_EB,1034,2059
+Finland,1999,Satis_EB,1383,2124
+Finland,2000,Satis_EVS,569,1038
+Finland,2000,Satis_EB,1268,2025
+Finland,2001,Satis_EB,1193,2025
+Finland,2002,Satis_ESS,1345,2000
+Finland,2002,Satis_EB,1429,2023
+Finland,2003,Satis_CSES,816,1196
+Finland,2003,Satis_EB,1533,2064
+Finland,2004,Satis_ESS,1497,2022
+Finland,2004,Satis_EB,1622,2032
+Finland,2005,Satis_EB,1579,2052
+Finland,2006,Satis_ESS,1435,1896
+Finland,2006,Satis_EB,1573,2006
+Finland,2007,Satis_CSES,978,1283
+Finland,2007,Satis_EB,1582,2071
+Finland,2008,Satis_ESS,1559,2195
+Finland,2009,Satis_EVS,527,1134
+Finland,2010,Satis_ESS,1241,1878
+Finland,2010,Satis_EB,1388,2006
+Finland,2011,Satis_CSES,973,1298
+Finland,2011,Satis_EB,1554,2005
+Finland,2012,Satis_ESS,1743,2197
+Finland,2012,Satis_EB,1555,2008
+Finland,2013,Satis_EB,1499,1958
+Finland,2014,Satis_ESS,1238,2087
+Finland,2014,Satis_EB,1557,2014
+Finland,2015,Satis_CSES,1184,1587
+Finland,2015,Satis_EB,1524,2016
+Finland,2016,Satis_ESS,1282,1891
+Finland,2016,Satis_EB,1570,2038
+Finland,2017,Satis_EB,1657,2028
+France,1973,Satis_EB,929,2227
+France,1976,Satis_EB,1114,2597
+France,1977,Satis_EB,1118,2405
+France,1978,Satis_EB,1107,2470
+France,1979,Satis_EB,879,2181
+France,1980,Satis_EB,716,1979
+France,1981,Satis_EB,1064,1997
+France,1982,Satis_EB,960,2138
+France,1983,Satis_EB,822,2011
+France,1984,Satis_EB,792,2014
+France,1985,Satis_EB,825,2023
+France,1986,Satis_EB,1498,3003
+France,1987,Satis_EB,974,2000
+France,1988,Satis_EB,1061,1994
+France,1989,Satis_EB,1093,2001
+France,1990,Satis_EB,955,2024
+France,1991,Satis_EB,1036,2007
+France,1992,Satis_EB,849,2013
+France,1993,Satis_EB,897,2043
+France,1994,Satis_EB,1070,2003
+France,1995,Satis_EB,950,2008
+France,1997,Satis_EB,896,2004
+France,1998,Satis_EB,807,2048
+France,1999,Satis_EVS,736,1615
+France,1999,Satis_EB,1154,2003
+France,2000,Satis_EB,1238,2006
+France,2001,Satis_EB,936,2009
+France,2002,Satis_ESS,571,1503
+France,2002,Satis_CSES,554,1000
+France,2002,Satis_EB,1181,2014
+France,2003,Satis_EB,1225,2090
+France,2004,Satis_ESS,698,1806
+France,2004,Satis_EB,1104,2039
+France,2005,Satis_EB,1062,2021
+France,2006,Satis_ESS,671,1986
+France,2006,Satis_EB,921,2027
+France,2007,Satis_CSES,1335,2000
+France,2007,Satis_EB,1329,2049
+France,2008,Satis_EVS,591,1501
+France,2008,Satis_ESS,702,2073
+France,2010,Satis_ESS,496,1728
+France,2010,Satis_EB,1113,2056
+France,2011,Satis_EB,1080,2053
+France,2012,Satis_ESS,848,1968
+France,2012,Satis_CSES,1278,2014
+France,2012,Satis_EB,1215,2015
+France,2013,Satis_EB,1007,2046
+France,2014,Satis_ESS,600,1917
+France,2014,Satis_EB,977,2016
+France,2015,Satis_EB,963,2034
+France,2016,Satis_ESS,637,2034
+France,2016,Satis_EB,838,2001
+France,2017,Satis_EB,1189,2105
+France,2017,Satis_Pew,340,1000
+Gabon,2015,Satis_AfB,177,1198
+Gabon,2017,Satis_AfB,128,1199
+Georgia,1992,Satis1_CEEB,515,1038
+Georgia,1994,Satis1_CEEB,184,1000
+Georgia,1995,Satis1_CEEB,463,1059
+Georgia,1996,Satis_WVS,313,2008
+Georgia,1996,Satis1_CEEB,441,1006
+Georgia,2008,Satis_EVS,542,1498
+Germany,1973,Satis_EB,840,1957
+Germany,1976,Satis_EB,1591,2011
+Germany,1977,Satis_EB,1567,2004
+Germany,1978,Satis_EB,1524,2002
+Germany,1979,Satis_EB,1583,2011
+Germany,1980,Satis_EB,1462,2017
+Germany,1981,Satis_EB,1427,1966
+Germany,1982,Satis_EB,1572,2340
+Germany,1983,Satis_EB,1500,2107
+Germany,1984,Satis_EB,1483,2045
+Germany,1985,Satis_EB,1467,2035
+Germany,1986,Satis_EB,1578,2071
+Germany,1987,Satis_EB,1432,1951
+Germany,1988,Satis_EB,1629,2059
+Germany,1989,Satis_EB,1650,2160
+Germany,1990,Satis1_CEEB,472,837
+Germany,1990,Satis_EB,1692,2091
+Germany,1991,Satis_EB,2621,4234
+Germany,1992,Satis_EB,2281,4209
+Germany,1993,Satis_EB,2159,4259
+Germany,1994,Satis_EB,2333,4159
+Germany,1995,Satis_EB,2661,4191
+Germany,1997,Satis_WVS,1193,2026
+Germany,1997,Satis_EB,1774,4098
+Germany,1998,Satis_CSES,1350,2019
+Germany,1998,Satis_EB,2011,4039
+Germany,1999,Satis_EVS,1395,2036
+Germany,1999,Satis_EB,2542,4073
+Germany,2000,Satis_EB,2344,4076
+Germany,2001,Satis_EB,2137,4093
+Germany,2002,Satis_ESS,1245,2919
+Germany,2002,Satis_CSES,1363,3023
+Germany,2002,Satis_EB,2680,4085
+Germany,2003,Satis_EB,2293,4110
+Germany,2004,Satis_ESS,1248,2870
+Germany,2004,Satis_EB,1988,3614
+Germany,2005,Satis_EB,1603,3054
+Germany,2006,Satis_ESS,1282,2916
+Germany,2006,Satis_EB,1673,3051
+Germany,2007,Satis_EB,1987,3022
+Germany,2008,Satis_EVS,1085,2038
+Germany,2008,Satis_ESS,1282,2751
+Germany,2009,Satis_CSES,1088,2095
+Germany,2010,Satis_ESS,1318,3031
+Germany,2010,Satis_EB,1955,3124
+Germany,2011,Satis_EB,2088,3073
+Germany,2012,Satis_ESS,1802,2958
+Germany,2012,Satis_EB,2144,3064
+Germany,2013,Satis_CSES,1180,1889
+Germany,2013,Satis_EB,2201,3097
+Germany,2014,Satis_ESS,1760,3045
+Germany,2014,Satis_EB,2275,3186
+Germany,2015,Satis_EB,2083,3102
+Germany,2016,Satis_ESS,1749,2825
+Germany,2016,Satis_EB,2110,3123
+Germany,2017,Satis_EB,2304,3170
+Germany,2017,Satis_Pew,731,1002
+Ghana,2002,Satis_AfB,553,1200
+Ghana,2005,Satis_AfB,839,1197
+Ghana,2007,Satis_Pew,573,707
+Ghana,2008,Satis_AfB,960,1200
+Ghana,2012,Satis_AfB,1771,2400
+Ghana,2013,Satis_Pew,551,799
+Ghana,2014,Satis_AfB,1332,2400
+Ghana,2017,Satis_AfB,1874,2400
+Ghana,2017,Satis_Pew,745,1129
+Greece,1980,Satis_EB,531,1000
+Greece,1981,Satis_EB,510,1000
+Greece,1982,Satis_EB,588,1000
+Greece,1983,Satis_EB,1206,2000
+Greece,1984,Satis_EB,1184,2000
+Greece,1985,Satis_EB,1100,2000
+Greece,1986,Satis_EB,1134,2000
+Greece,1987,Satis_EB,1102,2000
+Greece,1988,Satis_EB,1030,2000
+Greece,1989,Satis_EB,1020,2007
+Greece,1990,Satis_EB,774,2011
+Greece,1991,Satis_EB,714,2001
+Greece,1992,Satis_EB,1059,3009
+Greece,1993,Satis_EB,728,2005
+Greece,1994,Satis_EB,627,2004
+Greece,1995,Satis_EB,600,2012
+Greece,1997,Satis_EB,838,2020
+Greece,1998,Satis_EB,681,2020
+Greece,1999,Satis_EVS,615,1142
+Greece,1999,Satis_EB,1164,2020
+Greece,2000,Satis_EB,1009,2006
+Greece,2001,Satis_EB,887,2007
+Greece,2002,Satis_ESS,1405,2566
+Greece,2002,Satis_EB,1060,2005
+Greece,2003,Satis_EB,1033,2004
+Greece,2004,Satis_ESS,1490,2406
+Greece,2004,Satis_EB,1317,2005
+Greece,2005,Satis_EB,1066,2000
+Greece,2006,Satis_EB,1108,2000
+Greece,2007,Satis_EB,1256,2000
+Greece,2008,Satis_EVS,645,1498
+Greece,2008,Satis_ESS,645,2072
+Greece,2009,Satis_CSES,260,1022
+Greece,2010,Satis_ESS,409,2715
+Greece,2010,Satis_EB,624,2000
+Greece,2011,Satis_EB,346,2000
+Greece,2012,Satis_EB,256,2002
+Greece,2013,Satis_CSES,56,1029
+Greece,2013,Satis_EB,328,2000
+Greece,2014,Satis_EB,389,2026
+Greece,2015,Satis_EB,589,2001
+Greece,2016,Satis_EB,378,2024
+Greece,2017,Satis_EB,414,2018
+Greece,2017,Satis_Pew,179,852
+Guatemala,1996,Satis_LB,167,1001
+Guatemala,1997,Satis_LB,400,1000
+Guatemala,1998,Satis_LB,569,1000
+Guatemala,2000,Satis_LB,355,989
+Guatemala,2001,Satis_LB,169,1002
+Guatemala,2002,Satis_LB,353,1000
+Guatemala,2003,Satis_LB,213,1006
+Guatemala,2004,Satis_LB,202,1000
+Guatemala,2004,Satis_LAPOP,869,1708
+Guatemala,2005,Satis_LB,277,1000
+Guatemala,2006,Satis_LB,306,1000
+Guatemala,2007,Satis_LB,302,1000
+Guatemala,2008,Satis_LB,272,1000
+Guatemala,2008,Satis_LAPOP,790,1538
+Guatemala,2009,Satis_LB,305,1000
+Guatemala,2010,Satis_LB,282,1000
+Guatemala,2010,Satis_LAPOP,631,1504
+Guatemala,2011,Satis_LB,226,1000
+Guatemala,2012,Satis_LAPOP,644,1500
+Guatemala,2013,Satis_LB,289,1000
+Guatemala,2014,Satis_LAPOP,764,1506
+Guatemala,2015,Satis_LB,272,1000
+Guinea,2013,Satis_AfB,469,1200
+Guinea,2014,Satis_AfB,491,1200
+Guinea,2017,Satis_AfB,400,1193
+Guinea,2017,Satis_AfB,400,1193
+Guyana,2008,Satis_LAPOP,1187,2514
+Guyana,2010,Satis_LAPOP,578,1540
+Guyana,2012,Satis_LAPOP,666,1499
+Guyana,2014,Satis_LAPOP,516,1558
+Haiti,2008,Satis_LAPOP,503,1536
+Haiti,2010,Satis_LAPOP,629,1752
+Haiti,2012,Satis_LAPOP,760,1812
+Haiti,2014,Satis_LAPOP,580,1512
+Honduras,1996,Satis_LB,194,998
+Honduras,1997,Satis_LB,499,1011
+Honduras,1998,Satis_LB,367,1000
+Honduras,2000,Satis_LB,433,997
+Honduras,2001,Satis_LB,350,1000
+Honduras,2002,Satis_LB,625,1004
+Honduras,2003,Satis_LB,368,1006
+Honduras,2004,Satis_LB,298,1000
+Honduras,2004,Satis_LAPOP,891,1500
+Honduras,2005,Satis_LB,265,1000
+Honduras,2006,Satis_LB,343,1000
+Honduras,2006,Satis_LAPOP,790,1585
+Honduras,2007,Satis_LB,312,1000
+Honduras,2008,Satis_LB,241,1000
+Honduras,2008,Satis_LAPOP,527,1549
+Honduras,2009,Satis_LB,306,1000
+Honduras,2010,Satis_LB,353,1000
+Honduras,2010,Satis_LAPOP,1001,1596
+Honduras,2011,Satis_LB,289,1000
+Honduras,2012,Satis_LAPOP,836,1728
+Honduras,2013,Satis_LB,183,1000
+Honduras,2014,Satis_LAPOP,708,1561
+Honduras,2015,Satis_LB,338,1000
+Hong Kong,1998,Satis_CSES,573,1000
+Hong Kong,2000,Satis_CSES,248,580
+Hong Kong,2001,Satis_AsnB,388,811
+Hong Kong,2004,Satis_CSES,248,582
+Hong Kong,2006,Satis_AsB,361,1000
+Hong Kong,2012,Satis_CSES,408,1044
+Hungary,1990,Satis1_CEEB,194,989
+Hungary,1991,Satis1_CEEB,301,987
+Hungary,1992,Satis1_CEEB,228,1000
+Hungary,1993,Satis1_CEEB,197,972
+Hungary,1994,Satis1_CEEB,249,1018
+Hungary,1995,Satis1_CEEB,200,1004
+Hungary,1996,Satis1_CEEB,206,1002
+Hungary,1997,Satis1_CEEB,165,532
+Hungary,1997,Satis2_CEEB,177,548
+Hungary,1998,Satis_CSES,621,1525
+Hungary,1999,Satis_EVS,302,1000
+Hungary,2002,Satis_ESS,546,1685
+Hungary,2004,Satis_ESS,327,1498
+Hungary,2004,Satis_CSES,558,1200
+Hungary,2004,Satis_EB,757,2026
+Hungary,2005,Satis_EB,542,2014
+Hungary,2006,Satis_ESS,282,1518
+Hungary,2006,Satis_EB,924,2025
+Hungary,2007,Satis_EB,489,2006
+Hungary,2008,Satis_EVS,304,1513
+Hungary,2008,Satis_ESS,195,1544
+Hungary,2009,Satis_Pew,210,1000
+Hungary,2010,Satis_ESS,455,1561
+Hungary,2010,Satis_EB,726,2052
+Hungary,2011,Satis_EB,623,2040
+Hungary,2012,Satis_ESS,658,2014
+Hungary,2012,Satis_EB,553,2038
+Hungary,2013,Satis_EB,705,2027
+Hungary,2014,Satis_ESS,480,1698
+Hungary,2014,Satis_EB,767,2148
+Hungary,2015,Satis_EB,867,2098
+Hungary,2016,Satis_ESS,649,1524
+Hungary,2016,Satis_EB,769,2041
+Hungary,2017,Satis_EB,946,2120
+Hungary,2017,Satis_Pew,415,944
+Iceland,1999,Satis_EVS,576,968
+Iceland,1999,Satis_CSES,1249,1631
+Iceland,2003,Satis_CSES,971,1446
+Iceland,2004,Satis_ESS,334,579
+Iceland,2007,Satis_CSES,1096,1595
+Iceland,2009,Satis_EVS,354,808
+Iceland,2009,Satis_CSES,554,1385
+Iceland,2012,Satis_ESS,428,752
+Iceland,2013,Satis_CSES,928,1479
+Iceland,2016,Satis_ESS,520,859
+India,2001,Satis_WVS,1014,2002
+India,2003,Satis_AsB,541,822
+India,2005,Satis_AsB,582,1238
+India,2005,Satis_SAB,1097,2055
+India,2013,Satis_SAB,1451,3058
+India,2017,Satis_Pew,1947,2464
+Indonesia,2001,Satis_WVS,274,1000
+Indonesia,2004,Satis_AsB,671,825
+Indonesia,2006,Satis_AsnB,941,1598
+Indonesia,2007,Satis_AsB,627,1000
+Indonesia,2017,Satis_Pew,690,1000
+Iran,2000,Satis_WVS,1260,2532
+Ireland,1973,Satis_EB,628,1199
+Ireland,1976,Satis_EB,1169,1988
+Ireland,1977,Satis_EB,1315,2005
+Ireland,1978,Satis_EB,1341,2010
+Ireland,1979,Satis_EB,1046,2003
+Ireland,1980,Satis_EB,951,2015
+Ireland,1981,Satis_EB,1180,1990
+Ireland,1982,Satis_EB,1087,2188
+Ireland,1983,Satis_EB,871,1989
+Ireland,1984,Satis_EB,954,2008
+Ireland,1985,Satis_EB,948,2017
+Ireland,1986,Satis_EB,956,2009
+Ireland,1987,Satis_EB,1017,2002
+Ireland,1988,Satis_EB,1104,2004
+Ireland,1989,Satis_EB,1157,1984
+Ireland,1990,Satis_EB,1271,2034
+Ireland,1991,Satis_EB,1246,2020
+Ireland,1992,Satis_EB,1790,3009
+Ireland,1993,Satis_EB,1225,2008
+Ireland,1994,Satis_EB,1308,2006
+Ireland,1995,Satis_EB,1394,2006
+Ireland,1997,Satis_EB,1408,2005
+Ireland,1998,Satis_EB,1498,2000
+Ireland,1999,Satis_EVS,608,1012
+Ireland,1999,Satis_EB,1371,2005
+Ireland,2000,Satis_EB,1443,2001
+Ireland,2001,Satis_EB,1360,1971
+Ireland,2002,Satis_ESS,787,2046
+Ireland,2002,Satis_CSES,1920,2367
+Ireland,2002,Satis_EB,1373,2000
+Ireland,2003,Satis_EB,1370,2038
+Ireland,2004,Satis_ESS,1193,2286
+Ireland,2004,Satis_EB,1468,2001
+Ireland,2005,Satis_EB,1432,2015
+Ireland,2006,Satis_ESS,966,1800
+Ireland,2006,Satis_EB,1494,2003
+Ireland,2007,Satis_CSES,940,1435
+Ireland,2007,Satis_EB,1389,2007
+Ireland,2008,Satis_EVS,529,982
+Ireland,2008,Satis_ESS,582,1764
+Ireland,2010,Satis_ESS,869,2576
+Ireland,2010,Satis_EB,1150,2021
+Ireland,2011,Satis_CSES,822,1853
+Ireland,2011,Satis_EB,1146,2030
+Ireland,2012,Satis_ESS,1260,2628
+Ireland,2012,Satis_EB,1031,2000
+Ireland,2013,Satis_EB,1003,2006
+Ireland,2014,Satis_ESS,879,2390
+Ireland,2014,Satis_EB,1149,2005
+Ireland,2015,Satis_EB,1278,2022
+Ireland,2016,Satis_ESS,1330,2628
+Ireland,2016,Satis_EB,1433,2010
+Ireland,2017,Satis_EB,1482,2010
+Israel,1996,Satis_CSES,566,1091
+Israel,2002,Satis_ESS,1037,2499
+Israel,2003,Satis_CSES,422,1212
+Israel,2006,Satis_CSES,416,1200
+Israel,2008,Satis_ESS,1089,2490
+Israel,2010,Satis_ESS,1006,2294
+Israel,2012,Satis_ESS,1471,2508
+Israel,2013,Satis_CSES,535,1017
+Israel,2014,Satis_ESS,1042,2562
+Israel,2016,Satis_ESS,1109,2470
+Israel,2017,Satis_Pew,546,1050
+Italy,1973,Satis_EB,550,2000
+Italy,1976,Satis_EB,259,1975
+Italy,1977,Satis_EB,344,2180
+Italy,1978,Satis_EB,498,2205
+Italy,1979,Satis_EB,420,2348
+Italy,1980,Satis_EB,460,2224
+Italy,1981,Satis_EB,446,2253
+Italy,1982,Satis_EB,481,2326
+Italy,1983,Satis_EB,398,2064
+Italy,1984,Satis_EB,507,2157
+Italy,1985,Satis_EB,602,2174
+Italy,1986,Satis_EB,605,2200
+Italy,1987,Satis_EB,573,2084
+Italy,1988,Satis_EB,578,2080
+Italy,1989,Satis_EB,573,2053
+Italy,1990,Satis_EB,525,2085
+Italy,1991,Satis_EB,548,2083
+Italy,1992,Satis_EB,458,3119
+Italy,1993,Satis_EB,252,2051
+Italy,1994,Satis_EB,487,2110
+Italy,1995,Satis_EB,407,2089
+Italy,1997,Satis_EB,548,2029
+Italy,1998,Satis_EB,566,2000
+Italy,1999,Satis_EVS,691,2000
+Italy,1999,Satis_EB,613,2010
+Italy,2000,Satis_EB,703,1987
+Italy,2001,Satis_EB,658,1995
+Italy,2002,Satis_ESS,486,1207
+Italy,2002,Satis_EB,686,2043
+Italy,2003,Satis_EB,725,2035
+Italy,2004,Satis_EB,822,2045
+Italy,2005,Satis_EB,878,2004
+Italy,2006,Satis_CSES,483,1439
+Italy,2006,Satis_EB,1072,2006
+Italy,2007,Satis_EB,819,2055
+Italy,2009,Satis_EVS,456,1519
+Italy,2010,Satis_EB,956,2047
+Italy,2011,Satis_EB,715,2070
+Italy,2012,Satis_ESS,258,960
+Italy,2012,Satis_EB,553,2067
+Italy,2013,Satis_EB,568,2011
+Italy,2014,Satis_EB,584,2052
+Italy,2015,Satis_EB,694,2043
+Italy,2016,Satis_ESS,766,2504
+Italy,2016,Satis_EB,736,2037
+Italy,2017,Satis_EB,760,2059
+Italy,2017,Satis_Pew,281,905
+Ivory Coast,2013,Satis_AfB,360,1200
+Ivory Coast,2014,Satis_AfB,433,1199
+Ivory Coast,2017,Satis_AfB,482,1200
+Jamaica,2008,Satis_LAPOP,719,1499
+Jamaica,2010,Satis_LAPOP,628,1504
+Jamaica,2012,Satis_LAPOP,892,1500
+Jamaica,2014,Satis_LAPOP,589,1503
+Japan,1996,Satis_CSES,731,1327
+Japan,2000,Satis_WVS,504,1362
+Japan,2003,Satis_AsnB,644,1418
+Japan,2003,Satis_AsB,151,857
+Japan,2004,Satis_CSES,1020,1977
+Japan,2004,Satis_AsB,273,825
+Japan,2006,Satis_AsB,313,1003
+Japan,2007,Satis_CSES,665,1373
+Japan,2013,Satis_CSES,1418,1937
+Japan,2017,Satis_Pew,504,1009
+Jordan,2001,Satis_WVS,811,1223
+Jordan,2017,Satis_Pew,588,1548
+Kazakhstan,1994,Satis1_CEEB,124,1000
+Kazakhstan,1995,Satis1_CEEB,220,1000
+Kazakhstan,1996,Satis1_CEEB,168,1002
+Kazakhstan,2005,Satis_AsB,353,800
+Kenya,2003,Satis_AfB,1881,2400
+Kenya,2005,Satis_AfB,675,1278
+Kenya,2007,Satis_Pew,720,1000
+Kenya,2008,Satis_AfB,468,1104
+Kenya,2011,Satis_AfB,1133,2399
+Kenya,2013,Satis_CSES,555,1200
+Kenya,2013,Satis_Pew,583,798
+Kenya,2014,Satis_AfB,1141,2397
+Kenya,2016,Satis_AfB,892,1599
+Kenya,2017,Satis_Pew,626,1117
+Korea,2004,Satis_AsB,113,819
+Korea,2006,Satis_AsB,288,1023
+Kosovo,2008,Satis_EVS,1065,1601
+Kosovo,2012,Satis_ESS,274,1295
+Kyrgyzstan,2003,Satis_WVS,304,1043
+Kyrgyzstan,2005,Satis_AsB,286,800
+Kyrgyzstan,2006,Satis_CSES,722,2000
+Latvia,1991,Satis1_CEEB,368,999
+Latvia,1992,Satis1_CEEB,164,1000
+Latvia,1993,Satis1_CEEB,307,992
+Latvia,1994,Satis1_CEEB,255,1000
+Latvia,1995,Satis1_CEEB,315,1094
+Latvia,1996,Satis_WVS,157,1200
+Latvia,1996,Satis1_CEEB,282,1017
+Latvia,1997,Satis1_CEEB,141,512
+Latvia,1997,Satis2_CEEB,125,513
+Latvia,1999,Satis_EVS,286,1013
+Latvia,2004,Satis_EB,914,2011
+Latvia,2005,Satis_EB,888,2036
+Latvia,2006,Satis_EB,833,2033
+Latvia,2007,Satis_EB,852,2019
+Latvia,2008,Satis_EVS,413,1506
+Latvia,2008,Satis_ESS,270,1980
+Latvia,2010,Satis_CSES,183,1005
+Latvia,2010,Satis_EB,637,2006
+Latvia,2011,Satis_EB,765,2016
+Latvia,2012,Satis_EB,837,2018
+Latvia,2013,Satis_EB,839,2009
+Latvia,2014,Satis_EB,952,2015
+Latvia,2015,Satis_EB,955,2006
+Latvia,2016,Satis_EB,1045,2010
+Latvia,2017,Satis_EB,1048,2019
+Lebanon,2017,Satis_Pew,124,1552
+Lesotho,2003,Satis_AfB,581,1200
+Lesotho,2005,Satis_AfB,475,1200
+Lesotho,2008,Satis_AfB,356,1200
+Lesotho,2012,Satis_AfB,601,1197
+Lesotho,2014,Satis_AfB,380,1200
+Lesotho,2017,Satis_AfB,500,1200
+Liberia,2008,Satis_AfB,602,1200
+Liberia,2012,Satis_AfB,703,1199
+Liberia,2014,Satis_AfB,517,1199
+Lithuania,1991,Satis1_CEEB,523,1000
+Lithuania,1992,Satis1_CEEB,477,1000
+Lithuania,1993,Satis1_CEEB,357,1020
+Lithuania,1994,Satis1_CEEB,339,1008
+Lithuania,1995,Satis1_CEEB,254,1003
+Lithuania,1996,Satis1_CEEB,304,1012
+Lithuania,1997,Satis_WVS,232,1009
+Lithuania,1997,Satis_CSES,331,1009
+Lithuania,1997,Satis1_CEEB,208,507
+Lithuania,1997,Satis2_CEEB,171,506
+Lithuania,1999,Satis_EVS,229,1018
+Lithuania,2004,Satis_EB,673,2018
+Lithuania,2005,Satis_EB,476,2023
+Lithuania,2006,Satis_EB,474,2019
+Lithuania,2007,Satis_EB,492,2034
+Lithuania,2008,Satis_EVS,430,1499
+Lithuania,2010,Satis_ESS,320,1677
+Lithuania,2010,Satis_EB,344,2024
+Lithuania,2011,Satis_EB,462,2052
+Lithuania,2012,Satis_ESS,794,1845
+Lithuania,2012,Satis_EB,400,2038
+Lithuania,2013,Satis_EB,481,2059
+Lithuania,2014,Satis_ESS,703,2250
+Lithuania,2014,Satis_EB,661,2017
+Lithuania,2015,Satis_EB,710,2008
+Lithuania,2016,Satis_ESS,813,2053
+Lithuania,2016,Satis_EB,729,2018
+Lithuania,2017,Satis_EB,693,2021
+Luxembourg,1973,Satis_EB,185,330
+Luxembourg,1976,Satis_EB,309,569
+Luxembourg,1977,Satis_EB,448,646
+Luxembourg,1978,Satis_EB,396,613
+Luxembourg,1979,Satis_EB,398,597
+Luxembourg,1980,Satis_EB,469,600
+Luxembourg,1981,Satis_EB,600,800
+Luxembourg,1982,Satis_EB,417,699
+Luxembourg,1983,Satis_EB,371,604
+Luxembourg,1984,Satis_EB,393,599
+Luxembourg,1985,Satis_EB,414,600
+Luxembourg,1986,Satis_EB,420,600
+Luxembourg,1987,Satis_EB,427,589
+Luxembourg,1988,Satis_EB,437,600
+Luxembourg,1989,Satis_EB,471,605
+Luxembourg,1990,Satis_EB,429,601
+Luxembourg,1991,Satis_EB,714,939
+Luxembourg,1992,Satis_EB,695,996
+Luxembourg,1993,Satis_EB,730,1015
+Luxembourg,1994,Satis_EB,786,1000
+Luxembourg,1995,Satis_EB,756,999
+Luxembourg,1997,Satis_EB,861,1223
+Luxembourg,1998,Satis_EB,948,1208
+Luxembourg,1999,Satis_EVS,870,1211
+Luxembourg,1999,Satis_EB,891,1199
+Luxembourg,2000,Satis_EB,893,1209
+Luxembourg,2001,Satis_EB,820,1213
+Luxembourg,2002,Satis_ESS,986,1552
+Luxembourg,2002,Satis_EB,943,1202
+Luxembourg,2003,Satis_EB,913,1187
+Luxembourg,2004,Satis_ESS,1028,1635
+Luxembourg,2004,Satis_EB,911,1121
+Luxembourg,2005,Satis_EB,835,1014
+Luxembourg,2006,Satis_EB,837,1003
+Luxembourg,2007,Satis_EB,733,1013
+Luxembourg,2008,Satis_EVS,1135,1609
+Luxembourg,2010,Satis_EB,849,1018
+Luxembourg,2011,Satis_EB,881,999
+Luxembourg,2012,Satis_EB,845,1009
+Luxembourg,2013,Satis_EB,808,1013
+Luxembourg,2014,Satis_EB,804,1013
+Luxembourg,2015,Satis_EB,776,1010
+Luxembourg,2016,Satis_EB,869,1009
+Luxembourg,2017,Satis_EB,856,1019
+Macedonia,1992,Satis1_CEEB,495,1002
+Macedonia,1993,Satis1_CEEB,480,1097
+Macedonia,1994,Satis1_CEEB,354,1000
+Macedonia,1995,Satis1_CEEB,372,1000
+Macedonia,1996,Satis1_CEEB,395,1000
+Macedonia,2001,Satis_WVS,181,1055
+Macedonia,2007,Satis_EB,1061,2018
+Macedonia,2008,Satis_EVS,621,1493
+Macedonia,2010,Satis_EB,954,2104
+Madagascar,2005,Satis_AfB,349,1350
+Madagascar,2008,Satis_AfB,211,1350
+Madagascar,2013,Satis_AfB,154,1200
+Madagascar,2014,Satis_AfB,131,1201
+Madagascar,2017,Satis_AfB,109,1200
+Malawi,2003,Satis_AfB,565,1200
+Malawi,2005,Satis_AfB,316,1200
+Malawi,2008,Satis_AfB,682,1200
+Malawi,2012,Satis_AfB,1282,2407
+Malawi,2014,Satis_AfB,1169,2400
+Malawi,2017,Satis_AfB,443,1200
+Malaysia,2003,Satis_AsB,555,800
+Malaysia,2004,Satis_AsB,638,800
+Malaysia,2007,Satis_AsB,720,1000
+Maldives,2005,Satis_AsB,527,821
+Mali,2002,Satis_AfB,810,1283
+Mali,2005,Satis_AfB,708,1244
+Mali,2008,Satis_AfB,609,1232
+Mali,2012,Satis_AfB,372,1200
+Mali,2014,Satis_AfB,595,1200
+Mali,2017,Satis_AfB,443,1200
+Malta,1999,Satis_EVS,747,1001
+Malta,2004,Satis_EB,481,1000
+Malta,2005,Satis_EB,476,1000
+Malta,2006,Satis_EB,480,1000
+Malta,2007,Satis_EB,528,1000
+Malta,2008,Satis_EVS,979,1497
+Malta,2010,Satis_EB,447,1000
+Malta,2011,Satis_EB,498,1000
+Malta,2012,Satis_EB,513,1000
+Malta,2013,Satis_EB,702,1000
+Malta,2014,Satis_EB,679,1010
+Malta,2015,Satis_EB,709,1007
+Malta,2016,Satis_EB,663,1025
+Malta,2017,Satis_EB,627,1003
+Mauritius,2012,Satis_AfB,862,1200
+Mauritius,2014,Satis_AfB,788,1200
+Mauritius,2017,Satis_AfB,618,1200
+Mexico,1995,Satis_LB,268,1204
+Mexico,1996,Satis_LB,177,1526
+Mexico,1997,Satis_LB,493,1105
+Mexico,1997,Satis_CSES,815,2033
+Mexico,1998,Satis_LB,253,1200
+Mexico,2000,Satis_LB,426,1166
+Mexico,2000,Satis_WVS,570,1535
+Mexico,2000,Satis_CSES,1030,1766
+Mexico,2001,Satis_LB,325,1253
+Mexico,2002,Satis_LB,214,1210
+Mexico,2003,Satis_LB,217,1200
+Mexico,2003,Satis_CSES,643,1991
+Mexico,2004,Satis_LB,227,1200
+Mexico,2004,Satis_LAPOP,811,1556
+Mexico,2005,Satis_LB,287,1200
+Mexico,2006,Satis_LB,495,1200
+Mexico,2006,Satis_CSES,717,1591
+Mexico,2007,Satis_LB,370,1200
+Mexico,2008,Satis_LB,279,1200
+Mexico,2008,Satis_LAPOP,830,1560
+Mexico,2009,Satis_LB,338,1200
+Mexico,2009,Satis_CSES,1063,2400
+Mexico,2010,Satis_LB,321,1200
+Mexico,2010,Satis_LAPOP,666,1562
+Mexico,2011,Satis_LB,272,1200
+Mexico,2012,Satis_LAPOP,676,1500
+Mexico,2012,Satis_CSES,645,2400
+Mexico,2013,Satis_LB,257,1200
+Mexico,2013,Satis_Pew,530,1000
+Mexico,2014,Satis_LAPOP,526,1535
+Mexico,2015,Satis_LB,225,1200
+Mexico,2015,Satis_CSES,367,1197
+Mexico,2017,Satis_Pew,60,1000
+Moldova,1992,Satis1_CEEB,355,1000
+Moldova,1996,Satis_WVS,62,984
+Moldova,2002,Satis_WVS,98,1008
+Moldova,2008,Satis_EVS,393,1551
+Mongolia,2003,Satis_AsnB,799,1144
+Mongolia,2005,Satis_AsB,295,800
+Mongolia,2006,Satis_AsnB,768,1211
+Montenegro,2001,Satis_WVS,24,82
+Montenegro,2008,Satis_EVS,529,1516
+Montenegro,2013,Satis_CSES,419,967
+Morocco,2001,Satis_WVS,428,1251
+Morocco,2013,Satis_AfB,532,1197
+Morocco,2015,Satis_AfB,583,1200
+Mozambique,2002,Satis_AfB,754,1400
+Mozambique,2005,Satis_AfB,703,1198
+Mozambique,2008,Satis_AfB,550,1200
+Mozambique,2012,Satis_AfB,836,2400
+Mozambique,2015,Satis_AfB,535,2400
+Namibia,2003,Satis_AfB,832,1199
+Namibia,2005,Satis_AfB,823,1200
+Namibia,2008,Satis_AfB,804,1200
+Namibia,2012,Satis_AfB,748,1200
+Namibia,2014,Satis_AfB,859,1200
+Namibia,2017,Satis_AfB,790,1200
+Nepal,2005,Satis_AsB,172,800
+Nepal,2005,Satis_SAB,459,1580
+Nepal,2013,Satis_SAB,601,1945
+Netherlands,1973,Satis_EB,774,1464
+Netherlands,1976,Satis_EB,1364,2027
+Netherlands,1977,Satis_EB,1284,1976
+Netherlands,1978,Satis_EB,1278,2044
+Netherlands,1979,Satis_EB,1310,2066
+Netherlands,1980,Satis_EB,1059,2113
+Netherlands,1981,Satis_EB,1248,2069
+Netherlands,1982,Satis_EB,1222,2284
+Netherlands,1983,Satis_EB,1130,2048
+Netherlands,1984,Satis_EB,1163,2033
+Netherlands,1985,Satis_EB,1162,2053
+Netherlands,1986,Satis_EB,1228,2027
+Netherlands,1987,Satis_EB,1166,1969
+Netherlands,1988,Satis_EB,1238,2029
+Netherlands,1989,Satis_EB,1503,2067
+Netherlands,1990,Satis_EB,1478,2115
+Netherlands,1991,Satis_EB,1392,2044
+Netherlands,1992,Satis_EB,2095,3027
+Netherlands,1993,Satis_EB,1353,2004
+Netherlands,1994,Satis_EB,1362,2048
+Netherlands,1995,Satis_EB,1436,2075
+Netherlands,1997,Satis_EB,1488,2013
+Netherlands,1998,Satis_CSES,1579,2101
+Netherlands,1998,Satis_EB,1553,2063
+Netherlands,1999,Satis_EVS,730,1002
+Netherlands,1999,Satis_EB,1557,2014
+Netherlands,2000,Satis_EB,1474,1979
+Netherlands,2001,Satis_EB,1395,2039
+Netherlands,2002,Satis_ESS,1439,2364
+Netherlands,2002,Satis_CSES,767,1574
+Netherlands,2002,Satis_EB,1310,1997
+Netherlands,2003,Satis_EB,1303,2014
+Netherlands,2004,Satis_ESS,1069,1881
+Netherlands,2004,Satis_EB,1390,2053
+Netherlands,2005,Satis_EB,1453,2047
+Netherlands,2006,Satis_ESS,1264,1889
+Netherlands,2006,Satis_CSES,1781,2322
+Netherlands,2006,Satis_EB,1518,2027
+Netherlands,2007,Satis_EB,1611,2014
+Netherlands,2008,Satis_EVS,828,1552
+Netherlands,2008,Satis_ESS,1242,1778
+Netherlands,2010,Satis_ESS,1254,1829
+Netherlands,2010,Satis_CSES,1647,2153
+Netherlands,2010,Satis_EB,1546,2053
+Netherlands,2011,Satis_EB,1518,2021
+Netherlands,2012,Satis_ESS,1324,1845
+Netherlands,2012,Satis_EB,1548,2028
+Netherlands,2013,Satis_EB,1467,2040
+Netherlands,2014,Satis_ESS,1226,1919
+Netherlands,2014,Satis_EB,1553,2026
+Netherlands,2015,Satis_EB,1534,2033
+Netherlands,2016,Satis_ESS,1177,1646
+Netherlands,2016,Satis_EB,1582,2030
+Netherlands,2017,Satis_EB,1634,2042
+Netherlands,2017,Satis_Pew,775,1006
+New Zealand,1996,Satis_CSES,2749,4080
+New Zealand,2002,Satis_CSES,1079,1741
+New Zealand,2008,Satis_CSES,759,1149
+New Zealand,2011,Satis_CSES,937,1372
+New Zealand,2014,Satis_CSES,814,1220
+Nicaragua,1996,Satis_LB,247,1034
+Nicaragua,1997,Satis_LB,509,1002
+Nicaragua,1998,Satis_LB,264,1000
+Nicaragua,2000,Satis_LB,162,1000
+Nicaragua,2001,Satis_LB,239,1005
+Nicaragua,2002,Satis_LB,598,1016
+Nicaragua,2004,Satis_LB,223,1000
+Nicaragua,2004,Satis_LAPOP,704,1430
+Nicaragua,2005,Satis_LB,178,1000
+Nicaragua,2006,Satis_LB,261,1000
+Nicaragua,2007,Satis_LB,434,1000
+Nicaragua,2008,Satis_LB,386,1000
+Nicaragua,2008,Satis_LAPOP,601,1540
+Nicaragua,2009,Satis_LB,355,1000
+Nicaragua,2010,Satis_LB,363,1000
+Nicaragua,2010,Satis_LAPOP,719,1540
+Nicaragua,2011,Satis_LB,381,1000
+Nicaragua,2012,Satis_LAPOP,1034,1499
+Nicaragua,2013,Satis_LB,519,1000
+Nicaragua,2014,Satis_LAPOP,905,1546
+Nicaragua,2015,Satis_LB,483,1000
+Niger,2013,Satis_AfB,777,1199
+Niger,2014,Satis_AfB,786,1200
+Niger,2017,Satis_AfB,427,1200
+Nigeria,2000,Satis_WVS,1191,2022
+Nigeria,2003,Satis_AfB,850,2428
+Nigeria,2005,Satis_AfB,562,2202
+Nigeria,2008,Satis_AfB,732,2324
+Nigeria,2012,Satis_AfB,761,2400
+Nigeria,2013,Satis_AfB,761,2400
+Nigeria,2013,Satis_Pew,278,1031
+Nigeria,2014,Satis_AfB,706,2400
+Nigeria,2017,Satis_AfB,667,1600
+Nigeria,2017,Satis_Pew,455,1110
+Norway,1990,Satis_EB,639,1011
+Norway,1991,Satis_EB,723,1000
+Norway,1992,Satis_EB,685,1002
+Norway,1993,Satis_EB,729,1000
+Norway,1994,Satis_EB,815,1000
+Norway,1995,Satis_EB,801,1000
+Norway,1997,Satis_CSES,1843,2055
+Norway,2001,Satis_CSES,1578,2052
+Norway,2002,Satis_ESS,1270,2036
+Norway,2004,Satis_ESS,1126,1760
+Norway,2005,Satis_CSES,1763,2010
+Norway,2005,Satis_EB,289,1000
+Norway,2006,Satis_ESS,1261,1750
+Norway,2006,Satis_EB,384,1000
+Norway,2007,Satis_EB,478,1000
+Norway,2008,Satis_EVS,764,1090
+Norway,2008,Satis_ESS,1125,1549
+Norway,2009,Satis_CSES,1554,1782
+Norway,2010,Satis_ESS,1183,1548
+Norway,2010,Satis_EB,1123,2064
+Norway,2011,Satis_EB,591,1000
+Norway,2012,Satis_ESS,1371,1624
+Norway,2013,Satis_CSES,1575,1726
+Norway,2014,Satis_ESS,1160,1436
+Norway,2016,Satis_ESS,1252,1530
+Pakistan,2001,Satis_WVS,319,2000
+Pakistan,2005,Satis_AsB,333,1086
+Pakistan,2005,Satis_SAB,420,1324
+Pakistan,2013,Satis_SAB,1244,2487
+Panama,1996,Satis_LB,282,1005
+Panama,1997,Satis_LB,400,1021
+Panama,1998,Satis_LB,340,1000
+Panama,2000,Satis_LB,468,993
+Panama,2001,Satis_LB,209,1000
+Panama,2002,Satis_LB,446,1010
+Panama,2003,Satis_LB,244,1004
+Panama,2004,Satis_LB,353,1000
+Panama,2004,Satis_LAPOP,828,1639
+Panama,2005,Satis_LB,201,1008
+Panama,2006,Satis_LB,406,1008
+Panama,2006,Satis_LAPOP,683,1536
+Panama,2007,Satis_LB,379,1008
+Panama,2008,Satis_LB,350,1000
+Panama,2008,Satis_LAPOP,854,1536
+Panama,2009,Satis_LB,613,1000
+Panama,2010,Satis_LB,555,1000
+Panama,2010,Satis_LAPOP,1193,1536
+Panama,2011,Satis_LB,535,1000
+Panama,2012,Satis_LAPOP,1040,1620
+Panama,2013,Satis_LB,439,1000
+Panama,2014,Satis_LAPOP,952,1508
+Panama,2015,Satis_LB,376,1000
+Paraguay,1995,Satis_LB,165,587
+Paraguay,1996,Satis_LB,128,598
+Paraguay,1997,Satis_LB,89,575
+Paraguay,1998,Satis_LB,145,600
+Paraguay,2000,Satis_LB,75,602
+Paraguay,2001,Satis_LB,64,604
+Paraguay,2002,Satis_LB,41,600
+Paraguay,2003,Satis_LB,56,600
+Paraguay,2004,Satis_LB,80,600
+Paraguay,2005,Satis_LB,204,1200
+Paraguay,2006,Satis_LB,140,1200
+Paraguay,2006,Satis_LAPOP,231,1165
+Paraguay,2007,Satis_LB,114,1200
+Paraguay,2008,Satis_LB,270,1200
+Paraguay,2008,Satis_LAPOP,230,1166
+Paraguay,2009,Satis_LB,398,1200
+Paraguay,2010,Satis_LB,420,1200
+Paraguay,2010,Satis_LAPOP,755,1502
+Paraguay,2011,Satis_LB,472,1200
+Paraguay,2012,Satis_LAPOP,692,1501
+Paraguay,2013,Satis_LB,301,1200
+Paraguay,2014,Satis_LAPOP,672,1503
+Paraguay,2015,Satis_LB,290,1200
+Peru,1995,Satis_LB,537,1226
+Peru,1996,Satis_LB,335,1200
+Peru,1997,Satis_LB,217,1054
+Peru,1998,Satis_LB,187,1045
+Peru,2000,Satis_LB,249,1046
+Peru,2001,Satis_LB,167,1023
+Peru,2001,Satis_WVS,513,1501
+Peru,2001,Satis_CSES,389,2220
+Peru,2002,Satis_LB,220,1224
+Peru,2003,Satis_LB,132,1200
+Peru,2004,Satis_LB,80,1200
+Peru,2005,Satis_LB,158,1200
+Peru,2006,Satis_LB,274,1200
+Peru,2006,Satis_LAPOP,523,1500
+Peru,2006,Satis_CSES,643,2032
+Peru,2007,Satis_LB,205,1200
+Peru,2008,Satis_LB,190,1200
+Peru,2008,Satis_LAPOP,506,1500
+Peru,2009,Satis_LB,266,1200
+Peru,2010,Satis_LB,338,1200
+Peru,2010,Satis_LAPOP,563,1500
+Peru,2011,Satis_LB,370,1200
+Peru,2011,Satis_CSES,585,1570
+Peru,2012,Satis_LAPOP,730,1500
+Peru,2013,Satis_LB,297,1200
+Peru,2014,Satis_LAPOP,542,1500
+Peru,2015,Satis_LB,299,1200
+Peru,2017,Satis_Pew,250,1000
+Philippines,2001,Satis_WVS,538,1200
+Philippines,2002,Satis_AsnB,641,1200
+Philippines,2004,Satis_CSES,646,1200
+Philippines,2004,Satis_AsB,379,800
+Philippines,2005,Satis_AsnB,444,1200
+Philippines,2007,Satis_AsB,619,1000
+Philippines,2010,Satis_CSES,816,1200
+Philippines,2017,Satis_Pew,690,1000
+Poland,1990,Satis1_CEEB,384,1014
+Poland,1991,Satis1_CEEB,265,1000
+Poland,1992,Satis1_CEEB,321,999
+Poland,1993,Satis1_CEEB,380,1004
+Poland,1994,Satis1_CEEB,244,1004
+Poland,1995,Satis1_CEEB,504,1000
+Poland,1996,Satis1_CEEB,439,1004
+Poland,1997,Satis_CSES,1101,2003
+Poland,1997,Satis1_CEEB,292,501
+Poland,1997,Satis2_CEEB,268,496
+Poland,1999,Satis_EVS,426,1095
+Poland,2001,Satis_CSES,636,1794
+Poland,2002,Satis_ESS,467,2110
+Poland,2004,Satis_ESS,323,1716
+Poland,2004,Satis_EB,598,2000
+Poland,2005,Satis_CSES,776,2402
+Poland,2005,Satis_EB,579,2000
+Poland,2006,Satis_ESS,452,1721
+Poland,2006,Satis_EB,768,2000
+Poland,2007,Satis_CSES,981,1817
+Poland,2007,Satis_EB,957,2000
+Poland,2008,Satis_EVS,711,1479
+Poland,2008,Satis_ESS,569,1619
+Poland,2009,Satis_Pew,530,1000
+Poland,2010,Satis_ESS,681,1751
+Poland,2010,Satis_EB,1088,2000
+Poland,2011,Satis_CSES,988,1919
+Poland,2011,Satis_EB,1182,2000
+Poland,2012,Satis_ESS,716,1898
+Poland,2012,Satis_EB,957,2000
+Poland,2013,Satis_EB,1014,2000
+Poland,2014,Satis_ESS,457,1615
+Poland,2014,Satis_EB,1122,2034
+Poland,2015,Satis_EB,1177,2010
+Poland,2016,Satis_ESS,572,1593
+Poland,2016,Satis_EB,1097,2023
+Poland,2017,Satis_EB,1211,2056
+Poland,2017,Satis_Pew,592,1160
+Portugal,1985,Satis_EB,680,2000
+Portugal,1986,Satis_EB,1108,2000
+Portugal,1987,Satis_EB,1258,2000
+Portugal,1988,Satis_EB,1058,2000
+Portugal,1989,Satis_EB,1152,2000
+Portugal,1990,Satis_EB,1370,2000
+Portugal,1991,Satis_EB,1458,2000
+Portugal,1992,Satis_EB,2007,3000
+Portugal,1993,Satis_EB,1048,2000
+Portugal,1994,Satis_EB,995,1997
+Portugal,1995,Satis_EB,830,2000
+Portugal,1997,Satis_EB,870,2000
+Portugal,1998,Satis_EB,702,2000
+Portugal,1999,Satis_EVS,723,1000
+Portugal,1999,Satis_EB,1127,2001
+Portugal,2000,Satis_EB,946,2000
+Portugal,2001,Satis_EB,818,2001
+Portugal,2002,Satis_ESS,417,1511
+Portugal,2002,Satis_CSES,651,1303
+Portugal,2002,Satis_EB,694,2000
+Portugal,2003,Satis_EB,708,2001
+Portugal,2004,Satis_ESS,299,2052
+Portugal,2004,Satis_EB,696,2000
+Portugal,2005,Satis_CSES,1284,2801
+Portugal,2005,Satis_EB,827,2008
+Portugal,2006,Satis_ESS,500,2222
+Portugal,2006,Satis_EB,604,2003
+Portugal,2007,Satis_EB,740,2011
+Portugal,2008,Satis_EVS,570,1553
+Portugal,2008,Satis_ESS,502,2367
+Portugal,2010,Satis_ESS,269,2150
+Portugal,2010,Satis_EB,579,2043
+Portugal,2011,Satis_EB,602,2050
+Portugal,2012,Satis_ESS,512,2151
+Portugal,2012,Satis_CSES,539,1316
+Portugal,2012,Satis_EB,467,2025
+Portugal,2013,Satis_EB,299,2051
+Portugal,2014,Satis_ESS,262,1265
+Portugal,2014,Satis_EB,538,2080
+Portugal,2015,Satis_CSES,593,1499
+Portugal,2015,Satis_EB,645,2011
+Portugal,2016,Satis_ESS,477,1218
+Portugal,2016,Satis_EB,987,2027
+Portugal,2017,Satis_EB,1523,2165
+Puerto Rico,2001,Satis_WVS,380,720
+Romania,1991,Satis1_CEEB,414,1000
+Romania,1992,Satis1_CEEB,288,1000
+Romania,1993,Satis1_CEEB,349,1176
+Romania,1994,Satis1_CEEB,389,1281
+Romania,1995,Satis1_CEEB,422,1141
+Romania,1996,Satis_CSES,503,1175
+Romania,1996,Satis1_CEEB,653,1195
+Romania,1997,Satis1_CEEB,245,521
+Romania,1997,Satis2_CEEB,258,523
+Romania,1999,Satis_EVS,225,1146
+Romania,2004,Satis_CSES,776,1913
+Romania,2004,Satis_EB,592,2031
+Romania,2005,Satis_EB,581,2004
+Romania,2006,Satis_EB,550,2054
+Romania,2007,Satis_EB,719,2019
+Romania,2008,Satis_EVS,555,1489
+Romania,2008,Satis_ESS,552,2146
+Romania,2009,Satis_CSES,274,1403
+Romania,2010,Satis_EB,400,2021
+Romania,2011,Satis_EB,448,2034
+Romania,2012,Satis_CSES,455,2283
+Romania,2012,Satis_EB,351,2087
+Romania,2013,Satis_EB,359,2152
+Romania,2014,Satis_EB,486,2040
+Romania,2015,Satis_EB,653,2020
+Romania,2016,Satis_EB,701,2026
+Romania,2017,Satis_EB,699,2073
+Russia,1991,Satis1_CEEB,145,975
+Russia,1992,Satis1_CEEB,114,1000
+Russia,1993,Satis1_CEEB,203,1377
+Russia,1994,Satis1_CEEB,74,1000
+Russia,1995,Satis1_CEEB,71,1178
+Russia,1996,Satis1_CEEB,82,1065
+Russia,1999,Satis_EVS,155,2500
+Russia,2000,Satis_CSES,242,1748
+Russia,2004,Satis_CSES,426,1496
+Russia,2006,Satis_ESS,369,2437
+Russia,2008,Satis_EVS,488,1490
+Russia,2008,Satis_ESS,495,2512
+Russia,2010,Satis_ESS,561,2595
+Russia,2012,Satis_ESS,543,2484
+Russia,2016,Satis_ESS,636,2163
+Russia,2017,Satis_Pew,591,1002
+Sao Tome and Principe,2014,Satis_AfB,225,1196
+Senegal,2002,Satis_AfB,651,1147
+Senegal,2005,Satis_AfB,639,1200
+Senegal,2008,Satis_AfB,323,1200
+Senegal,2013,Satis_AfB,814,1200
+Senegal,2013,Satis_Pew,568,800
+Senegal,2014,Satis_AfB,772,1200
+Senegal,2017,Satis_AfB,708,1200
+Senegal,2017,Satis_Pew,693,1083
+Serbia,2001,Satis_WVS,491,1200
+Serbia,2008,Satis_EVS,281,1512
+Serbia,2013,Satis_CSES,626,1568
+Sierra Leone,2012,Satis_AfB,725,1190
+Sierra Leone,2014,Satis_AfB,347,1191
+Singapore,2004,Satis_AsB,506,800
+Singapore,2006,Satis_AsnB,829,1012
+Singapore,2006,Satis_AsB,670,1038
+Slovakia,1990,Satis1_CEEB,507,983
+Slovakia,1991,Satis1_CEEB,57,411
+Slovakia,1992,Satis1_CEEB,172,734
+Slovakia,1993,Satis1_CEEB,137,684
+Slovakia,1994,Satis1_CEEB,167,995
+Slovakia,1995,Satis1_CEEB,305,1137
+Slovakia,1996,Satis1_CEEB,235,1066
+Slovakia,1997,Satis1_CEEB,153,634
+Slovakia,1997,Satis2_CEEB,144,528
+Slovakia,1999,Satis_EVS,296,1327
+Slovakia,2004,Satis_ESS,314,1512
+Slovakia,2004,Satis_EB,578,2305
+Slovakia,2005,Satis_EB,579,2204
+Slovakia,2006,Satis_ESS,640,1766
+Slovakia,2006,Satis_EB,527,2101
+Slovakia,2007,Satis_EB,773,2232
+Slovakia,2008,Satis_EVS,609,1509
+Slovakia,2008,Satis_ESS,658,1810
+Slovakia,2010,Satis_ESS,393,1856
+Slovakia,2010,Satis_CSES,419,1150
+Slovakia,2010,Satis_EB,721,2058
+Slovakia,2011,Satis_EB,669,2010
+Slovakia,2012,Satis_ESS,731,1847
+Slovakia,2012,Satis_EB,621,2000
+Slovakia,2013,Satis_EB,583,2000
+Slovakia,2014,Satis_EB,545,2061
+Slovakia,2015,Satis_EB,695,2078
+Slovakia,2016,Satis_EB,819,2018
+Slovakia,2017,Satis_EB,818,2067
+Slovenia,1992,Satis1_CEEB,511,1063
+Slovenia,1993,Satis1_CEEB,351,1000
+Slovenia,1994,Satis1_CEEB,356,1086
+Slovenia,1995,Satis1_CEEB,433,1164
+Slovenia,1996,Satis_CSES,598,2031
+Slovenia,1996,Satis1_CEEB,470,1114
+Slovenia,1997,Satis1_CEEB,209,521
+Slovenia,1997,Satis2_CEEB,186,521
+Slovenia,1999,Satis_EVS,435,1006
+Slovenia,2002,Satis_ESS,447,1519
+Slovenia,2004,Satis_ESS,403,1442
+Slovenia,2004,Satis_EB,1142,2014
+Slovenia,2005,Satis_CSES,347,1002
+Slovenia,2005,Satis_EB,1155,2079
+Slovenia,2006,Satis_ESS,459,1476
+Slovenia,2006,Satis_EB,1119,2064
+Slovenia,2007,Satis_EB,964,2022
+Slovenia,2008,Satis_EVS,655,1366
+Slovenia,2008,Satis_ESS,412,1286
+Slovenia,2009,Satis_CSES,259,1055
+Slovenia,2010,Satis_ESS,188,1403
+Slovenia,2010,Satis_EB,756,2014
+Slovenia,2011,Satis_EB,634,2027
+Slovenia,2012,Satis_ESS,247,1257
+Slovenia,2012,Satis_CSES,158,1031
+Slovenia,2012,Satis_EB,563,2037
+Slovenia,2013,Satis_EB,386,2097
+Slovenia,2014,Satis_ESS,139,1224
+Slovenia,2014,Satis_EB,462,2089
+Slovenia,2015,Satis_EB,561,2019
+Slovenia,2016,Satis_ESS,291,1265
+Slovenia,2016,Satis_EB,673,2047
+Slovenia,2017,Satis_EB,768,2021
+South Africa,2001,Satis_WVS,1774,3000
+South Africa,2003,Satis_AfB,1051,2400
+South Africa,2005,Satis_AfB,1517,2400
+South Africa,2008,Satis_AfB,1181,2400
+South Africa,2009,Satis_CSES,697,1200
+South Africa,2011,Satis_AfB,1439,2399
+South Africa,2013,Satis_Pew,546,815
+South Africa,2015,Satis_AfB,1149,2388
+South Africa,2015,Satis_CSES,633,1300
+South Africa,2017,Satis_Pew,557,1295
+South Korea,2000,Satis_CSES,412,1100
+South Korea,2001,Satis_WVS,353,1200
+South Korea,2003,Satis_AsnB,921,1500
+South Korea,2003,Satis_AsB,142,800
+South Korea,2004,Satis_CSES,330,1500
+South Korea,2012,Satis_CSES,434,1000
+South Korea,2017,Satis_Pew,303,1010
+Spain,1985,Satis_EB,525,1003
+Spain,1986,Satis_EB,1080,2018
+Spain,1987,Satis_EB,1055,2014
+Spain,1988,Satis_EB,962,2030
+Spain,1989,Satis_EB,1130,1993
+Spain,1990,Satis_EB,1127,2001
+Spain,1991,Satis_EB,1191,2001
+Spain,1992,Satis_EB,1404,3025
+Spain,1993,Satis_EB,811,2022
+Spain,1994,Satis_EB,682,2006
+Spain,1995,Satis_EB,810,2000
+Spain,1996,Satis_LB,1402,2481
+Spain,1996,Satis_CSES,744,1212
+Spain,1997,Satis_LB,1516,2476
+Spain,1997,Satis_EB,1054,2000
+Spain,1998,Satis_LB,1759,2492
+Spain,1998,Satis_EB,1008,2000
+Spain,1999,Satis_EVS,683,1200
+Spain,1999,Satis_EB,1398,2000
+Spain,2000,Satis_WVS,838,1209
+Spain,2000,Satis_CSES,1023,1208
+Spain,2000,Satis_EB,1474,2000
+Spain,2001,Satis_LB,1433,2496
+Spain,2001,Satis_EB,1130,2000
+Spain,2002,Satis_LB,1506,2484
+Spain,2002,Satis_ESS,860,1729
+Spain,2002,Satis_EB,1399,2000
+Spain,2003,Satis_LB,1424,2495
+Spain,2003,Satis_EB,1275,2000
+Spain,2004,Satis_LB,1512,2491
+Spain,2004,Satis_ESS,1006,1663
+Spain,2004,Satis_CSES,819,1212
+Spain,2004,Satis_EB,1412,2023
+Spain,2005,Satis_EB,1374,2039
+Spain,2006,Satis_LB,1411,2476
+Spain,2006,Satis_ESS,1044,1876
+Spain,2006,Satis_EB,1416,2008
+Spain,2007,Satis_LB,1436,2482
+Spain,2007,Satis_EB,1536,2000
+Spain,2008,Satis_LB,1477,2471
+Spain,2008,Satis_EVS,833,1497
+Spain,2008,Satis_ESS,1355,2576
+Spain,2008,Satis_CSES,1078,1547
+Spain,2009,Satis_LB,1295,2486
+Spain,2010,Satis_LB,1141,2483
+Spain,2010,Satis_ESS,763,1885
+Spain,2010,Satis_EB,1055,2007
+Spain,2011,Satis_EB,907,2014
+Spain,2012,Satis_ESS,490,1889
+Spain,2012,Satis_EB,692,2012
+Spain,2013,Satis_EB,485,2023
+Spain,2014,Satis_ESS,578,1925
+Spain,2014,Satis_EB,540,2088
+Spain,2015,Satis_EB,722,2004
+Spain,2016,Satis_ESS,652,1891
+Spain,2016,Satis_EB,717,2020
+Spain,2017,Satis_EB,818,2036
+Spain,2017,Satis_Pew,250,1000
+Sri Lanka,2003,Satis_AsB,392,800
+Sri Lanka,2005,Satis_AsB,378,813
+Sri Lanka,2005,Satis_SAB,950,2243
+Sri Lanka,2013,Satis_SAB,995,1703
+Sudan,2013,Satis_AfB,453,1199
+Sudan,2015,Satis_AfB,395,1200
+Suriname,2010,Satis_LAPOP,861,1516
+Suriname,2012,Satis_LAPOP,925,1501
+Suriname,2014,Satis_LAPOP,2796,4000
+Swaziland,2013,Satis_AfB,425,1200
+Swaziland,2014,Satis_AfB,331,1200
+Swaziland,2017,Satis_AfB,336,1200
+Sweden,1995,Satis_EB,1653,3017
+Sweden,1997,Satis_EB,1098,2000
+Sweden,1998,Satis_CSES,716,1157
+Sweden,1998,Satis_EB,1144,2036
+Sweden,1999,Satis_WVS,569,1009
+Sweden,1999,Satis_EVS,568,1014
+Sweden,1999,Satis_EB,1291,2001
+Sweden,2000,Satis_EB,1286,2000
+Sweden,2001,Satis_EB,1244,2000
+Sweden,2002,Satis_ESS,1195,1999
+Sweden,2002,Satis_CSES,799,1060
+Sweden,2002,Satis_EB,1528,2000
+Sweden,2003,Satis_EB,1483,2000
+Sweden,2004,Satis_ESS,1121,1948
+Sweden,2004,Satis_EB,1500,2000
+Sweden,2005,Satis_EB,1455,2057
+Sweden,2006,Satis_ESS,1247,1927
+Sweden,2006,Satis_CSES,913,1547
+Sweden,2006,Satis_EB,1513,2030
+Sweden,2007,Satis_EB,1598,2008
+Sweden,2008,Satis_ESS,1244,1830
+Sweden,2009,Satis_EVS,709,1174
+Sweden,2010,Satis_ESS,1097,1497
+Sweden,2010,Satis_EB,1742,2070
+Sweden,2011,Satis_EB,1783,2066
+Sweden,2012,Satis_ESS,1452,1847
+Sweden,2012,Satis_EB,1755,2048
+Sweden,2013,Satis_EB,1675,2030
+Sweden,2014,Satis_ESS,1317,1791
+Sweden,2014,Satis_CSES,659,832
+Sweden,2014,Satis_EB,1684,2031
+Sweden,2015,Satis_EB,1663,2055
+Sweden,2016,Satis_ESS,1057,1518
+Sweden,2016,Satis_EB,1612,2016
+Sweden,2017,Satis_EB,1641,2016
+Sweden,2017,Satis_Pew,790,1000
+Switzerland,1999,Satis_CSES,1532,2048
+Switzerland,2002,Satis_ESS,1396,2040
+Switzerland,2003,Satis_CSES,1073,1418
+Switzerland,2004,Satis_ESS,1363,2141
+Switzerland,2006,Satis_ESS,1368,1804
+Switzerland,2007,Satis_CSES,2547,3164
+Switzerland,2008,Satis_EVS,922,1271
+Switzerland,2008,Satis_ESS,1367,1819
+Switzerland,2010,Satis_ESS,1177,1506
+Switzerland,2011,Satis_CSES,3671,4391
+Switzerland,2012,Satis_ESS,1263,1493
+Switzerland,2014,Satis_ESS,1256,1532
+Switzerland,2016,Satis_ESS,1243,1480
+Taiwan,1996,Satis_CSES,495,1200
+Taiwan,2001,Satis_AsnB,652,1415
+Taiwan,2002,Satis_CSES,1179,2022
+Taiwan,2004,Satis_CSES,875,1823
+Taiwan,2006,Satis_AsnB,897,1587
+Taiwan,2006,Satis_AsB,332,1006
+Taiwan,2008,Satis_CSES,924,1905
+Taiwan,2012,Satis_CSES,1234,1826
+Tajikistan,2005,Satis_AsB,272,800
+Tanzania,2001,Satis_WVS,837,1171
+Tanzania,2003,Satis_AfB,751,1200
+Tanzania,2005,Satis_AfB,462,1248
+Tanzania,2007,Satis_Pew,584,704
+Tanzania,2008,Satis_AfB,859,1208
+Tanzania,2012,Satis_AfB,1804,2400
+Tanzania,2014,Satis_AfB,1429,2386
+Tanzania,2017,Satis_AfB,1805,2400
+Tanzania,2017,Satis_Pew,838,1061
+Thailand,2001,Satis_CSES,794,1081
+Thailand,2002,Satis_AsnB,1374,1546
+Thailand,2003,Satis_AsB,596,800
+Thailand,2004,Satis_AsB,610,800
+Thailand,2006,Satis_AsnB,1229,1546
+Thailand,2007,Satis_AsB,536,1000
+Thailand,2011,Satis_CSES,1202,1500
+Togo,2012,Satis_AfB,253,1200
+Togo,2014,Satis_AfB,307,1200
+Togo,2017,Satis_AfB,224,1200
+Trinidad and Tobago,2010,Satis_LAPOP,629,1503
+Trinidad and Tobago,2012,Satis_LAPOP,694,1500
+Trinidad and Tobago,2014,Satis_LAPOP,2240,4207
+Tunisia,2013,Satis_AfB,476,1200
+Tunisia,2013,Satis_Pew,240,1000
+Tunisia,2014,Satis_AfB,692,1200
+Tunisia,2017,Satis_AfB,555,1199
+Tunisia,2017,Satis_Pew,361,1004
+Turkey,2001,Satis_EVS,281,1206
+Turkey,2004,Satis_ESS,674,1856
+Turkey,2004,Satis_EB,984,2027
+Turkey,2005,Satis_EB,1122,2010
+Turkey,2006,Satis_EB,998,2010
+Turkey,2007,Satis_EB,1033,2009
+Turkey,2008,Satis_ESS,606,2416
+Turkey,2009,Satis_EVS,1258,2326
+Turkey,2010,Satis_EB,585,2000
+Turkey,2011,Satis_CSES,584,1109
+Turkey,2015,Satis_CSES,345,1086
+Turkmenistan,2005,Satis_AsB,367,800
+Uganda,2001,Satis_WVS,656,1002
+Uganda,2005,Satis_AfB,1212,2400
+Uganda,2008,Satis_AfB,1155,2431
+Uganda,2012,Satis_AfB,1240,2400
+Uganda,2014,Satis_AfB,1205,2400
+Uganda,2017,Satis_AfB,557,1200
+Ukraine,1992,Satis1_CEEB,254,1400
+Ukraine,1993,Satis1_CEEB,173,1171
+Ukraine,1994,Satis1_CEEB,185,1200
+Ukraine,1995,Satis1_CEEB,178,1199
+Ukraine,1996,Satis_WVS,181,2811
+Ukraine,1996,Satis1_CEEB,214,1200
+Ukraine,1998,Satis_CSES,93,1148
+Ukraine,1999,Satis_EVS,168,1207
+Ukraine,2004,Satis_ESS,461,2031
+Ukraine,2006,Satis_ESS,260,2002
+Ukraine,2008,Satis_EVS,226,1507
+Ukraine,2008,Satis_ESS,174,1845
+Ukraine,2010,Satis_ESS,191,1931
+Ukraine,2012,Satis_ESS,323,2178
+United Kingdom,1973,Satis_EB,833,1933
+United Kingdom,1976,Satis_EB,1362,2691
+United Kingdom,1977,Satis_EB,1639,2768
+United Kingdom,1978,Satis_EB,1565,2765
+United Kingdom,1979,Satis_EB,1387,2720
+United Kingdom,1980,Satis_EB,1440,2886
+United Kingdom,1981,Satis_EB,1329,2764
+United Kingdom,1982,Satis_EB,1628,2754
+United Kingdom,1983,Satis_EB,1606,2625
+United Kingdom,1984,Satis_EB,1656,2760
+United Kingdom,1985,Satis_EB,1453,2826
+United Kingdom,1986,Satis_EB,1383,2696
+United Kingdom,1987,Satis_EB,1516,2614
+United Kingdom,1988,Satis_EB,1543,2670
+United Kingdom,1989,Satis_EB,1410,2514
+United Kingdom,1990,Satis_EB,1353,2734
+United Kingdom,1991,Satis_EB,1646,2734
+United Kingdom,1992,Satis_EB,1375,2691
+United Kingdom,1993,Satis_EB,1321,2740
+United Kingdom,1994,Satis_EB,1332,2708
+United Kingdom,1995,Satis_EB,1313,2752
+United Kingdom,1997,Satis_CSES,2157,2897
+United Kingdom,1997,Satis_EB,1681,2830
+United Kingdom,1998,Satis_EB,1640,2666
+United Kingdom,1999,Satis_EVS,836,2381
+United Kingdom,1999,Satis_EB,1682,2678
+United Kingdom,2000,Satis_EB,1647,2741
+United Kingdom,2001,Satis_EB,1665,2659
+United Kingdom,2002,Satis_ESS,822,2052
+United Kingdom,2002,Satis_EB,1570,2625
+United Kingdom,2003,Satis_EB,1581,2681
+United Kingdom,2004,Satis_ESS,766,1897
+United Kingdom,2004,Satis_EB,1601,2653
+United Kingdom,2005,Satis_CSES,604,860
+United Kingdom,2005,Satis_EB,1608,2667
+United Kingdom,2006,Satis_ESS,883,2394
+United Kingdom,2006,Satis_EB,1563,2620
+United Kingdom,2007,Satis_EB,1643,2659
+United Kingdom,2008,Satis_EVS,1000,3340
+United Kingdom,2008,Satis_ESS,887,2352
+United Kingdom,2009,Satis_EVS,686,2061
+United Kingdom,2010,Satis_ESS,934,2422
+United Kingdom,2010,Satis_EB,1554,2616
+United Kingdom,2011,Satis_EB,1571,2621
+United Kingdom,2012,Satis_ESS,1108,2286
+United Kingdom,2012,Satis_EB,1593,2609
+United Kingdom,2013,Satis_EB,1463,2631
+United Kingdom,2014,Satis_ESS,997,2264
+United Kingdom,2014,Satis_EB,1689,2690
+United Kingdom,2015,Satis_CSES,936,1567
+United Kingdom,2015,Satis_EB,1631,2620
+United Kingdom,2016,Satis_ESS,951,1898
+United Kingdom,2016,Satis_EB,1704,2695
+United Kingdom,2017,Satis_EB,1638,2699
+United Kingdom,2017,Satis_Pew,554,1066
+United States of America,1996,Satis_CSES,1204,1533
+United States of America,1999,Satis_WVS,975,1542
+United States of America,2004,Satis_CSES,826,1066
+United States of America,2008,Satis_LAPOP,992,1500
+United States of America,2008,Satis_CSES,1695,2102
+United States of America,2010,Satis_LAPOP,845,1500
+United States of America,2012,Satis_LAPOP,746,1500
+United States of America,2012,Satis_CSES,1422,1841
+United States of America,2014,Satis_LAPOP,790,1500
+United States of America,2017,Satis_Pew,692,1505
+Uruguay,1995,Satis_LB,726,1262
+Uruguay,1996,Satis_LB,616,1200
+Uruguay,1997,Satis_LB,770,1189
+Uruguay,1998,Satis_LB,818,1199
+Uruguay,2000,Satis_LB,827,1200
+Uruguay,2001,Satis_LB,671,1200
+Uruguay,2002,Satis_LB,625,1187
+Uruguay,2003,Satis_LB,526,1200
+Uruguay,2004,Satis_LB,537,1200
+Uruguay,2005,Satis_LB,756,1200
+Uruguay,2006,Satis_LB,791,1200
+Uruguay,2006,Satis_LAPOP,928,1200
+Uruguay,2007,Satis_LB,795,1200
+Uruguay,2008,Satis_LB,854,1200
+Uruguay,2008,Satis_LAPOP,1124,1500
+Uruguay,2009,Satis_LB,950,1200
+Uruguay,2010,Satis_LB,938,1200
+Uruguay,2010,Satis_LAPOP,1321,1500
+Uruguay,2010,Satis_CSES,673,968
+Uruguay,2011,Satis_LB,861,1200
+Uruguay,2012,Satis_LAPOP,1144,1500
+Uruguay,2013,Satis_LB,981,1200
+Uruguay,2014,Satis_LAPOP,1138,1512
+Uruguay,2015,Satis_LB,843,1200
+Uzbekistan,2003,Satis_AsB,156,800
+Uzbekistan,2005,Satis_AsB,137,800
+Venezuela,1995,Satis_LB,434,1200
+Venezuela,1996,Satis_LB,450,1500
+Venezuela,1997,Satis_LB,430,1200
+Venezuela,1998,Satis_LB,425,1200
+Venezuela,2000,Satis_LB,655,1200
+Venezuela,2000,Satis_WVS,742,1200
+Venezuela,2001,Satis_LB,489,1200
+Venezuela,2002,Satis_LB,485,1200
+Venezuela,2003,Satis_LB,447,1200
+Venezuela,2004,Satis_LB,506,1200
+Venezuela,2005,Satis_LB,671,1200
+Venezuela,2006,Satis_LB,685,1200
+Venezuela,2006,Satis_LAPOP,854,1510
+Venezuela,2007,Satis_LB,704,1200
+Venezuela,2008,Satis_LB,590,1200
+Venezuela,2008,Satis_LAPOP,955,1500
+Venezuela,2009,Satis_LB,566,1200
+Venezuela,2010,Satis_LB,588,1200
+Venezuela,2010,Satis_LAPOP,583,1500
+Venezuela,2011,Satis_LB,534,1200
+Venezuela,2012,Satis_LAPOP,900,1500
+Venezuela,2013,Satis_LB,509,1200
+Venezuela,2013,Satis_Pew,580,1000
+Venezuela,2014,Satis_LAPOP,460,1500
+Venezuela,2015,Satis_LB,358,1200
+Venezuela,2017,Satis_Pew,250,1000
+Vietnam,2001,Satis_WVS,913,1000
+Vietnam,2005,Satis_AsnB,1023,1200
+Yugoslavia,1996,Satis1_CEEB,376,993
+Zambia,2003,Satis_AfB,658,1199
+Zambia,2005,Satis_AfB,308,1200
+Zambia,2009,Satis_AfB,475,1200
+Zambia,2012,Satis_AfB,815,1200
+Zambia,2013,Satis_AfB,816,1200
+Zambia,2014,Satis_AfB,715,1199
+Zambia,2017,Satis_AfB,582,1195
+Zimbabwe,2001,Satis_WVS,270,1002
+Zimbabwe,2003,Satis_AfB,410,1104
+Zimbabwe,2005,Satis_AfB,147,1048
+Zimbabwe,2009,Satis_AfB,311,1200
+Zimbabwe,2012,Satis_AfB,753,2400
+Zimbabwe,2014,Satis_AfB,811,2400
+Zimbabwe,2017,Satis_AfB,454,1200
