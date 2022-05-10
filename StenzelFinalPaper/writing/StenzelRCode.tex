@@ -1,0 +1,660 @@
+% LaTeX template for academic reports (thesis)
+
+\documentclass[12pt,english,a4paper,oneside]{article}
+\let\circledS\undefined
+\usepackage{setspace}
+\setstretch{2.0}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage[nottoc]{tocbibind}
+\usepackage{csquotes}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[bookmarks, colorlinks, breaklinks]{hyperref}
+\definecolor{mannheimblue}{HTML}{003056}
+\definecolor{mannheimorange}{HTML}{df7e50}
+
+\hypersetup{linkcolor=mannheimblue,
+citecolor=mannheimblue,
+filecolor=black,
+urlcolor=mannheimblue}
+
+
+% some more packages...
+\usepackage{graphicx}
+%\usepackage{scrpage2}
+%\usepackage{xcolor}
+\usepackage{hyperref}
+%\hypersetup{colorlinks=true, linkcolor = blue, urlcolor = blue}
+%\usepackage{eso-pic}
+
+\renewenvironment{quote}{\list{}\item\relax
+\small\singlespacing}{\endlist}
+\SetBlockEnvironment{quote}
+
+\onehalfspacing
+% \renewcommand{\baselinestretch}{1.5}  % line distance is 1.5
+
+%\renewcommand{\chaptername}{} %% remove the word \chapter
+
+% % \newlength{\cslhangindent}
+% \setlength{\cslhangindent}{1.5em}
+% \newenvironment{CSLReferences}%
+%   {\setlength{\parindent}{0pt}%
+%   \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+%   {\par}
+% 
+% Pandoc citation processing
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+% for Pandoc 2.8 to 2.10.1
+\newenvironment{cslreferences}%
+  {\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+  {\par}
+% For Pandoc 2.11+
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+% % \newlength{\cslhangindent}
+% \setlength{\cslhangindent}{1.5em}
+% \newlength{\csllabelwidth}
+% \setlength{\csllabelwidth}{3em}
+% \newenvironment{CSLReferences}[3] % #1 hanging-ident, #2 entry spacing
+%  {% don't indent paragraphs
+%   \setlength{\parindent}{0pt}
+%   % turn on hanging indent if param 1 is 1
+%   \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+%   % set entry spacing
+%   \ifnum #2 > 0
+%   \setlength{\parskip}{#2\baselineskip}
+%   \fi
+%  }%
+%  {}
+% \usepackage{calc} % for \widthof, \maxof
+% \newcommand{\CSLBlock}[1]{#1\hfill\break}
+% \newcommand{\CSLLeftMargin}[1]{\parbox[t]{\maxof{\widthof{#1}}{\csllabelwidth}}{#1}}
+% \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth}{#1}}
+% \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+% 
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+
+\fi
+% % use upquote if available, for straight quotes in verbatim environments
+% \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% % use microtype if available
+% \IfFileExists{microtype.sty}{%
+% \usepackage{microtype}
+% \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+% }{}
+% % \usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+% \usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={On Using the Metropolis-Hastings Algorithm for Data Imputation},
+            pdfauthor={Tobias Stenzel},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[shorthands=off,main=english]{babel}
+\else
+  \usepackage{polyglossia}
+  \setmainlanguage[]{english}
+\fi
+% % \usepackage{longtable,booktabs}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+
+\usepackage{csquotes}
+\usepackage{fancyhdr} % to change header and footers
+\usepackage{url}
+\def\UrlBreaks{\do\/\do-}
+
+%%%% plagiarism
+
+\newcommand*{\SignatureAndDate}[1]{%
+\vspace{2cm}
+     Mannheim, den \makebox[2cm]{\hrulefill} \hfill\makebox[9cm]{\hrulefill}%
+     \par
+%  \makebox[2cm]{ Ort, Datum}
+  \hfill\makebox[7.5cm][t]{Name und Unterschrift}
+  \vspace{2cm}
+}%
+
+ \newcommand*{\SignatureAndDateEng}[1]{%
+\vspace{2cm}
+     Mannheim, \makebox[2cm]{\hrulefill} \hfill\makebox[9cm]{\hrulefill}%
+     \par
+    \hfill\makebox[7.5cm][t]{Name and Signature}%
+\vspace{2cm}
+}%
+
+
+\makeatletter
+\newenvironment{kframe}{%
+\medskip{}
+\setlength{\fboxsep}{.8em}
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+%\renewenvironment{Shaded}{\begin{kframe}}{\end{kframe}} ses 2019-03-08
+
+
+
+
+
+
+
+
+
+
+
+
+\newcommand{\ts}{\thinspace}
+
+
+
+\usepackage{tikz, float, caption, amsthm, algorithm, algpseudocode}
+\floatplacement{figure}{H}
+\interfootnotelinepenalty=10000
+
+%% font EB Garamond
+\setmainfont[
+Path = fonts/static/,
+BoldFont = EBGaramond-Bold.ttf,
+ItalicFont = EBGaramond-Italic.ttf,
+BoldItalicFont  = EBGaramond-BoldItalic.ttf]
+{EBGaramond-Regular.ttf}
+
+
+% \usepackage{float}
+
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[section]
+\theoremstyle{definition}
+\newtheorem{hypothesis}{Hypothesis}[section]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\begin{document}  %%%%%%% main document %%%%%%%%%%%%%%%
+\begin{titlepage}
+
+    \begin{center}
+    \large{ \textsc{ \uppercase{University of Mannheim} \\ \vspace{-0.2cm}
+School of Social Sciences \\ \vspace{-0.2cm}
+Department of Political Science}}
+
+      
+        \vspace{3.5cm}
+        
+
+       \large{   Final Paper for Course   }
+
+
+       \large{ \textit{   Advanced Quantitative Methods in Political Science   }}
+
+\renewcommand{\linethickness}{0.03em}
+\rule{\linewidth}{\linethickness}
+
+
+       \LARGE{ \textbf{   On Using the Metropolis-Hastings Algorithm for Data Imputation   }}
+
+        % \vspace{-0.5cm}
+
+       \large{  }
+
+        \vspace{-0.2cm}
+\rule{\linewidth}{\linethickness}
+
+
+\begin{minipage}[t]{0.5\textwidth}
+\begin{flushleft}
+\singlespacing
+ \textbf{Tobias Stenzel}  \\ 
+
+
+ \href{mailto:tobias.stenzel@students.uni-mannheim.de}{\nolinkurl{tobias.stenzel@students.uni-mannheim.de}}  \\ 
+
+\end{flushleft}
+\end{minipage}
+\begin{minipage}[t]{0.4\textwidth}
+\hfill
+\end{minipage}\\
+\vspace{0.2cm}
+\begin{minipage}[t]{0.35\textwidth}
+\hfill
+\end{minipage}
+\begin{minipage}[t]{0.55\textwidth}
+\begin{flushright}
+\singlespacing
+     Prof.~Thomas Gschwend, Ph.D.  \\       
+
+\end{flushright}
+\end{minipage}\\
+%
+
+
+         \vfill
+         Submission Date: Mai 10, 2022 \\ 
+        
+
+
+
+
+
+         \vfill
+
+
+
+     \end{center}
+    \thispagestyle{empty}
+\end{titlepage}
+
+\newpage
+% \thispagestyle{empty}
+% \mbox{}
+
+
+
+
+
+
+
+{
+\setcounter{tocdepth}{2}
+\newpage
+\pagenumbering{gobble}
+\tableofcontents
+}
+
+\newpage
+\pagenumbering{arabic}
+\fancypagestyle{plain}{%
+    \renewcommand{\headrulewidth}{0pt}%
+    \fancyhf{}%
+    \fancyfoot[R]{\thepage}%
+}
+% Set the right side of the footer to be the page number
+\pagestyle{plain}
+\hypertarget{background}{%
+\section{Background}\label{background}}
+
+\hypertarget{introduction}{%
+\subsection{Introduction}\label{introduction}}
+
+The Metropolis-Hastings (MH) algorithm is a method for sampling data points from a probability distribution from which direct sampling is difficult. It places among the top 10 algorithms with the greatest influence on science and engineering in the 20th century (Beichl and Sullivan 2000). The MH algorithm belongs to the class of Markov chain Monte Carlo (MCMC) methods. In my explanation I assume prior knowledge on Monte Carlo sampling. However, I will describe the basics of Markov Chains. This section is structured as follows. First, I motivate the usage of the MH algorithm. Second, I explain the basics of Markov Chains. Third, I derive the algorithm and make clear why it works.
+
+\hypertarget{motivation}{%
+\subsection{Motivation}\label{motivation}}
+
+One main application for the MH algorithm is Bayesian inference. Specifically, we want to estimate parameters \(\theta\) of some probabilistic model \(f\). We have only limited prior knowledge of the distribution of \(\theta\), \(p(\theta)\), and we have a likelihood sample of \(f\) given the unknown \(\theta\), namely \(p(X|\theta)\). The goal is to estimate the posterior distribution of \(\theta\), \(p(\theta|X)\), given all information that we have. In practice, we do not have a formal definition of the likelihood but only observations. Therefore, we can only approximate the posterior by numerical integration, i.e., we need to sample many points from the posterior to describe it. We can then use the posterior sample to estimate \(\theta\) with the maximum a posteriori probability estimate.\newline
+
+\noindent
+Claassen (2019) uses the MH algorithm to impute gaps in a panel data set. His approach consists of four steps: First, assume a data generating process \(f\) parameterized by \(\theta\). Second, provide the algorithm with the incomplete data \(X\) as likelihood and select priors for \(\theta\) to obtain the posterior distribution \(p(\theta|X) = \frac{p(X|\theta)p(\theta)}{P(X)} \propto p(X|\theta)p(\theta)\). Third, use the values for \(\theta\) with the highest posterior probability as estimates for \(\theta\). Finally, insert these estimates into the assumed probabilistic, data generating model \(f\) and use it to sample the missing data.\newline
+
+\noindent
+In general and abstracting from Bayesian inference, the MH algorithm generates a sample of random states according to the desired probability distribution \(P(X)\). For this purpose, the algorithm employs a Markov process that converges to a unique stationary distribution \(\pi(x)\) with \(\pi(x)=P(X)\). This distribution can then be used for further steps as previously described. The next section explains the conceptual basics.
+
+\hypertarget{markov-chains}{%
+\subsection{Markov Chains}\label{markov-chains}}
+
+A Markov chain \((X_t)_{t \in \mathbb{N}}\) is a stochastic process (over time) with the property that the probability of the realization in the next period depends solely on the realization in the current state and not the complete history. This is called the Markov property. Because Markov chains with a countable, or discrete, state space are much more accessible than their continuous variant, in this chapter we will look at the discrete case. Formally, the Markov property writes
+
+\begin{equation}
+\label{eq:markov-property}
+P(X_{t+1} |X_{t}, X_{t-1}, ..., X_{0}) = P(X_{t+1} |X_{t}).
+\end{equation}
+
+\noindent
+Under some conditions, the stochastic process described by a Markov chain converges to a time-invariant probability distribution, i.e.~\(P(X_{t+k} |X_{t+k-1}) = P(X_{t} |X_{t-1}), \forall k>0\). The crucial step for understanding the MH is to see how it samples a Markov Chain that is certain to converge to a stable posterior distribution. Before exploring how the MH algorithm achieves this result, however, it is necessary to understand its conditions conceptually. To this end, we will use the example depicted by the following graph in Figure 1 that shows the intertemporal transition probabilities between three states representing random events.
+
+\begin{figure}[H]
+\label{fig:ex1}
+
+
+\centering
+
+\begin{tikzpicture}[->,shorten >=1pt,auto,node distance=4cm,
+                thick,main node/.style={circle,draw,font=\Large\bfseries}]
+
+  \node[main node] (2) {2};
+  \node[main node] (1) [below left of=2] {1};
+  \node[main node] (3) [below right of=2] {3};
+
+  \path
+    (2) edge [loop above] node {0.1} (2)
+        edge [bend left] node {0.9} (3)
+    (1) edge [bend left] node {1} (2)
+    (3) edge [bend left] node {0.6} (1)
+        edge [bend left] node {0.4} (2);      
+\end{tikzpicture}
+
+\caption{Transition Graph for Markov Chain with 3 states.}
+\end{figure}
+
+\noindent
+This transition graph can be summarized by the \(n \times n\) transition matrix T where each element \((i,j)\) represents the probability of moving from state \(i\) in period \(t\) to state \(k\) in period \(t+1\), and where \(n\) represents the number of states, i.e \(T_{i,j} = P(X_{t+1}=j | X_t = i)\). For our example, we have
+
+\begin{equation}
+\label{eq:transition-matrix}
+T=
+\begin{pmatrix}
+0 & 1 & 0\\
+0 & 0.1 & 0.9\\
+0.6 & 0.4 & 0
+\end{pmatrix}
+.
+\end{equation}
+
+\hypertarget{limit-distribution}{%
+\subsubsection{Limit Distribution}\label{limit-distribution}}
+
+As touched upon in the previous subsection, interesting questions can be what the probabilities of each state \(j \in \{1, ..., s\}\) are after a finite number or infinitely many steps. For this purpose let \(\pi_t (j) = P(X_t = j)\) denote the probability of being in state \(j\) in period \(t\). Of course, the probabilities in \(t>0\) depend on the probabilities for the the initial state \(\pi_0\). We can use the law of total probability to calculate the probability of each state for the next period \(t=1\) by
+
+\begin{equation}
+\label{eq:tot-prob}
+P(X_1 = j) = \sum_{i=1}^{3} P(X_1 = j | X_0 = i) \pi_0(i).
+\end{equation}
+
+\noindent
+I.e., to compute the probability of being in state \(j\) in \(t=1\), for each initial state \(i\), we multiply its probability \(\pi_0(i)\) by the probability of moving from \(i\) to state \(j\). This is equivalent to \(\pi_1 = \pi_0 T\) in vector notation. Further, we can compute the distributions in an arbitrary future period by repeating the matrix multiplication, e.g, \(\pi_2 = \pi_0 T T\), or in general, \(\pi_t = \pi_0 T^t\).
+
+Now we are ready to define the limit distribution that describes the probability distribution after infinitely many periods by
+
+\begin{equation}
+\label{eq:lim-dist}
+\pi_{\infty} = lim_{t \rightarrow \infty} \pi_t = lim_{t \rightarrow \infty} \pi_0 T^t.
+\end{equation}
+
+\noindent
+We can further ask two additional important questions. First, does a limit distribution exist? And second, is it unique, or in other word, do we have the same limit distribution independent from the realization of the initial state \(X_0\)? In our example, there does not only exist a limit distribution with \(\pi_{\infty} = (0.2, 0.4, 0.4)\), it is even unique regardless of start distribution \(\pi_0\). This means that independent of the start state, the probability of each state converges to the same number. For the context of the MH algorithm, this is an important property because we always want to compute the same estimates for our parameters \(\theta\), regardless of the starting values of our simulation. In the next section, we introduce and simplify conditions that guarantee a unique limit distribution.
+
+\hypertarget{irreducibility-periodicity-and-stationarity}{%
+\subsubsection{Irreducibility, Periodicity and Stationarity}\label{irreducibility-periodicity-and-stationarity}}
+
+\begin{definition}
+A Markov chain is called \textit{irreducible} if each state is reachable from any other state in a finite number of steps.
+\end{definition}
+
+\noindent
+Figure 2 shows a Markov chain represented by a bipartite graph. This graph is composed by two times the graph in Figure 1. Obviously, this chain is not irreducible because the initial state impacts all future distributions. More precisely, starting in one subgraph sets the probability of reaching states in the other subgraph to zero. We see that a Markov Chain is only irreducible if there is at least an indirect link between every pair of states. We also observe that if the Markov Chain is not irreducible there can be no limit distribution.
+
+\begin{figure}[H]
+\label{fig:ex2}
+\centering
+
+\begin{tikzpicture}[->,shorten >=1pt,auto,node distance=3cm,thick,main node/.style={circle,draw,font=\Large\bfseries}]
+
+  \node[main node] (2) {2};
+  \node[main node] (1) [below left of=2] {1};
+  \node[main node] (3) [below right of=2] {3};
+  \node[main node] (4) [right of=3]{4};
+  \node[main node] (5) [above right of=4] {5};
+  \node[main node] (6) [below right of=5] {6};
+
+
+  \path
+    (2) edge [loop above] node {0.1} (2)
+        edge [bend left] node {0.9} (3)
+    (1) edge [bend left] node {1} (2)
+    (3) edge [bend left] node {0.6} (1)
+        edge [bend left] node {0.4} (2)
+    (5) edge [loop above] node {0.1} (5)
+        edge [bend left] node {0.9} (6)
+    (4) edge [bend left] node {1} (5)
+    (6) edge [bend left] node {0.6} (4)
+        edge [bend left] node {0.4} (5); 
+\end{tikzpicture}
+
+\caption{Transition Graph for Irreducible Markov Chain.}
+
+\end{figure}
+
+\begin{definition}
+A state $i$ has a period $k$ if the greatest common denominator of possible revisits is $k$. A Markov chain is \textit{aperiodic} if the period of all its states is 1.
+\end{definition}
+
+\noindent
+Consider the five-state Markov chain in Figure 3 as an illustration for the above definition and suppose we start in state 1. Observe that, independent of the random draw for next period, we will arrive again in state 1 after two or four steps. Therefore, state 1 has a period of 2. If a state is revisited in random rather than a fixed time period then the state has period 1. This is automatically the case if a state has a positive edge with itself.
+
+\begin{figure}[H]
+\label{fig:ex3}
+\centering
+
+\begin{tikzpicture}[->,shorten >=1pt,auto,node distance=3cm,thick,main node/.style={circle,draw,font=\Large\bfseries}]
+  
+  
+    \node[main node] (1) {1}; 
+    \node[main node] (2) [right of=1] {2};
+    \node[main node] (3) [below of=1] {3};
+    \node[main node] (4) [left of=1] {4};   
+    \node[main node] (5) [left of=4] {5};   
+
+
+   \path
+    (1) edge [bend left] node {1/3} (2)
+    (1) edge [bend left] node[right] {1/3} (3)
+    (1) edge [bend left] node {1/3} (4)
+
+    
+    (2) edge [bend left] node {1} (1)
+    
+    (3) edge [bend left] node {1} (1)
+    
+    (4) edge [bend left] node {1} (5)
+    (5) edge [bend left] node {1} (4)
+    (4) edge [bend left] node {1} (1);
+
+
+
+  \end{tikzpicture}
+  
+  \caption{Markov Chain with 2-periodic State 1}
+
+\end{figure}
+
+\begin{definition}
+$\pi^*$ is the \textit{stationary distribution} of a Markov Chain with Transition matrix T if $\pi^* = \pi^* T$ and $\pi^*$ is a probability vector.
+\end{definition}
+
+\noindent
+Verbally, this means that the probability distribution \(\pi^*\) does not change anymore over time. If \(\pi^*\) is also unique, then \(\pi^*\) is our aim, the limit distribution introduces in section 1.3.1, i.e., \(\pi^*=\pi_{\infty}\).
+
+These three definitions are enough to understand the next fundamental theorem.
+
+\hypertarget{the-fundamental-theorem-of-markov-chains}{%
+\subsubsection{The Fundamental Theorem of Markov Chains}\label{the-fundamental-theorem-of-markov-chains}}
+
+The next theorem defines formally the condition when a Markov Chain converges to a unique distribution, i.e.~the limit distribution.
+
+\begin{theorem} (Fundamental Theorem of Markov Chains)
+If a Markov chain is irreducible and aperiodic (called ergodic) then it has a stationary distribution $\pi^*$ that is unique ($\lim_{t \rightarrow \infty} P(X_t = i) = \pi_i^*, \forall i$).
+\end{theorem}
+
+\noindent
+Therefore, if we want to construct a stable distribution \(P(X)\) via Markov chains, we need to ensure that it is irreducible and aperiodic with stationary distribution \(\pi^*=P(X)\). In the next subsection, we substitute the stationarity condition by a stronger one before we finally derive the MH algorithm.
+
+\hypertarget{reversibility}{%
+\subsubsection{Reversibility}\label{reversibility}}
+
+\begin{definition}
+A Markov chain is \textit{reversible} if there is a probability distribution $\pi$ over its states such that $\pi(i) T_{ij} = \pi(j)T_{j,i}, \forall i,j$ (reversibility condition).
+\end{definition}
+
+\begin{theorem}
+A sufficient condition for distribution $\pi^*$ to be a stationary distribution of a Markov chain with transition matrix T is that it fullfills the reversibility condition.
+\end{theorem}
+
+\begin{proof}
+$\sum_i \pi(i) T_{i,j} = \sum_i \pi(j) T_{j,i} = \pi(j) \sum_i  T_{j,i} = \pi(j) \implies \pi T = \pi$
+\end{proof}
+
+\noindent
+Reversibility is a stronger condition than stationarity because it requires that the probability flux from \(i\) to \(j\) is equal to the one from \(j\) to \(i\) for each possible pair of states. Recall, that stationarity only requires that the probability flux to one state is equal on aggregate and not that it is symmetric between each pair of states over time. Therefore, if we want to achieve a stationary distribution it is enough to ensure that it is reversible.
+
+\hypertarget{the-algorithm}{%
+\subsection{The Algorithm}\label{the-algorithm}}
+
+Recall that we want to generate a sample of a desired distribution \(P(X)\). For
+this purpose, we use a Markov process that is uniquely defined by its transition probabilities
+\(P(X_{t+1}|X)\) with limit distribution \(\pi\) so that \(\pi=P(X)\). As explained in the previous section, a Markov process has a limit distribution if each transition \(X_t \rightarrow X_{t+1}\) is reversible and if the stationary distribution \(\pi\) is ergodic. With the MH algorithm, we construct such a Markov process with stationary distribution \(\pi=P(X)\). The derivation starts
+with another way of writing reversibility\footnote{We simplify our notation by using \(x'\) and \(x\) instead of \(X_{t+1}\) and \(X_t\).}:
+
+\begin{equation}
+P(x'|x)P(x) = P(x|x')P(x') \iff \frac{P(x'|x)}{P(x|x')} = \frac{P(x')}{P(x)}
+\label{eq:trans}
+\end{equation}
+
+\noindent
+The main idea is to separate transition \(P(x'|x)\) in two steps: the proposal step
+and the acceptance-or-rejection step. Let \(g(x')\) be the proposal distribution, i.e.,
+the conditional probability of proposing state \(x'\) given \(x\). And let \(A(x'|x)\) be the probability of accepting proposed state \(X'\). Formally, we have
+\(P(x'|x)=g(x'|x) A(x'|x')\). Inserting this in Equation \eqref{eq:trans} gives
+
+\begin{equation}
+\frac{P(x')}{P(x)} = \frac{g(x'|x)A(x',x)}{g(x|x')A(x',x)} \iff \frac{A(x',x)}{A(x,x')} = \frac{P(x')}{P(x)}\frac{g(x|x')}{g(x'|x)}.
+\label{eq:two-steps}
+\end{equation}
+
+\noindent
+The following choice, termed the Metropolis choice, is commonly used as an acceptance ratio for sampling \(x'\) from \(P(x')\) that fulfills the above reversibility condition:
+
+\begin{equation}
+A(x',x) = \text{min}\left( 1, \frac{P(x')}{P(x)}\frac{g(x|x')}{g(x'|x)} \right)
+\label{eq:Metropolis-choice}
+\end{equation}
+
+\noindent
+Note that the minimizer in \(A(x',x)\) enforces that the probability is below 1. The MH algorithm writes as follows:
+
+\begin{algorithm}[H]
+\caption{Metropolis-Hastings algorithm}
+\begin{algorithmic}
+\State {Initialize $X_0$}
+
+        \For{$t \gets 0$ to $T-1$} 
+          \State {Draw $u \sim \mathcal{U}_{[0,1]}$}
+          \State {Draw candidate $X^* \sim P(X^*|X_{t-1})$}
+          \If{$u < \text{min}\{1, \frac{p(X^*)g(X_t|X^*)}{p(X_t)g(X^*|X_t)}\}$} 
+              \State $X_{t+1} \gets X^*$
+          \Else
+              \State $X_{t+1} \gets X_t$
+\EndIf 
+        \EndFor   
+\end{algorithmic}
+\end{algorithm}
+
+\noindent
+Obviously, the construction of the acceptance ratio ensures reversibility. Ergodicity is ensured by the random nature with which we accept proposed states: First, the chain is irreducible because each state is reachable from any other state with positive probability at every single step. Second, for each state \(x\), \(P(x'=x)\) is always positive and therefore the Markov chain is aperiodic.
+
+In a general setting, the choice for transition distribution \(g(x'|x)\) and the number of iterations until the limit distribution is reached are unclear. These two choices are the hyperparameters of the MH algorithm. In the Bayesian inference application in the article series staring from Claassen (2019), additional choices are the prior distrubtion \(p(\theta)\) and the model choice \(f\).
+
+\newpage
+
+\hypertarget{references}{%
+\section*{References}\label{references}}
+\addcontentsline{toc}{section}{References}
+
+\singlespacing
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-beichl2000metropolis}{}}%
+Beichl, Isabel, and Francis Sullivan. 2000. {``The Metropolis Algorithm.''} \emph{Computing in Science \& Engineering} 2(1): 65--69.
+
+\leavevmode\vadjust pre{\hypertarget{ref-claassen2019estimating}{}}%
+Claassen, Christopher. 2019. {``Estimating Smooth Country--Year Panels of Public Opinion.''} \emph{Political Analysis} 27(1): 1--20.
+
+\end{CSLReferences}
+
+\clearpage
+
+\hypertarget{statutory-declaration}{%
+\section*{Statutory Declaration}\label{statutory-declaration}}
+\addcontentsline{toc}{section}{Statutory Declaration}
+
+Hiermit versichere ich, dass diese Arbeit von mir persönlich verfasst ist und dass ich keinerlei fremde Hilfe in Anspruch genommen habe.
+Ebenso versichere ich, dass diese Arbeit oder Teile daraus weder von mir selbst noch von anderen als Leistungsnachweise andernorts eingereicht wurden.
+Wörtliche oder sinngemäße Übernahmen aus anderen Schriften und Veröffentlichungen in gedruckter oder elektronischer Form sind gekennzeichnet.
+Sämtliche Sekundärliteratur und sonstige Quellen sind nachgewiesen und in der Bibliographie aufgeführt.
+Das Gleiche gilt für graphische Darstellungen und Bilder sowie für alle Internet-Quellen.
+Ich bin ferner damit einverstanden, dass meine Arbeit zum Zwecke eines Plagiatsabgleichs in elektronischer Form anonymisiert versendet und gespeichert werden kann.
+Mir ist bekannt, dass von der Korrektur der Arbeit abgesehen werden kann, wenn die Erklärung nicht erteilt wird.
+
+\SignatureAndDate{}
+\renewcommand*{\thepage}{ }
+
+\noindent I hereby declare that the paper presented is my own work and that I have not called upon the help of a third party.
+In addition, I affirm that neither I nor anybody else has submitted this paper or parts of it to obtain credits elsewhere before.
+I have clearly marked and acknowledged all quotations or references that have been taken from the works of other.
+All secondary literature and other sources are marked and listed in the bibliography.
+The same applies to all charts, diagrams and illustrations as well as to all Internet sources.
+Moreover, I consent to my paper being electronically stores and sent anonymously in order to be checked for plagiarism.
+I am aware that the paper cannot be evaluated and may be graded \enquote{failed} (\enquote{nicht ausreichend}) if the declaration is not made.
+
+\SignatureAndDateEng{}
+
+% % % 
+\end{document}

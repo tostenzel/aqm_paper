@@ -22,7 +22,7 @@ WD = getwd()
 setwd(WD)
 
 # read support for dem data
-sddem1 = read.csv("supdem raw survey marginals.csv")
+sddem1 = read.csv("background_resources/claassen_2019a/replication_files/supdem-raw-survey-marginals.csv")
 
 # remove NAs
 sddem1 = sddem1[!sddem1$Response==0, ]

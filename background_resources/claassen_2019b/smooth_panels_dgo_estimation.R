@@ -157,24 +157,24 @@ test.vals = sd.test$Response / sd.test$Sample
 ## DGIRT results in table 3
 
 # read in table 3 results 
-tab3 = read.csv("Table3.csv", row.names=1)
+#tab3 = read.csv("Table3.csv", row.names=1)
 
 # MAE 
-dgo.mae = sum(abs(test.vals - pred.prop.mean)) / length(test.inds)
-tab3[7,4] = round(dgo.mae, 3)
+#dgo.mae = sum(abs(test.vals - pred.prop.mean)) / length(test.inds)
+#tab3[7,4] = round(dgo.mae, 3)
 
 # CI coverage
-tab3[7,6] = round(sum(test.vals >= pred.ci$l80 & test.vals <= pred.ci$u80) / length(pred.ci$u80) * 100, 1)
+#tab3[7,6] = round(sum(test.vals >= pred.ci$l80 & test.vals <= pred.ci$u80) / length(pred.ci$u80) * 100, 1)
 
 # % improvement over country-only
-cntry.mean = as.vector(by(sd.train$Response/sd.train$Sample, sd.train$Country, mean))
-cntry.mean.mae = sum(abs(test.vals - cntry.mean[cntrys.test])) / length(test.inds) 
-tab3[7,5] = round((cntry.mean.mae - dgo.mae) / cntry.mean.mae * 100, 1)
+#cntry.mean = as.vector(by(sd.train$Response/sd.train$Sample, sd.train$Country, mean))
+#cntry.mean.mae = sum(abs(test.vals - cntry.mean[cntrys.test])) / length(test.inds) 
+#tab3[7,5] = round((cntry.mean.mae - dgo.mae) / cntry.mean.mae * 100, 1)
 
 # add grand mean MAE and % improvement
-grand.mean = mean(sd.train$Response/sd.train$Sample, na.rm=TRUE)
-tab3[10,4] = round(sum(abs(test.vals - grand.mean)) / length(test.inds), 3)
-tab3[10,5] = round((cntry.mean.mae - tab3[10,4]) / cntry.mean.mae * 100, 1)
+#grand.mean = mean(sd.train$Response/sd.train$Sample, na.rm=TRUE)
+#tab3[10,4] = round(sum(abs(test.vals - grand.mean)) / length(test.inds), 3)
+#tab3[10,5] = round((cntry.mean.mae - tab3[10,4]) / cntry.mean.mae * 100, 1)
 
 # save final version of table 3
-write.csv(tab3, file="Table3.csv")
+#write.csv(tab3, file="Table3.csv")

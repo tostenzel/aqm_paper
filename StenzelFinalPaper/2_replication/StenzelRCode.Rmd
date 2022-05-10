@@ -273,7 +273,7 @@ stan_rhat(stan.mod.5)
 ```{r extract-theta estimates}
 #### Extract theta estimates
 
-# impute thetas as suptrim
+# impute thetas as suptrim col to new dataset
 
 theta.out = rstan::extract(stan.mod.5, pars = c("theta"))[[1]]
 theta.std = (theta.out - mean(as.vector(theta.out))) / sd(as.vector(theta.out)) # standardize
@@ -281,6 +281,8 @@ theta.out.t = apply( theta.std, 1, function(x) t(x) )
 theta.out.df = data.frame(Country=rep(cnt.names, length.out=n.cntrys*30), 
                           ISO_code=rep(cnt.code, length.out=n.cntrys*30),
                           Year=rep(1988:2017, each=n.cntrys), theta.out.t)
+
+
 theta.pe = theta.out.df[,1:3]
 theta.dim = dim(theta.out.df)[2]
 theta.pe$SupDem_trim = apply(theta.out.df[,4:theta.dim], 1, mean)
@@ -300,7 +302,55 @@ write.csv(theta.pe, "stan_est_sup_dem_m5.csv", row.names=FALSE)
 
 ```
 
+```{r plots-model-fit}
+x.sim = rstan::extract(stan.mod.5, pars=c("x_pred"))[[1]]
+x.sim.pe = apply(x.sim, 2, mean, na.rm=TRUE) / sddem2$Sample
+x.sim.err = sddem2$Response/sddem2$Sample - x.sim.pe
+
+par(mfrow=c(1,1), mar=c(2.5,3,.5,.5), tcl=-0.2, las=1)
+plot(y=sddem2$Response, x=x.sim.pe*sddem2$Sample, type="n", xlab="", ylab="", axes=FALSE, xaxs="i", yaxs="i", main="", 
+     xlim=c(0,3600), ylim=c(0,3600))
+abline(a=0, b=1, lty=2, col="black")
+axis(side=1, tick=TRUE, mgp=c(1,0.15,0), cex.axis=0.8)
+axis(side=2, tick=TRUE, mgp=c(1,0.4,0), cex.axis=0.8)
+grid()
+points(y=sddem2$Response, x=x.sim.pe*sddem2$Sample, pch=16, cex=0.6, col=rgb(0,0,0,.3))
+lines(lowess(y=sddem2$Response, x=x.sim.pe*sddem2$Sample), col=rgb(0,0,0.5,1), lwd=2)
+mtext(side=1, line=1.2, at=1800, "Observed response counts", cex=1)
+mtext(side=2, line=2, at=1800, "Simulated response counts", cex=1, las=0)
+box()
+```
 
 
+
+
+```{r next}
+par(mfrow=c(1,1), mar=c(2.5,3,.5,.5), tcl=-0.2, las=1)
+plot(y=sddem2$Response/sddem2$Sample, x=x.sim.pe, type="n", xlab="", ylab="", axes=FALSE, xaxs="i", yaxs="i", main="", 
+     xlim=c(0,1), ylim=c(0,1))
+abline(a=0, b=1, lty=2, col="black")
+axis(side=1, tick=TRUE, mgp=c(1,0.15,0), cex.axis=0.8)
+axis(side=2, tick=TRUE, mgp=c(1,0.4,0), cex.axis=0.8)
+grid()
+points(y=sddem2$Response/sddem2$Sample, x=x.sim.pe, pch=16, cex=0.6, col=rgb(0,0,0,.3))
+lines(lowess(y=sddem2$Response/sddem2$Sample, x=x.sim.pe), col=rgb(0,0,0.5,1), lwd=2)
+mtext(side=1, line=1.2, at=0.5, "Observed response proportions", cex=1)
+mtext(side=2, line=2, at=0.5, "Simulated response proportions", cex=1, las=0)
+
+```
+```{r next}
+par(mfrow=c(1,1), mar=c(2.5, 2, 1, .5), tcl=-0.2, las=1)
+plot(density(sddem2$Response/sddem2$Sample), type="n", axes=FALSE, xlim=c(0,1), ylim=c(0,3), xaxs="i", yaxs="i", main="")
+axis(side=1, tick=TRUE, mgp=c(1,0.15,0), cex.axis=0.8)
+axis(side=2, tick=TRUE, mgp=c(1,0.4,0), cex.axis=0.8)
+grid()
+lines(density(sddem2$Response/sddem2$Sample), lwd=3, col="black")
+polygon(density(sddem2$Response/sddem2$Sample), col=rgb(0,0,0,0.7))
+lines(density(x.sim.pe), lwd=3, col=rgb(0,0,.5,1))
+polygon(density(x.sim.pe), col=rgb(0,0,.5,.4))
+mtext(side=1, line=1.2, at=0.5, "Response proportions", cex=1)
+legend("topleft", lwd=3, col=c(rgb(0,0,0,1), rgb(0,0,.5,1)), c("Observed", "Simulated"), cex=0.9, bty="n")
+
+```
 
 

@@ -227,15 +227,22 @@ smoothed_panel_top5 <- smoothed_panel_top5[c("Country","Year","SupDem_trim")]
 
 ```{r get-raw-data}
 
-raw_df = read.csv("raw-data/supdem raw survey marginals.csv")
-raw_df = raw_df[c("Country","Year", "Response", "Sample")]
-raw_df_top5 <- filter(raw_df, Country %in% cond) 
+# Can only compare estimates because response would be computationally too costly
+# thetas unbounded, support between 0 and 1
+
+# Perhaps use other estimates as well to simuate Ys
 
 
-sum_Sample= aggregate( Sample ~ Country + Year , raw_df_top5 , sum)
-sum_Response = aggregate( Response ~ Country + Year , raw_df_top5 , sum)
+#raw_df = read.csv("raw-data/supdem raw survey marginals.csv")
+#raw_df = raw_df[c("Country","Year", "Response", "Sample")]
+#raw_df_top5 <- filter(raw_df, Country %in% cond) 
 
-sums = merge(sum_Sample, sum_Response, by=c("Country","Year")) # NA's match
+
+#sum_Sample= aggregate( Sample ~ Country + Year , raw_df_top5 , sum)
+#sum_Response = aggregate( Response ~ Country + Year , raw_df_top5 , sum)
+
+#sums = merge(sum_Sample, sum_Response, by=c("Country","Year")) # NA's match
+#sums$Support = sums$Response / sums$Sample
 
 
 

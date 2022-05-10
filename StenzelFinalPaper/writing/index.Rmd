@@ -1,0 +1,190 @@
+---
+title: "On Using the Metropolis-Hastings Algorithm for Data Imputation"
+author: "Tobias Stenzel"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+header-includes:
+   - \usepackage{tikz, float, caption, amsthm, algorithm, algpseudocode}
+   - \floatplacement{figure}{H}
+   #- \newtheorem{definition}{Definition}
+   - \interfootnotelinepenalty=10000 # no multi-page footnotes
+output:
+  bookdown::pdf_document2:
+    template: template.tex
+    latex_engine: xelatex
+    toc: yes
+    toc_depth: 2
+    keep_tex: yes
+  html_document:
+    toc: yes
+    toc_depth: '2'
+    df_print: paged
+bibliography: bibliography.bib
+csl-hanging-indent: yes
+fontsize: 12pt 
+linestretch: 2.0 # adjust for line spacing 
+geometry: left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm
+classoption:
+- a4paper
+- oneside
+lang: en-EN
+numbersections: yes
+csquotes: yes
+type: Final Paper for Course
+course: Advanced Quantitative Methods in Political Science
+subtitle: ''
+address: ''
+email: tobias.stenzel@students.uni-mannheim.de
+phone: ''
+examiner: Prof. Thomas Gschwend, Ph.D.
+chair: ''
+mp: 0.55
+ID: ''
+# STRONGLY BIASED wordcount: '*Wordcount excluding References: `r unima::count_words(knitr::current_input())`*' 
+csl: https://raw.githubusercontent.com/citation-style-language/styles/master/american-political-science-association.csl
+editor_options:
+  markdown:
+    wrap: sentence
+---
+ 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      include=FALSE,
+                      fig.path = "figs/",
+                      out.width="\\textwidth"
+                      )
+p_needed <- c(# all packages you need to install here
+  "knitr",
+  "bookdown", # referencing figures and tables by label
+  "remotes",
+  "ggplot2",
+  "stargazer",
+  "dplyr", # to compute leads values
+  "tidyr", # for dropping nans
+  "GGally", # correlation matrix style plots
+  "gridExtra", # grid for multiple plots
+  "cowplot",
+  "MASS", # glm
+  "janitor", # fd plot over range
+  #"countreg", # rootogram
+  "ggeasy", # remove axes
+  "latex2exp", # latex legend labels
+  "ggridges"
+  )
+# installs only the required packages 
+lapply(p_needed[!(p_needed %in% rownames(installed.packages()))], install.packages)
+lapply(p_needed, library, character.only = TRUE)
+# separately install for the correct wordcount package 
+if (!"unima" %in% rownames(installed.packages())){
+  remotes::install_github("vktrsmnv/unima-template", upgrade = "never", dependencies = TRUE)
+  }
+# this allows you to add notes to figures with a simple chunk option
+# you only need to add "notes="text" as a chunk option; 
+# the notes will only appear in PDF output
+hook_chunk = knit_hooks$get('chunk')
+knit_hooks$set(chunk = function(x, options) {
+  txt = hook_chunk(x, options)
+  # add chunk option 'description' which adds \Description{...} to figures
+  if (!is.null(options$notes)) {
+    latex_include <- paste0("\\\\vspace\\{0.5cm\\} \\\\\\footnotesize\\{\\\\textit\\{Notes: \\}", options$notes, "\\} \\1")
+    gsub('(\\\\end\\{figure\\})', latex_include, txt) 
+  } else {
+    return(txt)  # pass to default hook
+  }
+})
+if (knitr::is_latex_output()) knitr::knit_hooks$set(plot = knitr::hook_plot_tex)
+# This is an option for stargazer tables
+# It automatically adapts the output to html or latex,
+# depending on whether we want a html or pdf file
+stargazer_opt <- ifelse(knitr::is_latex_output(), "latex", "html")
+# This ensures that if the file is knitted to HTML,
+# significance notes are depicted correctly 
+if (stargazer_opt == "html"){
+  fargs <- formals(stargazer)
+  fargs$notes.append = FALSE
+  fargs$notes = c("<em>&#42;p&lt;0.1;&#42;&#42;p&lt;0.05;&#42;&#42;&#42;p&lt;0.01</em>")
+  formals(stargazer) <- fargs
+}
+# only relevant for ggplot2 plotting
+# setting a global ggplot theme for the entire document to avoid 
+# setting this individually for each plot 
+theme_set(theme_classic() + # start with classic theme 
+  theme(
+    plot.background = element_blank(),# remove all background 
+    plot.title.position = "plot", # move the plot title start slightly 
+    legend.position = "bottom" # by default, put legend on the bottom
+  ))
+set.seed(2021)
+```
+
+# Introduction
+
+dem support + sensitivity analysis
+
+
+
+
+
+# Literature Review
+
+In 2020 Christopher Claassen authors two publications, @claassen2020support and @claassen2020mood where he studies the concept of public support for democracy (PSD).
+
+In the earlier article, @claassen2020support, he investigates the impact of changes in public democratic support on measures of actual democracy. In particular, he has the following three hypothesis: H1: PSD is positively associated with subsequent change in democracy regardless of the initial level of democracy, H1-dem: PSD in already-existing democracies is positively associated with subsequent change in democracy, and H1-aut: PSD in autocracies is positively associated with subsequent change in democracy. Claassen finds evidence for H1-dem, mixed evidence for H1 and no evidence for H1-aut.
+
+In the subsequent article, @claassen2020mood, he analyzes the drivers of PSD. There, he reframes PSD as democratic mood. Claassen has the following hypotheses: H2: Increases in democracy have a negative effect on PSD, H2-elec: increases in electoral democracy have negative effect on PSD, and H2-min: increases in minoritarian democracy have a negative effect on PSD. The evidence support H2 and H2-min but not H2-elec.
+
+
+Both publications use panel data for PSD in many countries and measured by multiple items. However, the respective datasets display many gaps. To solve this problem, Claassen describes a method to estimate the data in the first publication of the three-part series, @claassen2019estimating.
+
+The two aims of this paper are (i) to check how stable the estimated data is, and (ii) how sensitive the results are with respect to changes in its hyperparameters. The next section explains the background and the section thereafter describes Claassen's model for PSD and the estimation method.
+
+```{r child = '03-background.Rmd'}
+```
+
+# Model and Estimation
+
+Explain Method in 2018b
+
+# Discussion
+
+# Conclusion
+
+
+
+\newpage
+
+# References {.unnumbered}
+
+\singlespacing
+
+::: {#refs}
+:::
+
+
+\clearpage
+
+# Statutory Declaration {.unnumbered}
+
+Hiermit versichere ich, dass diese Arbeit von mir persönlich verfasst ist und dass ich keinerlei fremde Hilfe in Anspruch genommen habe.
+Ebenso versichere ich, dass diese Arbeit oder Teile daraus weder von mir selbst noch von anderen als Leistungsnachweise andernorts eingereicht wurden.
+Wörtliche oder sinngemäße Übernahmen aus anderen Schriften und Veröffentlichungen in gedruckter oder elektronischer Form sind gekennzeichnet.
+Sämtliche Sekundärliteratur und sonstige Quellen sind nachgewiesen und in der Bibliographie aufgeführt.
+Das Gleiche gilt für graphische Darstellungen und Bilder sowie für alle Internet-Quellen.
+Ich bin ferner damit einverstanden, dass meine Arbeit zum Zwecke eines Plagiatsabgleichs in elektronischer Form anonymisiert versendet und gespeichert werden kann.
+Mir ist bekannt, dass von der Korrektur der Arbeit abgesehen werden kann, wenn die Erklärung nicht erteilt wird.
+
+```{=tex}
+\SignatureAndDate{}
+\renewcommand*{\thepage}{ }
+```
+\noindent I hereby declare that the paper presented is my own work and that I have not called upon the help of a third party.
+In addition, I affirm that neither I nor anybody else has submitted this paper or parts of it to obtain credits elsewhere before.
+I have clearly marked and acknowledged all quotations or references that have been taken from the works of other.
+All secondary literature and other sources are marked and listed in the bibliography.
+The same applies to all charts, diagrams and illustrations as well as to all Internet sources.
+Moreover, I consent to my paper being electronically stores and sent anonymously in order to be checked for plagiarism.
+I am aware that the paper cannot be evaluated and may be graded "failed" ("nicht ausreichend") if the declaration is not made.
+
+\SignatureAndDateEng{}
+
+<!-- Line below depicts the content that should not be counted in the wordcount -->
+<!---TC:ignore--->

@@ -297,7 +297,7 @@ Department of Political Science}}
 
 
          \vfill
-         Submission Date: Mai 02, 2022 \\ 
+         Submission Date: Mai 10, 2022 \\ 
         
 
 
@@ -338,11 +338,29 @@ Department of Political Science}}
 }
 % Set the right side of the footer to be the page number
 \pagestyle{plain}
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+dem support + sensitivity analysis
+
+\hypertarget{literature-review}{%
+\section{Literature Review}\label{literature-review}}
+
+In 2020 Christopher Claassen authors two publications, Claassen (2020a) and Claassen (2020b) where he studies the concept of public support for democracy (PSD).
+
+In the earlier article, Claassen (2020a), he investigates the impact of changes in public democratic support on measures of actual democracy. In particular, he has the following three hypothesis: H1: PSD is positively associated with subsequent change in democracy regardless of the initial level of democracy, H1-dem: PSD in already-existing democracies is positively associated with subsequent change in democracy, and H1-aut: PSD in autocracies is positively associated with subsequent change in democracy. Claassen finds evidence for H1-dem, mixed evidence for H1 and no evidence for H1-aut.
+
+In the subsequent article, Claassen (2020b), he analyzes the drivers of PSD. There, he reframes PSD as democratic mood. Claassen has the following hypotheses: H2: Increases in democracy have a negative effect on PSD, H2-elec: increases in electoral democracy have negative effect on PSD, and H2-min: increases in minoritarian democracy have a negative effect on PSD. The evidence support H2 and H2-min but not H2-elec.
+
+Both publications use panel data for PSD in many countries and measured by multiple items. However, the respective datasets display many gaps. To solve this problem, Claassen describes a method to estimate the data in the first publication of the three-part series, Claassen (2019).
+
+The two aims of this paper are (i) to check how stable the estimated data is, and (ii) how sensitive the results are with respect to changes in its hyperparameters. The next section explains the background and the section thereafter describes Claassen's model for PSD and the estimation method.
+
 \hypertarget{background}{%
 \section{Background}\label{background}}
 
-\hypertarget{introduction}{%
-\subsection{Introduction}\label{introduction}}
+\hypertarget{introduction-1}{%
+\subsection{Introduction}\label{introduction-1}}
 
 The Metropolis-Hastings (MH) algorithm is a method for sampling data points from a probability distribution from which direct sampling is difficult. It places among the top 10 algorithms with the greatest influence on science and engineering in the 20th century (Beichl and Sullivan 2000). The MH algorithm belongs to the class of Markov chain Monte Carlo (MCMC) methods. In my explanation I assume prior knowledge on Monte Carlo sampling. However, I will describe the basics of Markov Chains. This section is structured as follows. First, I motivate the usage of the MH algorithm. Second, I explain the basics of Markov Chains. Third, I derive the algorithm and make clear why it works.
 
@@ -611,6 +629,17 @@ Obviously, the construction of the acceptance ratio ensures reversibility. Ergod
 
 In a general setting, the choice for transition distribution \(g(x'|x)\) and the number of iterations until the limit distribution is reached are unclear. These two choices are the hyperparameters of the MH algorithm. In the Bayesian inference application in the article series staring from Claassen (2019), additional choices are the prior distrubtion \(p(\theta)\) and the model choice \(f\).
 
+\hypertarget{model-and-estimation}{%
+\section{Model and Estimation}\label{model-and-estimation}}
+
+Explain Method in 2018b
+
+\hypertarget{discussion}{%
+\section{Discussion}\label{discussion}}
+
+\hypertarget{conclusion}{%
+\section{Conclusion}\label{conclusion}}
+
 \newpage
 
 \hypertarget{references}{%
@@ -626,6 +655,12 @@ Beichl, Isabel, and Francis Sullivan. 2000. {``The Metropolis Algorithm.''} \emp
 
 \leavevmode\vadjust pre{\hypertarget{ref-claassen2019estimating}{}}%
 Claassen, Christopher. 2019. {``Estimating Smooth Country--Year Panels of Public Opinion.''} \emph{Political Analysis} 27(1): 1--20.
+
+\leavevmode\vadjust pre{\hypertarget{ref-claassen2020support}{}}%
+---------. 2020a. {``Does Public Support Help Democracy Survive?''} \emph{American Journal of Political Science} 64(1): 118--34.
+
+\leavevmode\vadjust pre{\hypertarget{ref-claassen2020mood}{}}%
+---------. 2020b. {``In the Mood for Democracy? Democratic Support as Thermostatic Opinion.''} \emph{American Political Science Review} 114(1): 36--53.
 
 \end{CSLReferences}
 
