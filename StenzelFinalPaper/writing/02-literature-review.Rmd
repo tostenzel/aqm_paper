@@ -1,0 +1,25 @@
+## The Concept of Democratic Support
+
+There are two major conceptualizations of public support for democracy (PSD). First, the "implicit" approach that requires the support for broader sociopolitical values like post-materialism and egalitarianism. Here, people support democracy implicitly if they support the values that are framed as particularly democratic. Second, the "explicit" approach that requires both an appraisal of democracy and a rejection of autocratic alternatives. Some studies also refer to PSD measured on the national level as "mood". 
+
+## Drivers of Democratic Support
+
+The main theory about why citizen and societies begin to support democracy are called *generational socialization* and *instrumental regime performance*. The first theory assumes that individuals are taught to support the regime under which they are socialized during late adolescence (insert citation). One implication is that after a shift to democracy, the support for it will grow over time (insert citation). Indeed, several single-country studies have found evidence for this claim, for example for 1970s Germany (insert citation), 1980s Spain (insert citation), and 1990s Russia (insert citation). One the other hand, other studies do not find such an effect analyzing other Central and Eastern European countries (insert citation). Furthermore, more recent studies even find a decline in PSD over the last years (insert citation).
+
+Regarding the second theory, instrumental regime performance, PSD rises if the system performs well in terms of instrumental benefits such as economic growth and it declines if the opposite is the case (insert citation). Consequently, the theory suggests that during PSD declines during economic crises. However, there are several case-studies that do (insert citation) and that do not (insert citation) find this relationship in the data.
+
+@Claassen2020mood offers an alternative theory in transferring the thermostatic model of public opinion and policy (insert citation) to democracy and democratic support. In particular, he suggests that there is a negative feedback loop between PSD and democracy so that PSD decreases if democracy supply increases and vice versa. In short, the reasoning is that the output of democratic rights and institutions overshoots the initial desire for them which causes another overcompensation in favor of lower levels of democracy. Moreover, @Claassen2020mood finds different causal channels for electoral and minoritarian democracies. These two sub-types differ in the degree to which the majority holds juridical power. Therefore, he tests the following hypotheses: First, increases in democracy have a negative effect on PSD (H1), Second, he specifically looks at electoral (H1-elec) and minoritarian democracies (H1-min). In his analysis he finds evidence for H1 and H1-min but not for H1-elec.
+
+## Democratic Support and Survival of Democracy
+
+@Claassen2020support distinguishes between two types of PSD: diffuse and specific. Specific PSD is instrumental and focuses on regime outputs (similar to the instrumental regime performance theory), whereas diffuse support is normative and focuses on the principles of the regime. Therefore, principled PSD is more durable than specific support and helps cushioning regimes in times of political or economic crises. It is thus principled PSD that helps to ensure the survival of democracy. Although the theory is widely accepted (insert citations), the findings so far have also been mixed with supporting contributions (insert citations) and contributions against the theory (insert citations). Astonishingly, these studies essentially analyze the same data from the World Value Survey starting at wave 3 where respective PSD items are included.
+
+@Claassen2020support does not only look at the relationship between PSD and democractic survival but also between PSD and democratic emergence. He includes the argument made by Qi and Shin (2011) (insert citation) that PSD may also function as democratic demand, thus increasing the probability of transitioning from autocracy to democracy. Claassens hypotheses thus are: First, PSD is positively associated with subsequent change in democracy regardless of the initial level of democracy. Second, he specifically looks at PSD in already-existing democracies (H2-dem) and at PSD in autocracies (H2-aut). He finds evidence in support of H2-dem, mixed evidence for H2 and no evidence for H2-aut.
+
+## Measuring Democratic Support and the Data Challenge
+
+### Problems in previous studies
+
+### Data and items  and small sketch of the approach as intro to next section
+
+Both publications use panel data for PSD in many countries and measured by multiple items. However, the respective datasets display many gaps. To solve this problem, Claassen describes a method to estimate the data in the first publication of the three-part series, @Claassen2019estimating.

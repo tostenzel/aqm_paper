@@ -118,35 +118,29 @@ set.seed(2021)
 
 # Introduction
 
-dem support + sensitivity analysis
-
-
+```{r child = '01-intro.Rmd'}
+```
 
 
 
 # Literature Review
 
-In 2020 Christopher Claassen authors two publications, @claassen2020support and @claassen2020mood where he studies the concept of public support for democracy (PSD).
-
-In the earlier article, @claassen2020support, he investigates the impact of changes in public democratic support on measures of actual democracy. In particular, he has the following three hypothesis: H1: PSD is positively associated with subsequent change in democracy regardless of the initial level of democracy, H1-dem: PSD in already-existing democracies is positively associated with subsequent change in democracy, and H1-aut: PSD in autocracies is positively associated with subsequent change in democracy. Claassen finds evidence for H1-dem, mixed evidence for H1 and no evidence for H1-aut.
-
-In the subsequent article, @claassen2020mood, he analyzes the drivers of PSD. There, he reframes PSD as democratic mood. Claassen has the following hypotheses: H2: Increases in democracy have a negative effect on PSD, H2-elec: increases in electoral democracy have negative effect on PSD, and H2-min: increases in minoritarian democracy have a negative effect on PSD. The evidence support H2 and H2-min but not H2-elec.
-
-
-Both publications use panel data for PSD in many countries and measured by multiple items. However, the respective datasets display many gaps. To solve this problem, Claassen describes a method to estimate the data in the first publication of the three-part series, @claassen2019estimating.
-
-The two aims of this paper are (i) to check how stable the estimated data is, and (ii) how sensitive the results are with respect to changes in its hyperparameters. The next section explains the background and the section thereafter describes Claassen's model for PSD and the estimation method.
-
-```{r child = '03-background.Rmd'}
+```{r child = '02-literature-review.Rmd'}
 ```
 
 # Model and Estimation
 
 Explain Method in 2018b
 
-# Discussion
+# Results and Discussion
 
 # Conclusion
+
+# Appendix: Mathematical Background
+
+```{r child = '07-appendix.Rmd'}
+```
+
 
 
 

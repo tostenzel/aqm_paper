@@ -28,7 +28,7 @@ year = {2018}
   publisher={IEEE}
 }
 
-@Article{claassen2019estimating,
+@Article{Claassen2019estimating,
   author    = {Claassen, Christopher},
   journal   = {Political Analysis},
   title     = {Estimating smooth country--year panels of public opinion},
@@ -59,6 +59,65 @@ year = {2018}
   pages     = {118--134},
   volume    = {64},
   publisher = {Wiley Online Library},
+}
+
+@Article{Denemark2016,
+  author  = {Denemark, David and Donovan, Todd and Niemi, Richard G and Mattes, Robert},
+  journal = {Growing up democratic: Does it make a difference},
+  title   = {The advanced democracies: The erosion of traditional democratic citizenship},
+  year    = {2016},
+  pages   = {181--206},
+}
+
+@Article{Foa2016,
+  author    = {Foa, Roberto Stefan and Mounk, Yascha},
+  journal   = {Journal of democracy},
+  title     = {The danger of deconsolidation: The democratic disconnect},
+  year      = {2016},
+  number    = {3},
+  pages     = {5--17},
+  volume    = {27},
+  publisher = {Johns Hopkins University Press},
+}
+
+@Article{Foa2017,
+  author    = {Foa, Roberto Stefan and Mounk, Yascha},
+  journal   = {Journal of democracy},
+  title     = {The signs of deconsolidation},
+  year      = {2017},
+  number    = {1},
+  pages     = {5--15},
+  volume    = {28},
+  publisher = {Johns Hopkins University Press},
+}
+
+@Article{Norris2017,
+  author  = {Norris, Pippa},
+  journal = {Forthcoming, The Journal of Democracy, April},
+  title   = {Is Western democracy backsliding? Diagnosing the risks},
+  year    = {2017},
+}
+
+@Article{Voeten2016,
+  author  = {Voeten, Erik},
+  journal = {Available at SSRN 2882878},
+  title   = {Are people really turning away from democracy?},
+  year    = {2016},
+}
+
+@InCollection{PopEleches2017,
+  author    = {Pop-Eleches, Grigore and Tucker, Joshua},
+  booktitle = {Communism's Shadow},
+  publisher = {Princeton University Press},
+  title     = {Communism's Shadow},
+  year      = {2017},
+}
+
+@Book{Denemark2016a,
+  author    = {Denemark, David and Mattes, Robert B and Niemi, Richard G},
+  publisher = {Lynne Rienner Publishers Boulder, Colorado, London},
+  title     = {Growing up democratic: does it make a difference?},
+  year      = {2016},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

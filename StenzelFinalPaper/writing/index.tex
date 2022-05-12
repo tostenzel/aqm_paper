@@ -297,7 +297,7 @@ Department of Political Science}}
 
 
          \vfill
-         Submission Date: Mai 10, 2022 \\ 
+         Submission Date: Mai 12, 2022 \\ 
         
 
 
@@ -341,23 +341,60 @@ Department of Political Science}}
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-dem support + sensitivity analysis
+In recent years scholars have found declining support for democracy in long-established democracies. (Denemark et al. 2016; Foa and Mounk 2016, 2017; Norris 2017; Voeten 2016). This finding raises two important questions: First, what are the reasons for this decline, and second, what are its implications, i.e., does a decline in democratic support endanger the survival of these democracies?
+
+A series of recent articles (Claassen 2019, 2020a, 2020b) researches these questions and presents novel results. Regarding the first question, Claassen (2020a) finds -- in contrary to the the widely held belief of self-reinforcing democracies -- that democratic support naturally fluctuates over time. The reasons is that increases in democracy levels lead to decreases in public support and vice versa. Regarding question two, so far the results about the relationship between democratic support and its survival have been mixed. Claassen (2020a), however, finds supporting evidence for the natural theory that democratic support plays a positive role in the system's survival.
+
+A main obstacle for researching democratic support is that current panel data contains a large number of missing values. Claassen (2019) finds an approach to simulate dense panel data from the actual fractured data. The two most recent studies both rely on this data. His approach consists of three steps: First, assume a probabilistic structural model of democratic support. Second, estimate its parameters via the Metropolis Hastings algorithm using the fractured data. Third, simulate the data using the model and the large number of parameter estimates.
+
+The objective of this work is to evaluate the robustness of Claassen's findings towards changes in the method's hyperparameters. In other words, I incorparate the uncertainty about the right choice of hyperparameters into Claassen's results to test their reliability. In particular, I propagate a random set of hyperparameters through Claassen's estimation procedure. This is important because arbitrary hyperparameter choices can potentially lead to false or at least random results. Therefore, the respective parametric uncertainty should always be reported along the point estimate.
+
+I come to the following results:
+
+The final paper is structured as follows: Section 2 reviews the literature of public support with a focus on Claassen's papers and defines the concept. Section 3 explains Claassen's model of public support, its estimation and my approach for the uncertainty propagation. Section 4 presents the results and Section 5 discusses the findings. Section 6 concludes.
 
 \hypertarget{literature-review}{%
 \section{Literature Review}\label{literature-review}}
 
-In 2020 Christopher Claassen authors two publications, Claassen (2020a) and Claassen (2020b) where he studies the concept of public support for democracy (PSD).
+\hypertarget{the-concept-of-democratic-support}{%
+\subsection{The Concept of Democratic Support}\label{the-concept-of-democratic-support}}
 
-In the earlier article, Claassen (2020a), he investigates the impact of changes in public democratic support on measures of actual democracy. In particular, he has the following three hypothesis: H1: PSD is positively associated with subsequent change in democracy regardless of the initial level of democracy, H1-dem: PSD in already-existing democracies is positively associated with subsequent change in democracy, and H1-aut: PSD in autocracies is positively associated with subsequent change in democracy. Claassen finds evidence for H1-dem, mixed evidence for H1 and no evidence for H1-aut.
+There are two major conceptualizations of public support for democracy (PSD). First, the \enquote{implicit} approach that requires the support for broader sociopolitical values like post-materialism and egalitarianism. Here, people support democracy implicitly if they support the values that are framed as particularly democratic. Second, the \enquote{explicit} approach that requires both an appraisal of democracy and a rejection of autocratic alternatives. Some studies also refer to PSD measured on the national level as \enquote{mood.}
 
-In the subsequent article, Claassen (2020b), he analyzes the drivers of PSD. There, he reframes PSD as democratic mood. Claassen has the following hypotheses: H2: Increases in democracy have a negative effect on PSD, H2-elec: increases in electoral democracy have negative effect on PSD, and H2-min: increases in minoritarian democracy have a negative effect on PSD. The evidence support H2 and H2-min but not H2-elec.
+\hypertarget{drivers-of-democratic-support}{%
+\subsection{Drivers of Democratic Support}\label{drivers-of-democratic-support}}
+
+The main theory about why citizen and societies begin to support democracy are called \emph{generational socialization} and \emph{instrumental regime performance}. The first theory assumes that individuals are taught to support the regime under which they are socialized during late adolescence (insert citation). One implication is that after a shift to democracy, the support for it will grow over time (insert citation). Indeed, several single-country studies have found evidence for this claim, for example for 1970s Germany (insert citation), 1980s Spain (insert citation), and 1990s Russia (insert citation). One the other hand, other studies do not find such an effect analyzing other Central and Eastern European countries (insert citation). Furthermore, more recent studies even find a decline in PSD over the last years (insert citation).
+
+Regarding the second theory, instrumental regime performance, PSD rises if the system performs well in terms of instrumental benefits such as economic growth and it declines if the opposite is the case (insert citation). Consequently, the theory suggests that during PSD declines during economic crises. However, there are several case-studies that do (insert citation) and that do not (insert citation) find this relationship in the data.
+
+Claassen (2020b) offers an alternative theory in transferring the thermostatic model of public opinion and policy (insert citation) to democracy and democratic support. In particular, he suggests that there is a negative feedback loop between PSD and democracy so that PSD decreases if democracy supply increases and vice versa. In short, the reasoning is that the output of democratic rights and institutions overshoots the initial desire for them which causes another overcompensation in favor of lower levels of democracy. Moreover, Claassen (2020b) finds different causal channels for electoral and minoritarian democracies. These two sub-types differ in the degree to which the majority holds juridical power. Therefore, he tests the following hypotheses: First, increases in democracy have a negative effect on PSD (H1), Second, he specifically looks at electoral (H1-elec) and minoritarian democracies (H1-min). In his analysis he finds evidence for H1 and H1-min but not for H1-elec.
+
+\hypertarget{democratic-support-and-survival-of-democracy}{%
+\subsection{Democratic Support and Survival of Democracy}\label{democratic-support-and-survival-of-democracy}}
+
+Claassen (2020a) distinguishes between two types of PSD: diffuse and specific. Specific PSD is instrumental and focuses on regime outputs (similar to the instrumental regime performance theory), whereas diffuse support is normative and focuses on the principles of the regime. Therefore, principled PSD is more durable than specific support and helps cushioning regimes in times of political or economic crises. It is thus principled PSD that helps to ensure the survival of democracy. Although the theory is widely accepted (insert citations), the findings so far have also been mixed with supporting contributions (insert citations) and contributions against the theory (insert citations). Astonishingly, these studies essentially analyze the same data from the World Value Survey starting at wave 3 where respective PSD items are included.
+
+Claassen (2020a) does not only look at the relationship between PSD and democractic survival but also between PSD and democratic emergence. He includes the argument made by Qi and Shin (2011) (insert citation) that PSD may also function as democratic demand, thus increasing the probability of transitioning from autocracy to democracy. Claassens hypotheses thus are: First, PSD is positively associated with subsequent change in democracy regardless of the initial level of democracy. Second, he specifically looks at PSD in already-existing democracies (H2-dem) and at PSD in autocracies (H2-aut). He finds evidence in support of H2-dem, mixed evidence for H2 and no evidence for H2-aut.
+
+\hypertarget{the-data-on-democratic-support}{%
+\subsection{The Data on Democratic Support}\label{the-data-on-democratic-support}}
 
 Both publications use panel data for PSD in many countries and measured by multiple items. However, the respective datasets display many gaps. To solve this problem, Claassen describes a method to estimate the data in the first publication of the three-part series, Claassen (2019).
 
-The two aims of this paper are (i) to check how stable the estimated data is, and (ii) how sensitive the results are with respect to changes in its hyperparameters. The next section explains the background and the section thereafter describes Claassen's model for PSD and the estimation method.
+\hypertarget{model-and-estimation}{%
+\section{Model and Estimation}\label{model-and-estimation}}
 
-\hypertarget{background}{%
-\section{Background}\label{background}}
+Explain Method in 2018b
+
+\hypertarget{results-and-discussion}{%
+\section{Results and Discussion}\label{results-and-discussion}}
+
+\hypertarget{conclusion}{%
+\section{Conclusion}\label{conclusion}}
+
+\hypertarget{appendix-mathematical-background}{%
+\section{Appendix: Mathematical Background}\label{appendix-mathematical-background}}
 
 \hypertarget{introduction-1}{%
 \subsection{Introduction}\label{introduction-1}}
@@ -627,18 +664,7 @@ Note that the minimizer in \(A(x',x)\) enforces that the probability is below 1.
 \noindent
 Obviously, the construction of the acceptance ratio ensures reversibility. Ergodicity is ensured by the random nature with which we accept proposed states: First, the chain is irreducible because each state is reachable from any other state with positive probability at every single step. Second, for each state \(x\), \(P(x'=x)\) is always positive and therefore the Markov chain is aperiodic.
 
-In a general setting, the choice for transition distribution \(g(x'|x)\) and the number of iterations until the limit distribution is reached are unclear. These two choices are the hyperparameters of the MH algorithm. In the Bayesian inference application in the article series staring from Claassen (2019), additional choices are the prior distrubtion \(p(\theta)\) and the model choice \(f\).
-
-\hypertarget{model-and-estimation}{%
-\section{Model and Estimation}\label{model-and-estimation}}
-
-Explain Method in 2018b
-
-\hypertarget{discussion}{%
-\section{Discussion}\label{discussion}}
-
-\hypertarget{conclusion}{%
-\section{Conclusion}\label{conclusion}}
+In a general setting, the choice for transition distribution \(g(x'|x)\) and the number of iterations until the limit distribution is reached are unclear. These two choices are the hyperparameters of the MH algorithm. In the Bayesian inference application in the article series staring from Claassen (2019), additional choices are the prior distribution \(p(\theta)\) and the model choice \(f\).
 
 \newpage
 
@@ -653,14 +679,29 @@ Explain Method in 2018b
 \leavevmode\vadjust pre{\hypertarget{ref-beichl2000metropolis}{}}%
 Beichl, Isabel, and Francis Sullivan. 2000. {``The Metropolis Algorithm.''} \emph{Computing in Science \& Engineering} 2(1): 65--69.
 
-\leavevmode\vadjust pre{\hypertarget{ref-claassen2019estimating}{}}%
+\leavevmode\vadjust pre{\hypertarget{ref-Claassen2019estimating}{}}%
 Claassen, Christopher. 2019. {``Estimating Smooth Country--Year Panels of Public Opinion.''} \emph{Political Analysis} 27(1): 1--20.
 
-\leavevmode\vadjust pre{\hypertarget{ref-claassen2020support}{}}%
+\leavevmode\vadjust pre{\hypertarget{ref-Claassen2020support}{}}%
 ---------. 2020a. {``Does Public Support Help Democracy Survive?''} \emph{American Journal of Political Science} 64(1): 118--34.
 
-\leavevmode\vadjust pre{\hypertarget{ref-claassen2020mood}{}}%
+\leavevmode\vadjust pre{\hypertarget{ref-Claassen2020mood}{}}%
 ---------. 2020b. {``In the Mood for Democracy? Democratic Support as Thermostatic Opinion.''} \emph{American Political Science Review} 114(1): 36--53.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Denemark2016}{}}%
+Denemark, David, Todd Donovan, Richard G Niemi, and Robert Mattes. 2016. {``The Advanced Democracies: The Erosion of Traditional Democratic Citizenship.''} \emph{Growing up democratic: Does it make a difference}: 181--206.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Foa2016}{}}%
+Foa, Roberto Stefan, and Yascha Mounk. 2016. {``The Danger of Deconsolidation: The Democratic Disconnect.''} \emph{Journal of democracy} 27(3): 5--17.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Foa2017}{}}%
+---------. 2017. {``The Signs of Deconsolidation.''} \emph{Journal of democracy} 28(1): 5--15.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Norris2017}{}}%
+Norris, Pippa. 2017. {``Is Western Democracy Backsliding? Diagnosing the Risks.''} \emph{Forthcoming, The Journal of Democracy, April}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Voeten2016}{}}%
+Voeten, Erik. 2016. {``Are People Really Turning Away from Democracy?''} \emph{Available at SSRN 2882878}.
 
 \end{CSLReferences}
 
