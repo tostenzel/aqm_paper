@@ -205,7 +205,7 @@ sum_sample <- sddem2 %>%
 
 sum_sample<-  tbl_df(sum_sample) %>%
   arrange(Sum_Sample) %>%
-  top_n(5)
+  top_n(1)
 
 
 cond <- unique(sum_sample$Country)
@@ -233,9 +233,9 @@ smoothed_panel_top5 <- smoothed_panel_top5[c("Country","Year","SupDem_trim")]
 # Perhaps use other estimates as well to simuate Ys
 
 
-#raw_df = read.csv("raw-data/supdem raw survey marginals.csv")
-#raw_df = raw_df[c("Country","Year", "Response", "Sample")]
-#raw_df_top5 <- filter(raw_df, Country %in% cond) 
+raw_df = read.csv("raw-data/supdem raw survey marginals.csv")
+raw_df = raw_df[c("Country","Year", "Response", "Sample")]
+raw_df_top5 <- filter(raw_df, Country %in% cond) 
 
 
 #sum_Sample= aggregate( Sample ~ Country + Year , raw_df_top5 , sum)

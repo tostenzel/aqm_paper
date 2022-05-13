@@ -1,0 +1,239 @@
+@article{Benedictis-Kessner2018,
+abstract = {Do people hold politicians accountable for the performance of government? I test this question using individual-level experiences with the performance of one major public service: transportation. I compile records of transit performance, tracked via individuals' fare transactions and train delays, and link these data to opinion surveys. I show that people perceive different levels of performance but fail to connect performance with judgments of government. I build on this by testing the importance of responsibility attribution on people's ability to hold government accountable. I find that when people are experimentally provided with information on government responsibilities, they are able to connect their experiences of performance with their opinions of government. These results demonstrate that confusion about government responsibilities can frustrate accountability.},
+author = {de Benedictis-Kessner, Justin},
+file = {:C\:/Users/vikto/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Benedictis-Kessner - 2018 - How Attribution Inhibits Accountability Evidence from Train Delays.pdf:pdf},
+journal = {The Journal of Politics},
+number = {4},
+pages = {1417--1422},
+title = {{How Attribution Inhibits Accountability: Evidence from Train Delays}},
+volume = {80},
+year = {2018}
+}
+
+@book{agresti2015foundations,
+  title={Foundations of linear and generalized linear models},
+  author={Agresti, Alan},
+  year={2015},
+  publisher={John Wiley \& Sons}
+}
+
+@article{beichl2000metropolis,
+  title={The metropolis algorithm},
+  author={Beichl, Isabel and Sullivan, Francis},
+  journal={Computing in Science \& Engineering},
+  volume={2},
+  number={1},
+  pages={65--69},
+  year={2000},
+  publisher={IEEE}
+}
+
+@Article{Claassen2019estimating,
+  author    = {Claassen, Christopher},
+  journal   = {Political Analysis},
+  title     = {Estimating smooth country--year panels of public opinion},
+  year      = {2019},
+  number    = {1},
+  pages     = {1--20},
+  volume    = {27},
+  publisher = {Cambridge University Press},
+}
+
+@Article{Claassen2020mood,
+  author    = {Claassen, Christopher},
+  journal   = {American Political Science Review},
+  title     = {In the mood for democracy? Democratic support as thermostatic opinion},
+  year      = {2020},
+  number    = {1},
+  pages     = {36--53},
+  volume    = {114},
+  publisher = {Cambridge University Press},
+}
+
+@Article{Claassen2020support,
+  author    = {Claassen, Christopher},
+  journal   = {American Journal of Political Science},
+  title     = {Does public support help democracy survive?},
+  year      = {2020},
+  number    = {1},
+  pages     = {118--134},
+  volume    = {64},
+  publisher = {Wiley Online Library},
+}
+
+@Article{Denemark2016,
+  author  = {Denemark, David and Donovan, Todd and Niemi, Richard G and Mattes, Robert},
+  journal = {Growing up democratic: Does it make a difference},
+  title   = {The advanced democracies: The erosion of traditional democratic citizenship},
+  year    = {2016},
+  pages   = {181--206},
+}
+
+@Article{Foa2016,
+  author    = {Foa, Roberto Stefan and Mounk, Yascha},
+  journal   = {Journal of democracy},
+  title     = {The danger of deconsolidation: The democratic disconnect},
+  year      = {2016},
+  number    = {3},
+  pages     = {5--17},
+  volume    = {27},
+  publisher = {Johns Hopkins University Press},
+}
+
+@Article{Foa2017,
+  author    = {Foa, Roberto Stefan and Mounk, Yascha},
+  journal   = {Journal of democracy},
+  title     = {The signs of deconsolidation},
+  year      = {2017},
+  number    = {1},
+  pages     = {5--15},
+  volume    = {28},
+  publisher = {Johns Hopkins University Press},
+}
+
+@Article{Norris2017,
+  author  = {Norris, Pippa},
+  journal = {Forthcoming, The Journal of Democracy, April},
+  title   = {Is Western democracy backsliding? Diagnosing the risks},
+  year    = {2017},
+}
+
+@Article{Voeten2016,
+  author  = {Voeten, Erik},
+  journal = {Available at SSRN 2882878},
+  title   = {Are people really turning away from democracy?},
+  year    = {2016},
+}
+
+@InCollection{PopEleches2017,
+  author    = {Pop-Eleches, Grigore and Tucker, Joshua},
+  booktitle = {Communism's Shadow},
+  publisher = {Princeton University Press},
+  title     = {Communism's Shadow},
+  year      = {2017},
+}
+
+@Book{Denemark2016a,
+  author    = {Denemark, David and Mattes, Robert B and Niemi, Richard G},
+  publisher = {Lynne Rienner Publishers Boulder, Colorado, London},
+  title     = {Growing up democratic: does it make a difference?},
+  year      = {2016},
+}
+
+@Article{Tedin1974,
+  author    = {Tedin, Kent L},
+  journal   = {American Political Science Review},
+  title     = {The influence of parents on the political attitudes of adolescents},
+  year      = {1974},
+  number    = {4},
+  pages     = {1579--1592},
+  volume    = {68},
+  publisher = {Cambridge University Press},
+}
+
+@Book{Baker1981,
+  author    = {Baker, Kendall L and Dalton, Russell J and Hildebrandt, Kai and others},
+  publisher = {Harvard University Press},
+  title     = {Germany transformed: Political culture and the new politics},
+  year      = {1981},
+}
+
+@Article{Montero1997,
+  author    = {Montero, Jos{\'e} Ram{\'o}n and Gunther, Richard and Torcal, Mariano},
+  journal   = {Studies in comparative international development},
+  title     = {Democracy in Spain: Legitimacy, discontent, and disaffection},
+  year      = {1997},
+  number    = {3},
+  pages     = {124--160},
+  volume    = {32},
+  publisher = {Springer},
+}
+
+@Article{Mishler2007,
+  author    = {Mishler, William and Rose, Richard},
+  journal   = {American journal of political science},
+  title     = {Generation, age, and time: The dynamics of political learning during Russia's transformation},
+  year      = {2007},
+  number    = {4},
+  pages     = {822--834},
+  volume    = {51},
+  publisher = {Wiley Online Library},
+}
+
+@Article{Mishler2002,
+  author    = {Mishler, William and Rose, Richard},
+  journal   = {European Journal of Political Research},
+  title     = {Learning and re-learning regime support: The dynamics of post-communist regimes},
+  year      = {2002},
+  number    = {1},
+  pages     = {5--36},
+  volume    = {41},
+  publisher = {Wiley Online Library},
+}
+
+@Article{Dalton1994,
+  author    = {Dalton, Russell J},
+  journal   = {British Journal of Political Science},
+  title     = {Communists and democrats: Democratic attitudes in the two Germanies},
+  year      = {1994},
+  number    = {4},
+  pages     = {469--493},
+  volume    = {24},
+  publisher = {Cambridge University Press},
+}
+
+@Article{Magalhaes2014,
+  author    = {Magalh{\~a}es, Pedro C},
+  journal   = {European Journal of Political Research},
+  title     = {Government effectiveness and support for democracy},
+  year      = {2014},
+  number    = {1},
+  pages     = {77--97},
+  volume    = {53},
+  publisher = {Wiley Online Library},
+}
+
+@Article{Graham2004,
+  author    = {Graham, Carol and Sukhtankar, Sandip},
+  journal   = {Journal of Latin American Studies},
+  title     = {Does economic crisis reduce support for markets and democracy in Latin America? Some evidence from surveys of public opinion and well being},
+  year      = {2004},
+  number    = {2},
+  pages     = {349--377},
+  volume    = {36},
+  publisher = {Cambridge University Press},
+}
+
+@Article{Mishler1996,
+  author    = {Mishler, William and Rose, Richard},
+  journal   = {Comparative political studies},
+  title     = {Trajectories of fear and hope: Support for democracy in Post-Communist Europe},
+  year      = {1996},
+  number    = {4},
+  pages     = {553--581},
+  volume    = {28},
+  publisher = {SAGE Periodicals Press},
+}
+
+@Article{Wlezien1995,
+  author    = {Wlezien, Christopher},
+  journal   = {American journal of political science},
+  title     = {The public as thermostat: Dynamics of preferences for spending},
+  year      = {1995},
+  pages     = {981--1000},
+  publisher = {JSTOR},
+}
+
+@Article{Easton1975,
+  author    = {Easton, David},
+  journal   = {British journal of political science},
+  title     = {A re-assessment of the concept of political support},
+  year      = {1975},
+  number    = {4},
+  pages     = {435--457},
+  volume    = {5},
+  publisher = {Cambridge University Press},
+}
+
+@Book{Booth2009,
+  author    = {Boot
