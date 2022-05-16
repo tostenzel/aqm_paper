@@ -123,14 +123,15 @@ set.seed(2021)
 
 
 
-# Literature Review
+# Literature Review and Data
 
 ```{r child = '02-literature-review.Rmd'}
 ```
 
 # Model and Estimation
 
-Explain Method in 2018b
+```{r child = '03-model-and-estimation.Rmd'}
+```
 
 # Results and Discussion
 

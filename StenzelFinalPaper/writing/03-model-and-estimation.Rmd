@@ -1,0 +1,78 @@
+@Claassen2019estimating's approach for simulating dense panel data for PSD has the following three main steps: Step 1 is to define a sensible model of PSD item responses as a function of latent public opinion. Step 2 is to estimate the model parameters with the Metropolis Hastings Algorithm. Step 3 is to simulate the the data from the estimated model.
+
+## The Latent Variable Model
+
+@Claassen2019estimating draws four principles from the literature to model cross-national timeseries for PSD: First, public opinion is an unobserved, latent trait that differs for each year and country. Then, each observed item response is a function of the latent trait. The function should therefore contain item-specific parameters to disaggregate the latent trait into multiple item responses and to account for heterogenous item functioning. Second, estimating the latent variable from item-specific responses can be though of as *smoothing* the opinion estimate over items since the latent variable does not contain this dimension. One should also smooth over the time dimension by not estimating the latent traits for each time period but rather by estimating the parameters that define a transitional model that holds for all periods. Third, we should not model the percentage of positive item responses but the number of positive and negative responses directly. With that, we can model the problem of smaller response samples. In the following I describe how @Claassen2019estimating incorporates these principles in the definition of his main model^[The main model is called model 5 in @Claassen2019estimating. It achieves lowest discrepancy between simulated and actual data and has the fifth highest complexity of six different specifications.].\newline
+
+
+\noindent
+For each country $i$, year $t$, survey item $k$, the number of positive answers is distrubted binomially with $s$ as the number of total respondands and $\pi$ as the probability of responding with yes.
+\begin{equation}
+(\#eq:num-resp)
+y_{ikt} \sim \text{Binomial}(s_{ikt}, \pi_{ikt})
+\end{equation}
+We could now model $\pi_{ikt}$ directly as a function of country-year and item-specific effects, $\theta_{it}$ and $\lambda_k$, respectively. However, we introduce additional dispersion by using another link function, the beta distribution to introduce additional dispersion. Survey data on public opinion are subject to various kinds of errors, for instance, translation, selection and interviewer mistakes. We model this error with the additional dispersion introduce by the beta distribution in Equation \@ref(eq:prob-yes).
+
+\begin{equation}
+(\#eq:prob-yes)
+\pi_{ikt} \sim \text{Beta}(\alpha_{ikt}, \pi_{ikt})
+\end{equation}
+
+\noindent
+We reparametrize the two shape parameters $\alpha$ and $\beta$ to an expectation parameter $\eta$ and a disperion paramter $\phi$ in Equation \@ref(eq:expec) and \@ref(eq:dispersion).
+
+\begin{equation}
+(\#eq:expec)
+\alpha_{ikt} = \phi \eta_{ikt}
+\end{equation}
+
+\begin{equation}
+(\#eq:dispersion)
+\beta_{ikt} = \phi (1 - \eta_{ikt})
+\end{equation}
+
+\noindent
+Now, we define the expectation of the number of positive responses per year, item and country as a function of item bias $\lambda$, country-specific item bias $\delta$ and latent, dynamic, country-specific PSD $\theta$.
+
+\begin{equation}
+(\#eq:latent-country-year)
+\eta_{ikt} = \text{logit}^{-1}(\lambda_k + \delta_{ik} + \theta_{it})
+\end{equation}
+
+\noindent
+The item bias effect is distributed normally with expectation $\mu_{\lambda}$ and variance $\sigma_{\lambda}^2$. 
+
+\begin{equation}
+(\#eq:item-intercept)
+\lambda_k = \mathcal{N}(\mu_{\lambda}, \sigma_{\lambda}^2)
+\end{equation}
+
+\noindent
+To model the heterogeneity of item country across item bias across countries (@Stegmueller2011), we introduce the set of item by country effects $\delta$.
+
+\begin{equation}
+(\#eq:country-effects)
+\delta_k = \mathcal{N}(0, \sigma_{\delta}^2)
+\end{equation}
+
+\noindent
+Our main parameter set, the latent parameters $\theta$, capture the underlying time- and country-specific support for democracy. We fully capture the time dimension of the model by modeling the dynamics of $\theta$ as an AR(1) process with normally distributed error term with variance $\sigma_{\theta}^2$, zero intercept, and zero covariance as implied by Equation \@ref(eq:dynamics).
+
+\begin{equation}
+(\#eq:dynamics)
+\theta_{it} = \mathcal{N}(\theta_{i,t-1}, \sigma_{\theta}^2)
+\end{equation}
+
+
+
+
+
+
+
+
+
+## Model Estimatation with Metropolis-Hastings
+
+## Data Simulation
+
+## Latent Opinion as Quantity of Interest

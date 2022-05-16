@@ -18,16 +18,15 @@ Regarding the second theory, instrumental regime performance, PSD rises if the s
 
 ## Measuring Democratic Support and the Data Challenge
 
-### Problems in previous studies
+We measure PSD with existing survey data on the national level. In particular, we focus on principled support. The questions ask for the respondent's opinion on the appropriateness or desirability of democracy and undemocratic alternatives and comparisons between both.^[The 8 included survey items and their different variants can be found on [the author's webpage](http://chrisclaassen.com/docs/Democratic_mood_supp_materials.pdf).]
 
-We measure PSD with existing survey data on the national level. In particular, we focus on principled support. The questions ask for the respondent's opinion on the appropriateness or desirability of democracy and undemocratic alternatives and comparisons between both.
+Such items are available in 14 survey projects ^[World and European Values Surveys, the Afrobarometer, Arab Barometer, Latinobarometer, Asiabarometer, Asian Barometer, South Asia Barometer, New Europe Barometer, Latin American Public Opinion Project, Eurobarometer, European Social Survey, pew Global Attitudes Project, and the Comparative Study of Electoral Systems], for 150 countries, and from 1988 to 2017. Combined, the dataset includes 3,765 nationally aggregated binary responses from 1,390 nationally representative survey samples.
 
-Such items are available in 14 survey projects ^[World and European Values Surveys, the Afrobarometer, Arab Barometer, Latinobarometer, Asiabarometer, Asian Barometer, South Asia Barometer, New Europe Barometer, Latin American Public Opinion Project, Eurobarometer, European Social Survey, pew Global Attitudes Project, and the Comparative Study of Electoral Systems], for 150 countries, and from 1988 on. Combined, the dataset includes 3,765 nationally aggregated binary responses from 1,390 nationally representative survey samples.
+The data, however, poses the following challenge: It is highly fractured across time and space, with many -- oftentimes large -- gaps along the time dimension for all countries. Although we look at a 30 years time span, the average number of covered years is slightly below 8. For instance, China is the country with most participants over all years, namely 20895. However, from 1988 to 2020, the data available covers only 8 years: 2001-2003, 2006-2009, and 2011/2012. Many countries are not covered at all or only surveyed once. The South American countries, however, tend to have the best coverage. For instance, Argentina tops the list with 23 years included. Germany and the US are available for 12 and 13 years, respectively.
 
-The data, however, poses the following challenge: It is highly fractured across time and space, with many -- oftentimes large -- gaps for all countries except Belgium. For instance, China is the country with most participants over all years, namely 20895. However, from 1988 to 2020, the data available covers only 2001-2003, 2006-2009, and 2011/2012. And this is even a good coverage. Many countries are not covered at all or only surveyed once (insert numbers and code).
 
-So far, past research has responded to this issue by discarding most of the available data and using only small cross-sectional data sets consisting of data from only one survey project for one year.
+INCLUDE FIGURE 1 FROM THE FIRST PAPER "ESTIMATING...".
 
-### Data and items  and small sketch of the approach as intro to next section
 
-Both publications use panel data for PSD in many countries and measured by multiple items. However, the respective datasets display many gaps. To solve this problem, Claassen describes a method to estimate the data in the first publication of the three-part series, @Claassen2019estimating.
+So far, past research has responded to this issue by discarding most of the available data and using only small cross-sectional data sets consisting of data from only one survey project for one year [@Inglehart2003; @Qi2011; @Welzel2007]. Of course, this leads to a disregard  not only of all other countries but also of additional items. @Claassen2019estimating describes how to use most available data for simulating a dataset that is dense across the yearly time dimension. This dataset can then be used for subsequent statistical analyses [@Claassen2020support; @Claassen2020mood]. The next section describes @Claassen2019estimating's approach.
+

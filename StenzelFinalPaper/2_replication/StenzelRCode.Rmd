@@ -127,230 +127,196 @@ theme_set(theme_classic() + # start with classic theme
     legend.position = "bottom" # by default, put legend on the bottom
   ))
 
-set.seed(2021)
+set.seed(2022)
 ```
 
 ```{r configs}
-# stan options
-rstan_options(auto_write = TRUE)
-options(mc.cores = parallel::detectCores())
-
 # folders
 WD = rstudioapi::getActiveDocumentContext()$path 
 setwd(dirname(WD))
 print( getwd() )
+```
 
+# 02 Literature Review and Data
+
+```{r load-data}
 # read support for dem data. NOTE: We have RespN instead of RespPerc as in online material
-sddem1 = read.csv("raw-data/supdem raw survey marginals.csv")
+df = read.csv("raw-data/supdem raw survey marginals.csv")
 ```
 
 ```{r data-processing}
 # remove NAs
-sddem1 = sddem1[!sddem1$Response==0, ]
+df = df[!df$Response==0, ]
 
 # create year by country indicators
 year0 = 1987
-sddem1 = sddem1[sddem1$Year > year0,]
-sddem1 = unite(sddem1, YearCountry, c(Year, Country), sep = "_", remove = FALSE)
+df = df[df$Year > year0,]
+df = unite(df, YearCountry, c(Year, Country), sep = "_", remove = FALSE)
 
 # create item by country indicators
-sddem1 = unite(sddem1, ItemCnt, c(Item, Country), sep = "_", remove = FALSE)
+df = unite(df, ItemCnt, c(Item, Country), sep = "_", remove = FALSE)
 
 # create year by project indicators
-sddem1 = unite(sddem1, YrProj, c(Year, Project), sep = "_", remove = FALSE)
+df = unite(df, YrProj, c(Year, Project), sep = "_", remove = FALSE)
 
 # create year by project by country indicators
-sddem1 = unite(sddem1, YrProjCnt, c(YrProj, Country), sep = "_", remove = FALSE)
+df = unite(df, YrProjCnt, c(YrProj, Country), sep = "_", remove = FALSE)
 
 
 # factorise
-sddem1$Country = as.factor(as.character(sddem1$Country))
-sddem1$Item = as.factor(as.character(sddem1$Item))
-sddem1$ItemCnt = as.factor(as.character(sddem1$ItemCnt))
-sddem1$Project = as.factor(as.character(sddem1$Project))
-sddem1$YrProj = as.factor(as.character(sddem1$YrProj))
-sddem1$YrProjCnt = as.factor(as.character(sddem1$YrProjCnt))
-sddem1$Year = sddem1$Year-year0
+df$Country = as.factor(as.character(df$Country))
+df$Item = as.factor(as.character(df$Item))
+df$ItemCnt = as.factor(as.character(df$ItemCnt))
+df$Project = as.factor(as.character(df$Project))
+df$YrProj = as.factor(as.character(df$YrProj))
+df$YrProjCnt = as.factor(as.character(df$YrProjCnt))
+df$Year = df$Year-year0
 
 # count data
-dim(sddem1)[1]                   # 3765 national responses
-length(unique(sddem1$Country))   # 150 countries
-length(unique(sddem1$Project))   # 14 projects
-length(unique(sddem1$Item))      # 52 items
-length(unique(sddem1$ItemCnt))   # 1453 item-country
-length(unique(sddem1$YrProjCnt)) # 1390 national surveys
-length(unique(sddem1$Year))      # 27 unique years (out of 30)
-sum(sddem1$Sample) / dim(sddem1)[1] * length(unique(sddem1$YrProjCnt))   # 1,804,450 respondents              
+dim(df)[1]                   # 3765 national responses
+length(unique(df$Country))   # 150 countries
+length(unique(df$Project))   # 14 projects
+length(unique(df$Item))      # 52 items
+length(unique(df$ItemCnt))   # 1453 item-country
+length(unique(df$YrProjCnt)) # 1390 national surveys
+length(unique(df$Year))      # 27 unique years (out of 30)
+sum(df$Sample) / dim(df)[1] * length(unique(df$YrProjCnt))   # 1,804,450 respondents              
 ```
-
-```{r drop-countries-with-only-1-year-of-survey-measures}
+```{r analyze-years-coverage}
 # drop countries with less than 2 years of data
-cnt.obs.years = rowSums(table(sddem1$Country, sddem1$Year) > 0)
+cnt.obs.years = rowSums(table(df$Country, df$Year) > 0)
 sort(cnt.obs.years)
-sddem2 = sddem1[sddem1$Country %in% levels(sddem1$Country)[cnt.obs.years > 1], ]
-length(unique(sddem2$Country))   # 137 countries with 2+ years of data
-
-
+mean(cnt.obs.years)
+```
+```{r drop-countries-with-only-1-year-of-survey-measures}
+df2 = df[df$Country %in% levels(df$Country)[cnt.obs.years > 1], ]
+length(unique(df2$Country))   # 137 countries with 2+ years of data
 ```
 
 
 
+```{r get-topk-data-countries-number-of-respondants}
+sums_respondants_by_country = df2 %>%
+    group_by(Country) %>%
+    summarize(Sum_Sample = sum(Sample))
 
-```{r prepare-for-stan}
-# prepare data for stan
-n.items = length(unique(sddem2$Item))
-n.cntrys = length(unique(sddem2$Country))
-n.yrs = 2017-year0
-n.proj = length(unique(sddem2$Project))
-n.resp = dim(sddem2)[1]
-n.itm.cnt = length(unique(sddem2$ItemCnt))
-n.cntry.yrs = n.cntrys * n.yrs
-n.yr.proj.cnt = length(unique(sddem2$YrProjCnt))
-cntrys = as.numeric(factor(sddem2$Country))
-cnt.names = as.character(sort(unique(sddem2$Country)))
-cnt.code = as.character(sddem2[match(cnt.names, sddem2$Country), "CAbb"])
-cnt.code[83] = "MNE"
-cnt.code[106] = "SRB"
-items = as.numeric(factor(sddem2$Item))
-yrs = sddem2$Year
-projs = as.numeric(factor(sddem2$Project))
-itm.cnts = as.numeric(factor(sddem2$ItemCnt))
+topk_sum_respondants = tbl_df(sums_respondants_by_country) %>%
+  arrange(sums_respondants_by_country) %>%
+  top_n(1)
 
-# specify data for stan
-dat.1 = list(N=n.resp, K=n.items, T=n.yrs, J=n.cntrys, jj=cntrys, tt=yrs, kk=items, 
-             x=sddem2$Response, samp=sddem2$Sample)
-dat.2 = list(N=n.resp, K=n.items, T=n.yrs, J=n.cntrys, P=n.itm.cnt, jj=cntrys, tt=yrs, 
-             pp=itm.cnts, kk=items, x=sddem2$Response, samp=sddem2$Sample)
-sapply(dat.2, summary)
+cond <- unique(topk_sum_respondants$Country)
+unique(topk_sum_respondants$Country)
 
-
-```
-
-
-```{r setparams-and-hyperparams}
-
-# pars
-pars.4 = c("mu_lambda","sigma_lambda","sigma_theta","phi","lambda","theta","x_pred","log_lik")
-pars.5 = c("mu_lambda","sigma_lambda","sigma_delta","sigma_theta","phi","lambda","delta","theta",
-            "x_pred","log_lik")
-pars.6 = c("Sigma","Omega","sigma_delta","sigma_theta","phi","lambda","gamm","delta","theta",
-           "x_pred","log_lik")
-
-# iterations
-n.iter = 500
-n.warm = 250
-n.chn = 4
-n.thin = 1
+# show data of China as example
+filter(df2, Country %in% cond) 
 ```
 
 
 
-```{r estimate-models}
-# best model from PA article (model 5)
-stan.mod.5 = stan(file='supdem.stan.mod5.stan', data=dat.2, pars=pars.5, 
-                   iter=n.iter, warmup=n.warm, chains=n.chn, thin=n.thin, 
-                   control=list(adapt_delta=0.99, stepsize=0.02, max_treedepth=11))
+```{r figure-sparse-data}
 
-```
+## Plot indicative grid showing data availability (figure 1)
 
+# plot 1: all items
 
-```{r traceplot}
-#pdf("figure_S2B.pdf", width=10, height=4)
-rstan::traceplot(stan.mod.5, ncol=5, nrow=2, alpha=0.8, size=0.3, 
-          pars=c("mu_lambda","sigma_lambda","sigma_theta","sigma_delta","phi","lambda[15]",
-                 "delta[107]","theta[21,66]","theta[16,49]","theta[16,101]"))
+#pdf("figure1.pdf", width=6.5, height=3.5)
+layout(matrix(1:4, nrow=2, ncol=2, byrow=TRUE), widths=c(1.4, 1), heights=c(1, 1.15))
 
-```
+plot.cnt.2 = c('Egypt', 'Venezuela', 'South Africa', 'Botswana', 'China', 'Ukraine', 
+               'United States of America', 'Sweden')
 
+plot.dat.2 = df2[df2$Country %in% plot.cnt.2,]
+cnt.yr.tab = table(df2$Year, df2$Country)
+cnt.yr.tab = ifelse(cnt.yr.tab > 0, 1, NA)
+plot.dat.2 = rbind(cnt.yr.tab[,plot.cnt.2[1]], cnt.yr.tab[,plot.cnt.2[2]], cnt.yr.tab[,plot.cnt.2[3]],
+                   cnt.yr.tab[,plot.cnt.2[4]], cnt.yr.tab[,plot.cnt.2[5]], cnt.yr.tab[,plot.cnt.2[6]],
+                   cnt.yr.tab[,plot.cnt.2[7]], cnt.yr.tab[,plot.cnt.2[8]])
+plot.dat.2 = plot.dat.2 * 1:8
 
-```{r rhat}
-stan_rhat(stan.mod.5)
-
-
-```
-
-
-```{r extract-theta estimates}
-#### Extract theta estimates
-
-# impute thetas as suptrim col to new dataset
-
-theta.out = rstan::extract(stan.mod.5, pars = c("theta"))[[1]]
-theta.std = (theta.out - mean(as.vector(theta.out))) / sd(as.vector(theta.out)) # standardize
-theta.out.t = apply( theta.std, 1, function(x) t(x) )
-theta.out.df = data.frame(Country=rep(cnt.names, length.out=n.cntrys*30), 
-                          ISO_code=rep(cnt.code, length.out=n.cntrys*30),
-                          Year=rep(1988:2017, each=n.cntrys), theta.out.t)
-
-
-theta.pe = theta.out.df[,1:3]
-theta.dim = dim(theta.out.df)[2]
-theta.pe$SupDem_trim = apply(theta.out.df[,4:theta.dim], 1, mean)
-
-first.yr = data.frame(Country=levels(sddem2$Country),
-                      First_yr = as.vector(by(sddem2, sddem2$Country, function(x) min(as.numeric(x$Year))+1987)))
-
-theta.pe = merge(theta.pe, first.yr, by="Country", all.x=TRUE)
-cnts = theta.pe[theta.pe$Year==2008, "Country"]
-frst.yr = theta.pe[theta.pe$Year==2008, "First_yr"]
-for(i in 1:length(cnts)) {
-  theta.pe[theta.pe$Country==cnts[i] & theta.pe$Year<frst.yr[i], "SupDem_trim"] = NA
+par(mar=c(0.3, 7.5, 2, 0.5), tcl=-0.2, cex=0.8)
+plot(plot.dat.2[1,], type="n", ylim=c(0.5, 8.5), xaxt="n", yaxt="n", xlab="", ylab="", 
+     main='', xlim=c(1, 27), bty="n")
+abline(h=1:8, col=grey(0.5), lwd=0.75, lty=3)
+abline(v=1:28, col=grey(0.5), lwd=0.75, lty=3)
+for(i in 1:8){
+  points(plot.dat.2[i,], pch=16, cex=1.1, col='black')
 }
+axis(2, at=1:8, labels=plot.cnt.2, cex.axis=0.78, mgp=c(1, .5, 0), las=1)
+mtext(text='All items', side=3, line=0.4, cex=0.85)
+box(lwd=0.75)
 
-write.csv(theta.pe, "stan_est_sup_dem_m5.csv", row.names=FALSE)
+# plot 2: only strongman item
+cnt.yr.tab = table(df2[grep('Strong', df2$Item), "Year"], 
+                   df2[grep('Strong', df2$Item), "Country"])
+cnt.yr.tab = ifelse(cnt.yr.tab > 0, 1, NA)
+plot.dat.2 = rbind(cnt.yr.tab[,plot.cnt.2[1]], cnt.yr.tab[,plot.cnt.2[2]], cnt.yr.tab[,plot.cnt.2[3]],
+                   cnt.yr.tab[,plot.cnt.2[4]], cnt.yr.tab[,plot.cnt.2[5]], cnt.yr.tab[,plot.cnt.2[6]],
+                   cnt.yr.tab[,plot.cnt.2[7]], cnt.yr.tab[,plot.cnt.2[8]])
+plot.dat.2 = plot.dat.2 * 1:8
+
+par(mar=c(0.3, 0.5, 2, 0.5), tcl=-0.2, cex=0.8)
+plot(plot.dat.2[1,], type="p", ylim=c(0.5, 8.5), xaxt="n", yaxt="n", xlab="", ylab="", 
+     main='', xlim=c(1, 27), bty="n")
+abline(h=1:8, col=grey(0.5), lwd=0.75, lty=3)
+abline(v=1:28, col=grey(0.5), lwd=0.75, lty=3)
+for(i in 1:8){
+  points(plot.dat.2[i,], pch=16, cex=1.1)
+}
+mtext(text='Strong leader items', side=3, line=0.4, cex=0.85)
+box(lwd=0.75)
+
+# plot 3: only three-statements item
+cnt.yr.tab = table(df2[grep('ThreeState', df2$Item), "Year"], 
+                   df2[grep('ThreeState', df2$Item), "Country"])
+cnt.yr.tab = ifelse(cnt.yr.tab > 0, 1, NA)
+plot.dat.2 = rbind(cnt.yr.tab[,plot.cnt.2[1]], cnt.yr.tab[,plot.cnt.2[2]], cnt.yr.tab[,plot.cnt.2[3]],
+                   cnt.yr.tab[,plot.cnt.2[4]], cnt.yr.tab[,plot.cnt.2[5]], cnt.yr.tab[,plot.cnt.2[6]],
+                   cnt.yr.tab[,plot.cnt.2[7]], cnt.yr.tab[,plot.cnt.2[8]])
+plot.dat.2 = plot.dat.2 * 1:8
+
+par(mar=c(2, 7.5, 1.8, 0.5), tcl=-0.2, cex=0.8)
+plot(plot.dat.2[1,], type="p", ylim=c(0.5, 8.5), xaxt="n", yaxt="n", xlab="", ylab="", 
+     main='', xlim=c(1, 27), bty="n")
+abline(h=1:8, col=grey(0.5), lwd=0.75, lty=3)
+abline(v=1:28, col=grey(0.5), lwd=0.75, lty=3)
+for(i in 1:8){
+  points(plot.dat.2[i,], pch=16, cex=1.1)
+}
+axis(1, at=c(4, 9, 14, 19, 24), labels=c(1995, 2000, 2005, 2010, 2015), cex.axis=0.75, mgp=c(1, 0.1, 0))
+axis(2, at=1:8, labels=plot.cnt.2, cex.axis=0.78, mgp=c(1, .5, 0), las=1)
+mtext(text='Three statements items', side=3, line=0.4, cex=0.85)
+mtext(text='Year', side=1, line=1.1, cex=0.7)
+box(lwd=0.75)
+
+# plot 4: only army rule item
+cnt.yr.tab = table(df2[grep('Army', df2$Item), "Year"], 
+                   df2[grep('Army', df2$Item), "Country"])
+cnt.yr.tab = ifelse(cnt.yr.tab > 0, 1, NA)
+plot.dat.2 = rbind(cnt.yr.tab[,plot.cnt.2[1]], cnt.yr.tab[,plot.cnt.2[2]], cnt.yr.tab[,plot.cnt.2[3]],
+                   cnt.yr.tab[,plot.cnt.2[4]], cnt.yr.tab[,plot.cnt.2[5]], cnt.yr.tab[,plot.cnt.2[6]],
+                   cnt.yr.tab[,plot.cnt.2[7]], cnt.yr.tab[,plot.cnt.2[8]])
+plot.dat.2 = plot.dat.2 * 1:8
+
+par(mar=c(2, 0.5, 1.8, 0.5), tcl=-0.2, cex=0.8)
+plot(plot.dat.2[1,], type="p", ylim=c(0.5, 8.5), xaxt="n", yaxt="n", xlab="", ylab="", 
+     main='', xlim=c(1, 27), bty="n")
+abline(h=1:8, col=grey(0.5), lwd=0.75, lty=3)
+abline(v=1:28, col=grey(0.5), lwd=0.75, lty=3)
+for(i in 1:8){
+  points(plot.dat.2[i,], pch=16, cex=1.1)
+}
+axis(1, at=c(4, 9, 14, 19, 24), labels=c(1995, 2000, 2005, 2010, 2015), cex.axis=0.75, mgp=c(1, 0.1, 0))
+mtext(text='Military rule items', side=3, line=0.4, cex=0.85)
+mtext(text='Year', side=1, line=1.1, cex=0.7)
+box(lwd=0.75)
+
+#dev.off()
+
 
 
 ```
 
-```{r plots-model-fit}
-x.sim = rstan::extract(stan.mod.5, pars=c("x_pred"))[[1]]
-x.sim.pe = apply(x.sim, 2, mean, na.rm=TRUE) / sddem2$Sample
-x.sim.err = sddem2$Response/sddem2$Sample - x.sim.pe
-
-par(mfrow=c(1,1), mar=c(2.5,3,.5,.5), tcl=-0.2, las=1)
-plot(y=sddem2$Response, x=x.sim.pe*sddem2$Sample, type="n", xlab="", ylab="", axes=FALSE, xaxs="i", yaxs="i", main="", 
-     xlim=c(0,3600), ylim=c(0,3600))
-abline(a=0, b=1, lty=2, col="black")
-axis(side=1, tick=TRUE, mgp=c(1,0.15,0), cex.axis=0.8)
-axis(side=2, tick=TRUE, mgp=c(1,0.4,0), cex.axis=0.8)
-grid()
-points(y=sddem2$Response, x=x.sim.pe*sddem2$Sample, pch=16, cex=0.6, col=rgb(0,0,0,.3))
-lines(lowess(y=sddem2$Response, x=x.sim.pe*sddem2$Sample), col=rgb(0,0,0.5,1), lwd=2)
-mtext(side=1, line=1.2, at=1800, "Observed response counts", cex=1)
-mtext(side=2, line=2, at=1800, "Simulated response counts", cex=1, las=0)
-box()
-```
 
 
-
-
-```{r next}
-par(mfrow=c(1,1), mar=c(2.5,3,.5,.5), tcl=-0.2, las=1)
-plot(y=sddem2$Response/sddem2$Sample, x=x.sim.pe, type="n", xlab="", ylab="", axes=FALSE, xaxs="i", yaxs="i", main="", 
-     xlim=c(0,1), ylim=c(0,1))
-abline(a=0, b=1, lty=2, col="black")
-axis(side=1, tick=TRUE, mgp=c(1,0.15,0), cex.axis=0.8)
-axis(side=2, tick=TRUE, mgp=c(1,0.4,0), cex.axis=0.8)
-grid()
-points(y=sddem2$Response/sddem2$Sample, x=x.sim.pe, pch=16, cex=0.6, col=rgb(0,0,0,.3))
-lines(lowess(y=sddem2$Response/sddem2$Sample, x=x.sim.pe), col=rgb(0,0,0.5,1), lwd=2)
-mtext(side=1, line=1.2, at=0.5, "Observed response proportions", cex=1)
-mtext(side=2, line=2, at=0.5, "Simulated response proportions", cex=1, las=0)
-
-```
-```{r next}
-par(mfrow=c(1,1), mar=c(2.5, 2, 1, .5), tcl=-0.2, las=1)
-plot(density(sddem2$Response/sddem2$Sample), type="n", axes=FALSE, xlim=c(0,1), ylim=c(0,3), xaxs="i", yaxs="i", main="")
-axis(side=1, tick=TRUE, mgp=c(1,0.15,0), cex.axis=0.8)
-axis(side=2, tick=TRUE, mgp=c(1,0.4,0), cex.axis=0.8)
-grid()
-lines(density(sddem2$Response/sddem2$Sample), lwd=3, col="black")
-polygon(density(sddem2$Response/sddem2$Sample), col=rgb(0,0,0,0.7))
-lines(density(x.sim.pe), lwd=3, col=rgb(0,0,.5,1))
-polygon(density(x.sim.pe), col=rgb(0,0,.5,.4))
-mtext(side=1, line=1.2, at=0.5, "Response proportions", cex=1)
-legend("topleft", lwd=3, col=c(rgb(0,0,0,1), rgb(0,0,.5,1)), c("Observed", "Simulated"), cex=0.9, bty="n")
-
-```
 
 
