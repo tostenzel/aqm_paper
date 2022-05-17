@@ -68,7 +68,12 @@ p_needed <- c(# all packages you need to install here
   #"countreg", # rootogram
   "ggeasy", # remove axes
   "latex2exp", # latex legend labels
-  "ggridges"
+  "ggridges",
+  #christopher claassen's additional requirements
+  "arm",
+  "loo",
+  "rstan",
+  "RColorBrewer"
   )
 # installs only the required packages 
 lapply(p_needed[!(p_needed %in% rownames(installed.packages()))], install.packages)

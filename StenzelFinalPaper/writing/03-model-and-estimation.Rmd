@@ -2,7 +2,7 @@
 
 ## The Latent Variable Model
 
-@Claassen2019estimating draws four principles from the literature to model cross-national timeseries for PSD: First, public opinion is an unobserved, latent trait that differs for each year and country. Then, each observed item response is a function of the latent trait. The function should therefore contain item-specific parameters to disaggregate the latent trait into multiple item responses and to account for heterogenous item functioning. Second, estimating the latent variable from item-specific responses can be though of as *smoothing* the opinion estimate over items since the latent variable does not contain this dimension. One should also smooth over the time dimension by not estimating the latent traits for each time period but rather by estimating the parameters that define a transitional model that holds for all periods. Third, we should not model the percentage of positive item responses but the number of positive and negative responses directly. With that, we can model the problem of smaller response samples. In the following I describe how @Claassen2019estimating incorporates these principles in the definition of his main model^[The main model is called model 5 in @Claassen2019estimating. It achieves lowest discrepancy between simulated and actual data and has the fifth highest complexity of six different specifications.].\newline
+@Claassen2019estimating draws four principles from the literature to model cross-national timeseries for PSD: First, public opinion is an unobserved, latent trait that differs for each year and country. Then, each observed item response is a function of the latent trait. The function should therefore contain item-specific parameters to disaggregate the latent trait into multiple item responses and to account for heterogenous item functioning. Second, estimating the latent variable from item-specific responses can be though of as *smoothing* the opinion estimate over items since the latent variable does not contain this dimension. One should also smooth over the time dimension by not estimating the latent traits for each time period but rather by estimating the parameters that define a transitional model that holds for all periods. Third, we should not model the percentage of positive item responses but the number of positive and negative responses directly. With that, we can model the problem of smaller response samples. In the following I describe how @Claassen2019estimating incorporates these principles in the definition of his main model^[The main model is called model 5 in @Claassen2019estimating. It achieves lowest discrepancy between simulated and actual data and has the fifth highest complexity of six different specifications.] that we will call $f$.\newline
 
 
 \noindent
@@ -63,15 +63,25 @@ Our main parameter set, the latent parameters $\theta$, capture the underlying t
 \theta_{it} = \mathcal{N}(\theta_{i,t-1}, \sigma_{\theta}^2)
 \end{equation}
 
-
-
-
-
-
-
-
-
 ## Model Estimatation with Metropolis-Hastings
+
+One main application for the MH algorithm is Bayesian inference. Specifically, we want to estimate parameters $\theta$ of some probabilistic model $f$. We have only limited prior knowledge of the distribution of $\theta$, for instance about its domain, that we use to define prior distributions $p(\theta)$. And we have a likelihood sample of $f$ given the unknown $\theta$, namely $p(y|\theta)$. This would be our PSD data $y_ikt$. The goal is to estimate the posterior distribution of $\theta$, $p(\theta|y)$, given all information that we have using Bayes rule as shown in Equation \@ref(eq:bayes). In more detail, we draw many $\theta$ vectors and propagate them through model $f$ to obtain simulated $y$s. Then, we count for each $\theta$ how often these $y$s are in the actual data and multiply it by $p(y)$ to get $p(\theta|y)$. Then, we can use our data to obtain $p(\theta)$ and choose the $\theta$ with the highest probability or proximity between $f(\theta)$ and $y$ as our parameter estimate.
+
+\begin{equation}
+(\#eq:bayes)
+$p(\theta|y) = \frac{\mathcal{L}(y|\theta)p(\theta)}{P(y)} \propto \mathcal{L}(y|\theta)p(\theta)$
+\end{equation}
+
+
+\noindent
+The Metropolis-Hastings (MH) algorithm is a method for sampling data points from a probability distribution from which direct sampling is difficult. because curse of dimensions and parameeter dependence
+google why sampling with markov chains
+\newline
+
+\noindent
+
+
+
 
 ## Data Simulation
 
