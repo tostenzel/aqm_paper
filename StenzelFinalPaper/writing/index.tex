@@ -297,7 +297,7 @@ Department of Political Science}}
 
 
          \vfill
-         Submission Date: Mai 17, 2022 \\ 
+         Submission Date: Mai 18, 2022 \\ 
         
 
 
@@ -403,7 +403,7 @@ Claassen (2019)'s approach for simulating dense panel data for PSD has the follo
 \hypertarget{the-latent-variable-model}{%
 \subsection{The Latent Variable Model}\label{the-latent-variable-model}}
 
-Claassen (2019) draws four principles from the literature to model cross-national timeseries for PSD: First, public opinion is an unobserved, latent trait that differs for each year and country. Then, each observed item response is a function of the latent trait. The function should therefore contain item-specific parameters to disaggregate the latent trait into multiple item responses and to account for heterogenous item functioning. Second, estimating the latent variable from item-specific responses can be though of as \emph{smoothing} the opinion estimate over items since the latent variable does not contain this dimension. One should also smooth over the time dimension by not estimating the latent traits for each time period but rather by estimating the parameters that define a transitional model that holds for all periods. Third, we should not model the percentage of positive item responses but the number of positive and negative responses directly. With that, we can model the problem of smaller response samples. In the following I describe how Claassen (2019) incorporates these principles in the definition of his main model\footnote{The main model is called model 5 in Claassen (2019). It achieves lowest discrepancy between simulated and actual data and has the fifth highest complexity of six different specifications.}.\newline
+Claassen (2019) draws four principles from the literature to model cross-national timeseries for PSD: First, public opinion is an unobserved, latent trait that differs for each year and country. Then, each observed item response is a function of the latent trait. The function should therefore contain item-specific parameters to disaggregate the latent trait into multiple item responses and to account for heterogenuous item functioning. Second, estimating the latent variable from item-specific responses can be though of as \emph{smoothing} the opinion estimate over items since the latent variable does not contain this dimension. One should also smooth over the time dimension by not estimating the latent traits for each time period but rather by estimating the parameters that define a transitional model that holds for all periods. Third, we should not model the percentage of positive item responses but the number of positive and negative responses directly. With that, we can model the problem of smaller response samples. In the following I describe how Claassen (2019) incorporates these principles in the definition of his main model\footnote{The main model is called model 5 in Claassen (2019). It achieves lowest discrepancy between simulated and actual data and has the fifth highest complexity of six different specifications.} that we will call \(f\).\newline
 
 \noindent
 For each country \(i\), year \(t\), survey item \(k\), the number of positive answers is distrubted binomially with \(s\) as the number of total respondands and \(\pi\) as the probability of responding with yes.
@@ -463,8 +463,26 @@ Our main parameter set, the latent parameters \(\theta\), capture the underlying
 \theta_{it} = \mathcal{N}(\theta_{i,t-1}, \sigma_{\theta}^2)
 \end{equation}
 
-\hypertarget{model-estimatation-with-metropolis-hastings}{%
-\subsection{Model Estimatation with Metropolis-Hastings}\label{model-estimatation-with-metropolis-hastings}}
+\hypertarget{model-estimation-with-metropolis-hastings}{%
+\subsection{Model Estimation with Metropolis-Hastings}\label{model-estimation-with-metropolis-hastings}}
+
+One main application for the MH algorithm is Bayesian inference. Specifically, we want to estimate parameters \(\Theta\) of some probabilistic model \(f\). We have only limited prior knowledge of the distribution of \(\Theta\), for instance about its domain, that we use to define prior distributions \(p(\Theta)\). And we have a likelihood sample of \(f\) given the unknown \(\Theta\), namely \(p(y|\Theta)\). This would be our PSD data \(y_{ikt}\). We want use both, our prior knowledge and our data, to get our posterior distribution \(p(\Theta|y)\) in Equation \eqref{eq:bayes}. In this equation, posterior and likelihood are scaled by \(\frac{1}{p(y)}\). Without closed-form distributions, \(p(y)\) is usually unknown. This also implies that the posterior is proportional to the product of likelihood and prior.
+
+\begin{equation}
+\label{eq:bayes}
+p(\Theta|y) = \frac{\mathcal{L}(y|\Theta)p(\Theta)}{p(y)} \propto \mathcal{L}(y|\Theta)p(\Theta)
+\end{equation}
+
+\noindent
+An important insight is that our parameter vector \(\Theta\) does not only include
+parameters defined as distributional means, for instance \(\theta\), but also
+standard deviations like \(\sigma_{\theta}\). If our problem would not include those
+variation parameters, a more direct option would be to solve \(\mathcal{L}(y|\Theta)p(\Theta)\) with the usual optimization algorithms. Those would
+propose new values of \(\Theta\), evaluate its prior probability and the likelihood of
+the data given \(\Theta\) until convergence and return the posterior mode or maximum a posteriori probability (MAP) estimate. Yet, since we need to estimate standard deviations,
+we have to generate the whole parameter distributions to compute mean and variation. To this end, we use a Markov chain Monte Carlo (MCMC) method, namely the Metropolis Hastings algorithm.
+
+Markov chains are stochastic processes that define distributions dependent on the values from only the previous period. The MH algorithm uses Markov chains to sample candidate parameters \(\Theta_t^*\) depending on \(\Theta_{t-1}\). For each candidate \(\Theta_t^*\), the algorithm uses the unscaled posterior, \(\mathcal{L}(y|\Theta_t)p(\Theta_t)\), and compares it with the posterior of \(\Theta_{t-1}\) (not requiring constant \(p(y)\)) to accept or reject new candidates. Comparing relative posterior probabilities thus allows us to sample from the posterior without knowing \(y\). The algorithm thus explores the domain proportionally to the posterior probability after a number of initial iterations. Using the MH algorithm requires the following choices: the choice of the prior distribution(s) \(p(\Theta)\), the choice of the proposal distribution \(g(y_t, y_{t-1})\), and how the number of initial parameters to drop, i.e.~the length of the burnin-period. I include a more technical explanation of the MH algorithm in the Appendix.
 
 \hypertarget{data-simulation}{%
 \subsection{Data Simulation}\label{data-simulation}}
