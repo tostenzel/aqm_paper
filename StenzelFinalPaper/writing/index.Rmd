@@ -138,7 +138,12 @@ set.seed(2021)
 ```{r child = '03-model-and-estimation.Rmd'}
 ```
 
-# Results and Discussion
+# Analysis and Results 
+
+```{r child = '04-analysis-and-results.Rmd'}
+```
+
+# Discussion
 
 # Conclusion
 

@@ -482,16 +482,21 @@ propose new values of \(\Theta\), evaluate its prior probability and the likelih
 the data given \(\Theta\) until convergence and return the posterior mode or maximum a posteriori probability (MAP) estimate. Yet, since we need to estimate standard deviations,
 we have to generate the whole parameter distributions to compute mean and variation. To this end, we use a Markov chain Monte Carlo (MCMC) method, namely the Metropolis Hastings algorithm.
 
-Markov chains are stochastic processes that define distributions dependent on the values from only the previous period. The MH algorithm uses Markov chains to sample candidate parameters \(\Theta_t^*\) depending on \(\Theta_{t-1}\). For each candidate \(\Theta_t^*\), the algorithm uses the unscaled posterior, \(\mathcal{L}(y|\Theta_t)p(\Theta_t)\), and compares it with the posterior of \(\Theta_{t-1}\) (not requiring constant \(p(y)\)) to accept or reject new candidates. Comparing relative posterior probabilities thus allows us to sample from the posterior without knowing \(y\). The algorithm thus explores the domain proportionally to the posterior probability after a number of initial iterations. Using the MH algorithm requires the following choices: the choice of the prior distribution(s) \(p(\Theta)\), the choice of the proposal distribution \(g(y_t, y_{t-1})\), and how the number of initial parameters to drop, i.e.~the length of the burnin-period. I include a more technical explanation of the MH algorithm in the Appendix.
+Markov chains are stochastic processes that define distributions dependent on the values from only the previous period. The MH algorithm uses Markov chains to sample candidate parameters \(\Theta_i^*\) depending on \(\Theta_{i-1}\). For each candidate \(\Theta_i^*\), the algorithm uses the unscaled posterior, \(\mathcal{L}(y|\Theta_i)p(\Theta_i)\), and compares it with the posterior of \(\Theta_{i-1}\) (not requiring constant \(p(y)\)) to accept or reject new candidates. Comparing relative posterior probabilities thus allows us to sample from the posterior without knowing \(y\). The algorithm thus explores the domain proportionally to the posterior probability after a number of initial iterations. Besides the model specification using the MH algorithm requires the following choices: the choice of the prior distribution(s) \(p(\Theta)\), the choice of the proposal distribution \(g(y_i, y_{i-1})\), and the number of initial parameters to drop, i.e.~the length of the burnin-period. I include a more technical explanation of the MH algorithm with more general notation in the Appendix.
 
-\hypertarget{data-simulation}{%
-\subsection{Data Simulation}\label{data-simulation}}
+\hypertarget{analysis-and-results}{%
+\section{Analysis and Results}\label{analysis-and-results}}
 
 \hypertarget{latent-opinion-as-quantity-of-interest}{%
 \subsection{Latent Opinion as Quantity of Interest}\label{latent-opinion-as-quantity-of-interest}}
 
-\hypertarget{results-and-discussion}{%
-\section{Results and Discussion}\label{results-and-discussion}}
+Our goal is to analyze the sensitivity of the MH algorithm towards changes in its hyperparameters. Since Claassen (2019) already tested different priors, we are particularly interested in the effect of different choices for the proposal distribution \(g(y_i, y_{i-1})\) and the length of the burnin period. Although choosing
+parameters representing the main results in Claassen (2020b) and Claassen (2020a) would be most illustrative in terms of substantial effect, this choice has two following disadvatages. First, because these statistical parameters are estimated from simulated data, they are influenced by randomness from the data simulation additional to the estimation. Second, the additional steps of simulating data and estimating statistical models would potentially double the computation time. Therefore, I choose the latent, dynamic, country-specific PSD \(\theta\) as the Quantity of Interest.
+
+The results for countries blabla by Classen2020 are shown in Figure blabla\ldots{}
+
+\hypertarget{discussion}{%
+\section{Discussion}\label{discussion}}
 
 \hypertarget{conclusion}{%
 \section{Conclusion}\label{conclusion}}

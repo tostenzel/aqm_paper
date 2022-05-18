@@ -1,0 +1,6 @@
+## Latent Opinion as Quantity of Interest
+
+Our goal is to analyze the sensitivity of the MH algorithm towards changes in its hyperparameters. Since @Claassen2019estimating already tested different priors, we are particularly interested in the effect of different choices for the proposal distribution $g(y_i, y_{i-1})$ and the length of the burnin period. Although choosing
+ parameters representing the main results in @Claassen2020mood and @Claassen2020support would be most illustrative in terms of substantial effect, this choice has two following disadvatages. First, because these statistical parameters are estimated from simulated data, they are influenced by randomness from the data simulation that could not be distinguished from the estimation-inherent randomness. Second, the additional steps of simulating data and estimating statistical models would potentially double the computation time. Therefore, I choose the latent, dynamic, country-specific PSD $\theta$ as the Quantity of Interest.
+ 
+The results for countries blabla by Classen2020 are shown in Figure blabla...
