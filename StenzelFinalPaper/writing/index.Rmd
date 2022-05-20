@@ -59,6 +59,7 @@ p_needed <- c(# all packages you need to install here
   "ggplot2",
   "stargazer",
   "dplyr", # to compute leads values
+  "readr" # for csv merge cmd
   "tidyr", # for dropping nans
   "GGally", # correlation matrix style plots
   "gridExtra", # grid for multiple plots

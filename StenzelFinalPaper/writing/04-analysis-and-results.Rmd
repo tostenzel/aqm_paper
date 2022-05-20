@@ -7,7 +7,7 @@ The results for countries blabla by Classen2020 are shown in Figure blabla...
 
 
 
-```{r replication}
+```{r generate-data, eval=FALSE}
 #### Stan estimation
 
 # time chunk execution
@@ -55,9 +55,12 @@ n.thin = 1
 times = c()
 t = 1
 #itergrid = seq(from=12, to=24, by=2)
-itergrid =  seq(from=370, to=1000, by=30)
+iter1 =  seq(from=10, to=460, by=30)
+iter2 =  seq(from=500, to=1000, by=100)
+itergrid = c(iter1, iter2)
+
 for(n.iter in itergrid){
-n.warm = n.iter/2
+  n.warm = n.iter/2
 
 
   # best model from PA article (model 5)
@@ -87,7 +90,7 @@ n.warm = n.iter/2
   for(i in 1:length(cnts)) {
     theta.pe[theta.pe$Country==cnts[i] & theta.pe$Year<frst.yr[i], "SupDem_trim"] = NA
   }
-  path = paste("output/stan_est_sup_dem_m5_run", as.character(n.iter), ".csv", sep="")
+  path = paste("output/niter/stan_est_sup_dem_m5_run", as.character(n.iter), ".csv", sep="")
   write.csv(theta.pe, path , row.names=FALSE)
   
   end_time <- Sys.time()
@@ -95,6 +98,28 @@ n.warm = n.iter/2
   t = t+1
 }
 save(times, itergrid, file = "output/comp_times.RData")
+```
+
+
+
+```{r convergence-niter}
+df_iter = read.csv("output/niter/stan_est_sup_dem_m5_run10.csv")
+names(df_iter)[names(df_iter) == 'SupDem_trim'] <- 'theta10'
+
+for(n.iter in iter1){
+
+  
+  
+}
+
+
+
+
+
 
 
 ```
+
+
+
+
