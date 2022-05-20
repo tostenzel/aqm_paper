@@ -57,9 +57,10 @@ p_needed <- c(# all packages you need to install here
   "bookdown", # referencing figures and tables by label
   "remotes",
   "ggplot2",
+  "tidyverse", # manipulate df for plotting
   "stargazer",
   "dplyr", # to compute leads values
-  "readr" # for csv merge cmd
+  "readr", # for csv merge cmd
   "tidyr", # for dropping nans
   "GGally", # correlation matrix style plots
   "gridExtra", # grid for multiple plots

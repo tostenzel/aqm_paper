@@ -135,32 +135,35 @@ Venezuela = as.numeric(df_iter[df_iter$Country=="Venezuela" & df_iter$Year==2008
 Argentina = as.numeric(df_iter[df_iter$Country=="Argentina" & df_iter$Year==2008, ][, c(3:ncol(df_iter))])
 
 
-df = data.frame(Austria, Azerbaijan, Bahrain, Uruguay, Venezuela, Argentina)
-rownames(df) = iter1
+df = data.frame(iter1, Austria, Azerbaijan, Bahrain, Uruguay, Venezuela, Argentina)
+#rownames(df) = iter1
 
 
 
 
 
-# Everything on the same plot
-theme_set(theme_minimal())
-
-
-ggplot(data = df) +
-  geom_line(aes(x = iter1, y = Austria)) + 
-  geom_point(aes(x = iter1, y = Austria)) +
-   geom_line(aes(x = iter1, y = Azerbaijan)) + 
-  geom_point(aes(x = iter1, y = Azerbaijan)) +
-   geom_line(aes(x = iter1, y = Bahrain)) + 
-  geom_point(aes(x = iter1, y = Bahrain)) +
-   geom_line(aes(x = iter1, y = Uruguay)) + 
-  geom_point(aes(x = iter1, y = Uruguay)) +
-   geom_line(aes(x = iter1, y = Venezuela)) + 
-  geom_point(aes(x = iter1, y = Venezuela)) +
-   geom_line(aes(x = iter1, y = Argentina)) + 
-  geom_point(aes(x = iter1, y = Argentina))
 
 ```
+
+```{r}
+
+
+
+library("tidyverse")
+df_plot <- df %>%
+  #select(iter1, Austria, Azerbaijan, Bahrain, Uruguay, Venezuela, Argentina) %>%
+  gather(key = "Country", value = "theta", -iter1)
+head(df_plot)
+
+
+# Visualization
+# Reorder following the value of another column:
+df_plot %>%
+  mutate(Country = fct_relevel(Country,"Austria", "Azerbaijan", "Bahrain", "Uruguay", "Venezuela", "Argentina")) %>%
+  ggplot(aes(x = iter1, y = theta, colour = Country))  + geom_line()  + geom_point() + xlab("Iteration") + ylab(TeX("$\\hat{\\theta}_{2008}$")) + scale_colour_brewer(palette="RdBu")
+
+```
+
 
 
 
