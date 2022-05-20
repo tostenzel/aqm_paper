@@ -7,7 +7,7 @@ The results for countries blabla by Classen2020 are shown in Figure blabla...
 
 
 
-```{r generate-data, eval=FALSE}
+```{r generate-data}
 #### Stan estimation
 
 # time chunk execution
@@ -58,7 +58,9 @@ t = 1
 iter1 =  seq(from=10, to=460, by=30)
 iter2 =  seq(from=500, to=1000, by=100)
 itergrid = c(iter1, iter2)
+```
 
+```{r long-loop, eval=FALSE}
 for(n.iter in itergrid){
   n.warm = n.iter/2
 
@@ -106,17 +108,57 @@ save(times, itergrid, file = "output/comp_times.RData")
 df_iter = read.csv("output/niter/stan_est_sup_dem_m5_run10.csv")
 names(df_iter)[names(df_iter) == 'SupDem_trim'] <- 'theta10'
 
-for(n.iter in iter1){
+for(n.iter in iter1[-1]){#without first iteration
+  temp_str = paste("output/niter/stan_est_sup_dem_m5_run", as.character(n.iter), ".csv", sep="")
+  df_temp = read.csv(temp_str)
+  temp_str = paste("theta", as.character(n.iter), sep="")
+  df_iter[temp_str] = df_temp$SupDem_trim
 
   
   
 }
 
+df_iter$First_yr = NULL
+df_iter$ISO_code = NULL
+
+
+
+cnt.obs.years = cnt.obs.years[cnt.obs.years > 1]
+bottom3_data_countries = names(sort(cnt.obs.years)[1:3])
+top3_data_countries = names(sort(cnt.obs.years)[(length(cnt.obs.years)-2):(length(cnt.obs.years))])
+# select countries
+Austria = as.numeric(df_iter[df_iter$Country=="Austria" & df_iter$Year==2008, ][, c(3:ncol(df_iter))])
+Azerbaijan = as.numeric(df_iter[df_iter$Country=="Azerbaijan" & df_iter$Year==2008, ][, c(3:ncol(df_iter))])
+Bahrain =  as.numeric(df_iter[df_iter$Country=="Bahrain" & df_iter$Year==2008, ][, c(3:ncol(df_iter))])
+Uruguay = as.numeric(df_iter[df_iter$Country=="Uruguay" & df_iter$Year==2008, ][, c(3:ncol(df_iter))])
+Venezuela = as.numeric(df_iter[df_iter$Country=="Venezuela" & df_iter$Year==2008, ][, c(3:ncol(df_iter))])
+Argentina = as.numeric(df_iter[df_iter$Country=="Argentina" & df_iter$Year==2008, ][, c(3:ncol(df_iter))])
+
+
+df = data.frame(Austria, Azerbaijan, Bahrain, Uruguay, Venezuela, Argentina)
+rownames(df) = iter1
 
 
 
 
 
+# Everything on the same plot
+theme_set(theme_minimal())
+
+
+ggplot(data = df) +
+  geom_line(aes(x = iter1, y = Austria)) + 
+  geom_point(aes(x = iter1, y = Austria)) +
+   geom_line(aes(x = iter1, y = Azerbaijan)) + 
+  geom_point(aes(x = iter1, y = Azerbaijan)) +
+   geom_line(aes(x = iter1, y = Bahrain)) + 
+  geom_point(aes(x = iter1, y = Bahrain)) +
+   geom_line(aes(x = iter1, y = Uruguay)) + 
+  geom_point(aes(x = iter1, y = Uruguay)) +
+   geom_line(aes(x = iter1, y = Venezuela)) + 
+  geom_point(aes(x = iter1, y = Venezuela)) +
+   geom_line(aes(x = iter1, y = Argentina)) + 
+  geom_point(aes(x = iter1, y = Argentina))
 
 ```
 
