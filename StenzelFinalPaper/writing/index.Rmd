@@ -118,7 +118,6 @@ theme_set(theme_classic() + # start with classic theme
     plot.title.position = "plot", # move the plot title start slightly 
     legend.position = "bottom" # by default, put legend on the bottom
   ))
-set.seed(2021)
 ```
 
 # Introduction

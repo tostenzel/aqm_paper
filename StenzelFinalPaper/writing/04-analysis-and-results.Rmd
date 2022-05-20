@@ -13,9 +13,10 @@ The results for countries blabla by Classen2020 are shown in Figure blabla...
 # time chunk execution
 start_time <- Sys.time()
 
-# options for logging and parallelization
-rstan_options(auto_write = TRUE)
+# parallelization
 options(mc.cores = parallel::detectCores())
+#aa llows you to automatically save a bare version of a compiled Stan program to the hard disk so that it does not need to be recompiled (unless you change it). You will need to run these commands each time you load the rstan library.
+rstan_options(auto_write = TRUE)
 
 # prepare data for stan
 n.items = length(unique(df2$Item))
@@ -48,42 +49,52 @@ pars.5 = c("mu_lambda","sigma_lambda","sigma_delta","sigma_theta","phi","lambda"
             "x_pred","log_lik")
 
 # iterations
-n.iter = 500
-n.warm = 250
+#n.iter = 500
 n.chn = 4
 n.thin = 1
+times = c()
+t = 1
+#itergrid = seq(from=12, to=24, by=2)
+itergrid =  seq(from=370, to=1000, by=30)
+for(n.iter in itergrid){
+n.warm = n.iter/2
 
-# best model from PA article (model 5)
-stan.mod.5 = stan(file='model5.stan', data=dat.2, pars=pars.5, 
-                   iter=n.iter, warmup=n.warm, chains=n.chn, thin=n.thin, 
-                   control=list(adapt_delta=0.99, stepsize=0.02, max_treedepth=11))
 
-
-#### Extract theta estimates
-
-theta.out = rstan::extract(stan.mod.5, pars = c("theta"))[[1]]
-theta.std = (theta.out - mean(as.vector(theta.out))) / sd(as.vector(theta.out)) # standardize
-theta.out.t = apply( theta.std, 1, function(x) t(x) )
-theta.out.df = data.frame(Country=rep(cnt.names, length.out=n.cntrys*30), 
-                          ISO_code=rep(cnt.code, length.out=n.cntrys*30),
-                          Year=rep(1988:2017, each=n.cntrys), theta.out.t)
-theta.pe = theta.out.df[,1:3]
-theta.dim = dim(theta.out.df)[2]
-theta.pe$SupDem_trim = apply(theta.out.df[,4:theta.dim], 1, mean)
-
-first.yr = data.frame(Country=levels(df2$Country),
-                      First_yr = as.vector(by(df2, df2$Country, function(x) min(as.numeric(x$Year))+1987)))
-
-theta.pe = merge(theta.pe, first.yr, by="Country", all.x=TRUE)
-cnts = theta.pe[theta.pe$Year==2008, "Country"]
-frst.yr = theta.pe[theta.pe$Year==2008, "First_yr"]
-for(i in 1:length(cnts)) {
-  theta.pe[theta.pe$Country==cnts[i] & theta.pe$Year<frst.yr[i], "SupDem_trim"] = NA
+  # best model from PA article (model 5)
+  stan.mod.5 = stan(file='model5.stan', data=dat.2, pars=pars.5, 
+                     iter=n.iter, warmup=n.warm, chains=n.chn, thin=n.thin, 
+                     control=list(adapt_delta=0.99, stepsize=0.02, max_treedepth=11), seed=n.iter)
+  
+  
+  #### Extract theta estimates
+  
+  theta.out = rstan::extract(stan.mod.5, pars = c("theta"))[[1]]
+  theta.std = (theta.out - mean(as.vector(theta.out))) / sd(as.vector(theta.out)) # standardize
+  theta.out.t = apply( theta.std, 1, function(x) t(x) )
+  theta.out.df = data.frame(Country=rep(cnt.names, length.out=n.cntrys*30), 
+                            ISO_code=rep(cnt.code, length.out=n.cntrys*30),
+                            Year=rep(1988:2017, each=n.cntrys), theta.out.t)
+  theta.pe = theta.out.df[,1:3]
+  theta.dim = dim(theta.out.df)[2]
+  theta.pe$SupDem_trim = apply(theta.out.df[,4:theta.dim], 1, mean)
+  
+  first.yr = data.frame(Country=levels(df2$Country),
+                        First_yr = as.vector(by(df2, df2$Country, function(x) min(as.numeric(x$Year))+1987)))
+  
+  theta.pe = merge(theta.pe, first.yr, by="Country", all.x=TRUE)
+  cnts = theta.pe[theta.pe$Year==2008, "Country"]
+  frst.yr = theta.pe[theta.pe$Year==2008, "First_yr"]
+  for(i in 1:length(cnts)) {
+    theta.pe[theta.pe$Country==cnts[i] & theta.pe$Year<frst.yr[i], "SupDem_trim"] = NA
+  }
+  path = paste("output/stan_est_sup_dem_m5_run", as.character(n.iter), ".csv", sep="")
+  write.csv(theta.pe, path , row.names=FALSE)
+  
+  end_time <- Sys.time()
+  times[t] = end_time - start_time
+  t = t+1
 }
+save(times, itergrid, file = "output/comp_times.RData")
 
-write.csv(theta.pe, "output/stan_est_sup_dem_m5.csv", row.names=FALSE)
-
-end_time <- Sys.time()
-end_time - start_time
 
 ```
