@@ -1,0 +1,88 @@
+@Claassen2019estimating's approach for simulating dense panel data for PSD has the following three main steps: Step 1 is to define a sensible model of PSD item responses as a function of latent public opinion. Step 2 is to estimate the model parameters with the Metropolis Hastings Algorithm. Step 3 is to simulate the the data from the estimated model.
+
+## The Latent Variable Model
+
+@Claassen2019estimating draws four principles from the literature to model cross-national timeseries for PSD: First, public opinion is an unobserved, latent trait that differs for each year and country and each observed item response is a function of the latent trait. The function should therefore contain item-specific parameters to disaggregate the latent trait into multiple item responses and to account for heterogenuous item functioning. Second, estimating the latent variable from item-specific responses can be thought of as *smoothing* the opinion estimate over items since the latent variable does not contain this dimension. One should also smooth over the time dimension by not only estimating the latent traits for each time period but also by estimating the parameters that define a transitional model that holds for all periods. Therewith, the other values can additionally be simulated from a start value. Third, we should not model the percentage of positive item responses but the number of positive and negative responses directly. With that, we can model the problem of smaller response samples. In the following I describe how @Claassen2019estimating incorporates these principles in the definition of his main model^[The main model is called model 5 in @Claassen2019estimating. It achieves lowest discrepancy between simulated and actual data and has the fifth highest complexity of six different specifications.] that we will call $f$.\newline
+
+
+\noindent
+For each country $i$, year $t$, survey item $k$, the number of positive answers is distributed binomially with $s$ as the number of total respondents and $\pi$ as the probability of responding with yes.
+\begin{equation}
+(\#eq:num-resp)
+y_{ikt} \sim \text{Binomial}(s_{ikt}, \pi_{ikt})
+\end{equation}
+We could now model $\pi_{ikt}$ directly as a function of country-year and item-specific effects, $\theta_{it}$ and $\lambda_k$, respectively. However, we introduce additional dispersion by using another link function to introduce additional dispersion. This is justified because survey data on public opinion are subject to various kinds of errors, for instance, translation, selection and interviewer mistakes. We model this error with the additional dispersion that is introduced by the beta distribution in Equation \@ref(eq:prob-yes).
+
+\begin{equation}
+(\#eq:prob-yes)
+\pi_{ikt} \sim \text{Beta}(\alpha_{ikt}, \pi_{ikt})
+\end{equation}
+
+\noindent
+Further, we reparametrize the two shape parameters $\alpha$ and $\beta$ to an expectation parameter $\eta$ and a disperion paramter $\phi$ in Equation \@ref(eq:expec) and \@ref(eq:dispersion).
+
+\begin{equation}
+(\#eq:expec)
+\alpha_{ikt} = \phi \eta_{ikt}
+\end{equation}
+
+\begin{equation}
+(\#eq:dispersion)
+\beta_{ikt} = \phi (1 - \eta_{ikt})
+\end{equation}
+
+\noindent
+Now, we define the expectation of the number of positive responses per year, item and country as a function of item bias $\lambda$, country-specific item bias $\delta$ and latent, dynamic, country-specific PSD $\theta$ as in Equation \@ref(eq:latent-country-year).
+
+\begin{equation}
+(\#eq:latent-country-year)
+\eta_{ikt} = \text{logit}^{-1}(\lambda_k + \delta_{ik} + \theta_{it})
+\end{equation}
+
+\noindent
+The item bias effect is distributed normally with expectation $\mu_{\lambda}$ and variance $\sigma_{\lambda}^2$. 
+
+\begin{equation}
+(\#eq:item-intercept)
+\lambda_k = \mathcal{N}(\mu_{\lambda}, \sigma_{\lambda}^2)
+\end{equation}
+
+\noindent
+To model the heterogeneity of item country across item bias across countries (@Stegmueller2011), we introduce the set of item by country effects that we call $\delta$ according to Equation \@ref(eq:country-effects).
+
+\begin{equation}
+(\#eq:country-effects)
+\delta_k = \mathcal{N}(0, \sigma_{\delta}^2)
+\end{equation}
+
+\noindent
+Our main parameter set, the latent parameters $\theta$, capture the underlying time- and country-specific support for democracy. We fully capture the time dimension of the model by modeling the dynamics of $\theta$ as an AR(1) process with normally distributed error term with variance $\sigma_{\theta}^2$, zero intercept, and zero covariance as implied by Equation \@ref(eq:dynamics).
+
+\begin{equation}
+(\#eq:dynamics)
+\theta_{it} = \mathcal{N}(\theta_{i,t-1}, \sigma_{\theta}^2)
+\end{equation}
+
+## Model Estimation with Metropolis-Hastings
+
+One main application for the MH algorithm is Bayesian inference. Specifically, we want to estimate parameters $\Theta$ of some probabilistic model $f$. We have only limited prior knowledge of the distribution of $\Theta$, for instance about its domain, that we use to define prior distributions $p(\Theta)$. And we have a likelihood sample of $f$ given the unknown $\Theta$, namely $p(y|\Theta)$. This is our PSD data $y_{ikt}$. We want to use both, our prior knowledge and our data, to get our posterior distribution $p(\Theta|y)$ in Equation \@ref(eq:bayes). In this equation, posterior and likelihood are scaled by $\frac{1}{p(y)}$. Without closed-form distributions $p(y)$ is usually unknown. This also implies that the posterior is proportional to the product of likelihood and prior.
+
+\begin{equation}
+(\#eq:bayes)
+p(\Theta|y) = \frac{\mathcal{L}(y|\Theta)p(\Theta)}{p(y)} \propto \mathcal{L}(y|\Theta)p(\Theta)
+\end{equation}
+
+\noindent
+An important insight is that our parameter vector $\Theta$ does not only include
+parameters defined as distributional means, for instance $\theta$, but also
+standard deviations like $\sigma_{\theta}$. If our problem would not include those
+variation parameters, a more direct option would be to solve $\mathcal{L}(y|\Theta)p(\Theta)$ directly with the usual optimization algorithms. These would
+propose new values of $\Theta$, evaluate its prior probability and the likelihood of
+the data given $\Theta$ until convergence and return the posterior mode. The mode is also called the maximum a posteriori probability (MAP) estimate. Yet, since we need to estimate standard deviations, 
+we have to generate the whole parameter distributions to compute mean and variation. To this end, we use a Markov chain Monte Carlo (MCMC) method, namely the Metropolis Hastings (MH) algorithm.
+
+Markov chains are stochastic processes that define distributions dependent on the values from the previous period only. Hence, the MH algorithm uses Markov chains to sample candidate parameters $\Theta_i^*$ depending on $\Theta_{i-1}$. For each candidate $\Theta_i^*$, the algorithm uses the unscaled posterior, $\mathcal{L}(y|\Theta_i)p(\Theta_i)$, and compares it with the posterior of $\Theta_{i-1}$ (not requiring constant $p(y)$) to accept or reject new candidates. Comparing relative posterior probabilities and using this comparison for selecting new candidates proportional to their relative probability allows us to sample from the posterior without knowing $y$. The algorithm thus explores the domain proportionally to the posterior probability after a number of initial iterations. Besides the model specification using the MH algorithm requires the following choices: the choice of the prior distribution(s) $p(\Theta)$, the choice of the proposal distribution $g(y_i, y_{i-1})$, and the number of initial parameters to drop, i.e. the length of the warmup period. I include a more technical explanation of the MH algorithm with more general notation in the Appendix.
+
+## Simulaton
+
+We can now use the parameter estimates and the probabilistic model including the distributional assumptions to simulate the dense PSD panel data. It is important to note that Claassen does not use the actual PSD item data but replaces it by the average of multiple simulation runs. Therefore, his method is not a imputation but a smoothing and completion method.
