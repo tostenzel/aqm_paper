@@ -117,7 +117,7 @@ urlcolor=mannheimblue}
 % % \usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
 % \usepackage{hyperref}
 \hypersetup{unicode=true,
-            pdftitle={On Using Metropolis-Hasting to Analyze Democratic Support},
+            pdftitle={On Using Metropolis-Hastings to Analyze Democratic Support},
             pdfauthor={Tobias Stenzel},
             pdfborder={0 0 0},
             breaklinks=true}
@@ -259,7 +259,7 @@ Department of Political Science}}
 \rule{\linewidth}{\linethickness}
 
 
-       \LARGE{ \textbf{   On Using Metropolis-Hasting to Analyze Democratic Support   }}
+       \LARGE{ \textbf{   On Using Metropolis-Hastings to Analyze Democratic Support   }}
 
         % \vspace{-0.5cm}
 
@@ -341,17 +341,17 @@ Department of Political Science}}
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-In recent years scholars have found declining support for democracy in long-established democracies. (Denemark et al. 2016; Foa and Mounk 2016, 2017; Norris 2017; Voeten 2016). This finding raises two important questions: First, what are the reasons for this decline, and second, what are its implications, i.e., does a decline in democratic support endanger the survival of these democracies?
+In recent years scholars have found declining support for democracy in long-established democracies. (Denemark et al. 2016; Foa and Mounk 2016, 2017; Norris 2017; Voeten 2016). This finding raises two important questions: First, what are the reasons for this decline, and second, what are its implications, i.e., does a decline in democratic support endanger the survival of democracy?
 
-A series of recent articles (Claassen 2019, 2020a, 2020b) researches these questions and presents novel results. Regarding the first question, Claassen (2020a) finds -- in contrary to the the widely held belief of self-reinforcing democracies -- that democratic support naturally fluctuates over time. The reasons is that increases in democracy levels lead to decreases in public support and vice versa. Regarding question two, so far the results about the relationship between democratic support and its survival have been mixed. Claassen (2020a), however, finds supporting evidence for the natural theory that democratic support plays a positive role in the system's survival.
+A series of recent articles (Claassen 2019, 2020a, 2020b) researches these questions and presents novel results. Regarding the first question, Claassen (2020a) finds -- in contrary to the the widely held belief of self-reinforcing democracies -- that democratic support naturally fluctuates over time. The reasons is that increases in democracy levels lead to decreases in public support and vice versa. Regarding the second question, so far the results about the relationship between democratic support and its survival have been mixed. Claassen (2020a), however, finds supporting evidence for the natural theory that democratic support plays a positive role in the system's survival.
 
-A main obstacle for researching democratic support is that current panel data contains a large number of missing values. Claassen (2019) finds an approach to simulate dense panel data from the actual fractured data. The two most recent studies both rely on this data. His approach consists of three steps: First, assume a probabilistic structural model of democratic support. Second, estimate its parameters via the Metropolis Hastings algorithm using the fractured data. Third, simulate the data using the model and the large number of parameter estimates.
+A main obstacle for researching democratic support is that current panel data contains a large number of missing values. Claassen (2019) finds an approach to deal with this problem by simulating dense panel data from the actual fractured data. The two most recent studies both rely on this simulated data. His approach consists of three steps: First, assume a probabilistic structural model of democratic support. Second, estimate its parameters via the Metropolis Hastings algorithm from the fractured data. Third, simulate new data using the model and the parameter estimates.
 
 The objective of this work is to evaluate the robustness of Claassen's findings towards changes in the method's hyperparameters. In other words, I incorparate the uncertainty about the right choice of hyperparameters into Claassen's results to test their reliability. In particular, I propagate a random set of hyperparameters through Claassen's estimation procedure. This is important because arbitrary hyperparameter choices can potentially lead to false or at least random results. Therefore, the respective parametric uncertainty should always be reported along the point estimate.
 
 I come to the following results:
 
-The final paper is structured as follows: Section 2 reviews the literature of public support with a focus on Claassen's papers and defines the concept. Section 3 explains Claassen's model of public support, its estimation and my approach for the uncertainty propagation. Section 4 presents the results and Section 5 discusses the findings. Section 6 concludes.
+The final paper is structured as follows: Section 2 reviews the literature of public support with a focus on Claassen's papers, defines the concept and looks at the data. Section 3 explains Claassen's model of public support, its estimation and my approach for the uncertainty propagation. Section 4 presents the results and Section 5 discusses the findings. Section 6 concludes.
 
 \hypertarget{literature-review-and-data}{%
 \section{Literature Review and Data}\label{literature-review-and-data}}
@@ -359,32 +359,32 @@ The final paper is structured as follows: Section 2 reviews the literature of pu
 \hypertarget{the-concept-of-democratic-support}{%
 \subsection{The Concept of Democratic Support}\label{the-concept-of-democratic-support}}
 
-There are two major conceptualizations of public support for democracy (PSD). First, the \enquote{implicit} approach that requires the support for broader sociopolitical values like post-materialism and egalitarianism. Here, people support democracy implicitly if they support the values that are framed as particularly democratic. Second, the \enquote{explicit} approach that requires both an appraisal of democracy and a rejection of autocratic alternatives. Some studies also refer to PSD measured on the national level as \enquote{mood.}
+There are two major conceptualizations of public support for democracy (PSD)\footnote{Some studies also refer to PSD measured on the national level as \enquote{mood.}}. First, the \enquote{implicit} approach that requires the support for broader sociopolitical values like post-materialism and egalitarianism. Here, people support democracy implicitly if they support the values that are framed as particularly democratic. Second, the \enquote{explicit} approach that requires both an appraisal of democracy and a rejection of aut ocratic alternatives. Different studies use different concepts although the explicit approach more direct.
 
 \hypertarget{drivers-of-democratic-support}{%
 \subsection{Drivers of Democratic Support}\label{drivers-of-democratic-support}}
 
-The main theory about why citizen and societies begin to support democracy are called \emph{generational socialization} and \emph{instrumental regime performance}. The first theory assumes that individuals are taught to support the regime under which they are socialized during late adolescence (Mannheim 1970; Niemi 1974). One implication is that after a shift to democracy, the support for it will grow over time (Denemark et al. (2016)). Indeed, several single-country studies have found evidence for this claim, for example for 1970s Germany (Baker et al. (1981)), 1980s Spain (Montero, Gunther, and Torcal (1997)), and 1990s Russia (Mishler and Rose (2007)). One the other hand, other studies do not find such an effect analyzing other Central and Eastern European countries (Mishler and Rose (2002)). Furthermore, more recent studies even find a decline in PSD over the last years (Foa and Mounk 2016, 2017).
+The main theory about why citizen and societies begin to support democracy are called \emph{generational socialization} and \emph{instrumental regime performance}. The first theory assumes that individuals are taught to support the regime under which they are socialized during late adolescence (Mannheim 1970; Niemi 1974). One implication is that after a shift to democracy, the support for it will grow over time (Denemark et al. (2016)). Indeed, several single-country studies have found evidence for this claim, for example for 1970s Germany (Baker et al. (1981)), 1980s Spain (Montero, Gunther, and Torcal (1997)), and 1990s Russia (Mishler and Rose (2007)). One the other hand, other studies come to different results: First, Mishler and Rose (2002) do not find such an effect analyzing other Central and Eastern European countries. Second, more recent studies even find a decline in PSD over the last years (Foa and Mounk 2016, 2017).
 
-Regarding the second theory, instrumental regime performance, PSD rises if the system performs well in terms of instrumental benefits such as economic growth and it declines if the opposite is the case (Dalton 1994; Magalhães 2014). Consequently, the theory suggests that during PSD declines during economic crises. However, there are case-studies that do (Dalton 1994; Magalhães 2014; Mishler and Rose 1996) and that do not (Graham and Sukhtankar (2004)) find this relationship in the data.
+Regarding the second theory, instrumental regime performance, PSD rises if the system performs well in terms of instrumental benefits such as economic growth and it declines if regimes perform poorly (Dalton 1994; Magalhães 2014). Consequently, the theory suggests that during PSD declines during economic crises. However, there are case-studies that find (Dalton 1994; Magalhães 2014; Mishler and Rose 1996) and that do not find find this relationship in the data (Graham and Sukhtankar (2004)).
 
-Claassen (2020b) offers an alternative theory in transferring the thermostatic model of public opinion and policy (Wlezien (1995)) to democracy and democratic support. In particular, he suggests that there is a negative feedback loop between PSD and democracy so that PSD decreases if democracy supply increases and vice versa. In short, the reasoning is that the output of democratic rights and institutions overshoots the initial desire for them which causes another overcompensation in favor of lower levels of democracy. Moreover, Claassen (2020b) finds different causal channels for electoral and minoritarian democracies. These two sub-types differ in the degree to which the majority holds juridical power. Therefore, he tests the following hypotheses: First, increases in democracy have a negative effect on PSD (H1), Second, he specifically looks at electoral (H1-elec) and minoritarian democracies (H1-min). In his analysis he finds evidence for H1 and H1-min but not for H1-elec.
+Claassen (2020b) offers an alternative theory in transferring the thermostatic model of public opinion and policy (Wlezien (1995)) to democracy and democratic support. In particular, he suggests that there is a negative feedback loop between PSD and democracy so that PSD decreases if democracy supply increases and vice versa. In short, the reasoning is that the output of democratic rights and institutions overshoots the initial desire for these rights which causes another overcompensation in favor of lower levels of democracy. Moreover, Claassen (2020b) differentiates two causal channels: One for electoral and a second for minoritarian democracies. These two sub-types differ in the degree to which the majority holds juridical power. Therefore, he tests the following hypotheses: First, increases in democracy have a negative effect on PSD (H1), Second, he specifically looks at electoral (H1-elec) and minoritarian democracies (H1-min). In his analysis he finds evidence for H1 and H1-min but not for H1-elec.
 
 \hypertarget{democratic-support-and-survival-of-democracy}{%
 \subsection{Democratic Support and Survival of Democracy}\label{democratic-support-and-survival-of-democracy}}
 
-Claassen (2020a) distinguishes between two types of PSD: diffuse and specific. Specific PSD is instrumental and focuses on regime outputs (similar to the instrumental regime performance theory), whereas diffuse support is normative and focuses on the principles of the regime. Therefore, principled PSD is more durable than specific support and helps cushioning regimes in times of political or economic crises. It is thus principled PSD that helps to ensure the survival of democracy. Although the theory is widely accepted (e.g., Norris (2017), Booth and Seligson (2009), Mattes and Bratton (2007)), the findings so far have also been mixed with supporting contributions (Inglehart 2003; Welzel and Inglehart 2005) and contributions against the theory (Fails and Pierce 2010; Hadenius and Teorell 2005; Qi and Shin 2011; Welzel 2007). Astonishingly, these studies essentially analyze the same data from the World Value Survey starting at wave 3 where respective PSD items are included.
+Claassen (2020a) distinguishes between two types of PSD: diffuse and specific. Specific PSD is instrumental and focuses on regime outputs (similar to the instrumental regime performance theory), whereas diffuse support is normative and focuses on the principles of the regime. Therefore, principled PSD is more durable than specific support and helps cushioning regimes in times of political or economic crises. It is thus principled PSD that helps to ensure the survival of democracy. Although the theory is widely accepted (e.g., Norris (2017), Booth and Seligson (2009), Mattes and Bratton (2007)), so far the findings have also been mixed with supporting contributions (Inglehart 2003; Welzel and Inglehart 2005) and contributions against the theory (Fails and Pierce 2010; Hadenius and Teorell 2005; Qi and Shin 2011; Welzel 2007). Astonishingly, these studies all essentially analyze the same data from the World Value Survey starting at wave 3 where respective PSD items are included and still come to different varying results.
 
-Claassen (2020a) does not only look at the relationship between PSD and democractic survival but also between PSD and democratic emergence. He includes the argument made by Qi and Shin (2011) that PSD may also function as democratic demand, thus increasing the probability of transitioning from autocracy to democracy. Claassens hypotheses thus are: First, PSD is positively associated with subsequent change in democracy regardless of the initial level of democracy. Second, he specifically looks at PSD in already-existing democracies (H2-dem) and at PSD in autocracies (H2-aut). He finds evidence in support of H2-dem, mixed evidence for H2 and no evidence for H2-aut.
+Claassen (2020a) does not only look at the relationship between PSD and democractic survival but also between PSD and democratic emergence. He includes the argument made by Qi and Shin (2011) that PSD may also function as democratic demand, thus increasing the probability of transitioning from autocracy to democracy. Claassen's hypotheses are: First, PSD is positively associated with subsequent change in democracy regardless of the initial level of democracy. Second, he specifically looks at PSD in already-existing democracies (H2-dem) and at PSD in autocracies (H2-aut). He finds evidence in support of H2-dem, mixed evidence for H2 and no evidence for H2-aut.
 
 \hypertarget{measuring-democratic-support-and-the-data-challenge}{%
 \subsection{Measuring Democratic Support and the Data Challenge}\label{measuring-democratic-support-and-the-data-challenge}}
 
 We measure PSD with existing survey data on the national level. In particular, we focus on principled support. The questions ask for the respondent's opinion on the appropriateness or desirability of democracy and undemocratic alternatives and comparisons between both.\footnote{The 8 included survey items and their different variants can be found on \href{http://chrisclaassen.com/docs/Democratic_mood_supp_materials.pdf}{the author's webpage}.}
 
-Such items are available in 14 survey projects,\footnote{World and European Values Surveys, the Afrobarometer, Arab Barometer, Latinobarometer, Asiabarometer, Asian Barometer, South Asia Barometer, New Europe Barometer, Latin American Public Opinion Project, Eurobarometer, European Social Survey, pew Global Attitudes Project, and the Comparative Study of Electoral Systems} for 150 countries, and from 1988 to 2017. Combined, the dataset includes 3,765 nationally aggregated binary responses from 1,390 nationally representative survey samples.
+Such items are available in 14 survey projects\footnote{World and European Values Surveys, the Afrobarometer, Arab Barometer, Latinobarometer, Asiabarometer, Asian Barometer, South Asia Barometer, New Europe Barometer, Latin American Public Opinion Project, Eurobarometer, European Social Survey, pew Global Attitudes Project, and the Comparative Study of Electoral Systems}, for 150 countries from 1988 to 2017. Combined, the dataset includes 3,765 nationally aggregated binary responses from 1,390 nationally representative survey samples.
 
-The data, however, poses the following challenge: It is highly fractured across time and space, with many -- oftentimes large -- gaps along the time dimension for all countries. Although we look at a 30 years time span, the average number of covered years is slightly below 8. For instance, China is the country with most participants over all years, namely 20895. However, from 1988 to 2020, the data available covers only 8 years: 2001-2003, 2006-2009, and 2011/2012. Many countries are not covered at all or only surveyed once. The South American countries, however, tend to have the best coverage. For instance, Argentina tops the list with 23 years included. Germany and the US are available for 12 and 13 years, respectively.
+The data, however, poses the following challenge: It is highly fractured across time and space, with many -- oftentimes large -- gaps along the time dimension for all countries. Although we look at a 30 years time span, the average number of covered years is slightly below 8. Take, for instance, China as the country with most participants over all years, namely 20895. From 1988 to 2017, however, the data available covers only 8 years: 2001-2003, 2006-2009, and 2011/2012. Many countries are not covered at all or only surveyed once. The South American countries tend to have the best coverage. For example, Argentina tops the list with 23 years included. Germany and the US are available for 12 and 13 years, respectively.
 
 Figure \ref{fig:sparse-data} gives an overview of the sparseness of the data. The first panel shows the availability of at least one survey item across a selection of eight countries from 1990 to 2017. The other three panels focus on the three most common question themes. We see that the single item data is indeed sparse and that even the aggregated data contains lots of gaps.
 
@@ -403,15 +403,15 @@ Claassen (2019)'s approach for simulating dense panel data for PSD has the follo
 \hypertarget{the-latent-variable-model}{%
 \subsection{The Latent Variable Model}\label{the-latent-variable-model}}
 
-Claassen (2019) draws four principles from the literature to model cross-national timeseries for PSD: First, public opinion is an unobserved, latent trait that differs for each year and country. Then, each observed item response is a function of the latent trait. The function should therefore contain item-specific parameters to disaggregate the latent trait into multiple item responses and to account for heterogenuous item functioning. Second, estimating the latent variable from item-specific responses can be though of as \emph{smoothing} the opinion estimate over items since the latent variable does not contain this dimension. One should also smooth over the time dimension by not estimating the latent traits for each time period but rather by estimating the parameters that define a transitional model that holds for all periods. Third, we should not model the percentage of positive item responses but the number of positive and negative responses directly. With that, we can model the problem of smaller response samples. In the following I describe how Claassen (2019) incorporates these principles in the definition of his main model\footnote{The main model is called model 5 in Claassen (2019). It achieves lowest discrepancy between simulated and actual data and has the fifth highest complexity of six different specifications.} that we will call \(f\).\newline
+Claassen (2019) draws four principles from the literature to model cross-national timeseries for PSD: First, public opinion is an unobserved, latent trait that differs for each year and country and each observed item response is a function of the latent trait. The function should therefore contain item-specific parameters to disaggregate the latent trait into multiple item responses and to account for heterogenuous item functioning. Second, estimating the latent variable from item-specific responses can be thought of as \emph{smoothing} the opinion estimate over items since the latent variable does not contain this dimension. One should also smooth over the time dimension by not only estimating the latent traits for each time period but also by estimating the parameters that define a transitional model that holds for all periods. Therewith, the other values can additionally be simulated from a start value. Third, we should not model the percentage of positive item responses but the number of positive and negative responses directly. With that, we can model the problem of smaller response samples. In the following I describe how Claassen (2019) incorporates these principles in the definition of his main model\footnote{The main model is called model 5 in Claassen (2019). It achieves lowest discrepancy between simulated and actual data and has the fifth highest complexity of six different specifications.} that we will call \(f\).\newline
 
 \noindent
-For each country \(i\), year \(t\), survey item \(k\), the number of positive answers is distrubted binomially with \(s\) as the number of total respondands and \(\pi\) as the probability of responding with yes.
+For each country \(i\), year \(t\), survey item \(k\), the number of positive answers is distributed binomially with \(s\) as the number of total respondents and \(\pi\) as the probability of responding with yes.
 \begin{equation}
 \label{eq:num-resp}
 y_{ikt} \sim \text{Binomial}(s_{ikt}, \pi_{ikt})
 \end{equation}
-We could now model \(\pi_{ikt}\) directly as a function of country-year and item-specific effects, \(\theta_{it}\) and \(\lambda_k\), respectively. However, we introduce additional dispersion by using another link function, the beta distribution to introduce additional dispersion. Survey data on public opinion are subject to various kinds of errors, for instance, translation, selection and interviewer mistakes. We model this error with the additional dispersion introduce by the beta distribution in Equation \eqref{eq:prob-yes}.
+We could now model \(\pi_{ikt}\) directly as a function of country-year and item-specific effects, \(\theta_{it}\) and \(\lambda_k\), respectively. However, we introduce additional dispersion by using another link function to introduce additional dispersion. This is justified because survey data on public opinion are subject to various kinds of errors, for instance, translation, selection and interviewer mistakes. We model this error with the additional dispersion that is introduced by the beta distribution in Equation \eqref{eq:prob-yes}.
 
 \begin{equation}
 \label{eq:prob-yes}
@@ -419,7 +419,7 @@ We could now model \(\pi_{ikt}\) directly as a function of country-year and item
 \end{equation}
 
 \noindent
-We reparametrize the two shape parameters \(\alpha\) and \(\beta\) to an expectation parameter \(\eta\) and a disperion paramter \(\phi\) in Equation \eqref{eq:expec} and \eqref{eq:dispersion}.
+Further, we reparametrize the two shape parameters \(\alpha\) and \(\beta\) to an expectation parameter \(\eta\) and a disperion paramter \(\phi\) in Equation \eqref{eq:expec} and \eqref{eq:dispersion}.
 
 \begin{equation}
 \label{eq:expec}
@@ -432,7 +432,7 @@ We reparametrize the two shape parameters \(\alpha\) and \(\beta\) to an expecta
 \end{equation}
 
 \noindent
-Now, we define the expectation of the number of positive responses per year, item and country as a function of item bias \(\lambda\), country-specific item bias \(\delta\) and latent, dynamic, country-specific PSD \(\theta\).
+Now, we define the expectation of the number of positive responses per year, item and country as a function of item bias \(\lambda\), country-specific item bias \(\delta\) and latent, dynamic, country-specific PSD \(\theta\) as in Equation \eqref{eq:latent-country-year}.
 
 \begin{equation}
 \label{eq:latent-country-year}
@@ -448,7 +448,7 @@ The item bias effect is distributed normally with expectation \(\mu_{\lambda}\) 
 \end{equation}
 
 \noindent
-To model the heterogeneity of item country across item bias across countries (Stegmueller (2011)), we introduce the set of item by country effects \(\delta\).
+To model the heterogeneity of item country across item bias across countries (Stegmueller (2011)), we introduce the set of item by country effects that we call \(\delta\) according to Equation \eqref{eq:country-effects}.
 
 \begin{equation}
 \label{eq:country-effects}
@@ -466,7 +466,7 @@ Our main parameter set, the latent parameters \(\theta\), capture the underlying
 \hypertarget{model-estimation-with-metropolis-hastings}{%
 \subsection{Model Estimation with Metropolis-Hastings}\label{model-estimation-with-metropolis-hastings}}
 
-One main application for the MH algorithm is Bayesian inference. Specifically, we want to estimate parameters \(\Theta\) of some probabilistic model \(f\). We have only limited prior knowledge of the distribution of \(\Theta\), for instance about its domain, that we use to define prior distributions \(p(\Theta)\). And we have a likelihood sample of \(f\) given the unknown \(\Theta\), namely \(p(y|\Theta)\). This would be our PSD data \(y_{ikt}\). We want use both, our prior knowledge and our data, to get our posterior distribution \(p(\Theta|y)\) in Equation \eqref{eq:bayes}. In this equation, posterior and likelihood are scaled by \(\frac{1}{p(y)}\). Without closed-form distributions, \(p(y)\) is usually unknown. This also implies that the posterior is proportional to the product of likelihood and prior.
+One main application for the MH algorithm is Bayesian inference. Specifically, we want to estimate parameters \(\Theta\) of some probabilistic model \(f\). We have only limited prior knowledge of the distribution of \(\Theta\), for instance about its domain, that we use to define prior distributions \(p(\Theta)\). And we have a likelihood sample of \(f\) given the unknown \(\Theta\), namely \(p(y|\Theta)\). This is our PSD data \(y_{ikt}\). We want to use both, our prior knowledge and our data, to get our posterior distribution \(p(\Theta|y)\) in Equation \eqref{eq:bayes}. In this equation, posterior and likelihood are scaled by \(\frac{1}{p(y)}\). Without closed-form distributions \(p(y)\) is usually unknown. This also implies that the posterior is proportional to the product of likelihood and prior.
 
 \begin{equation}
 \label{eq:bayes}
@@ -477,12 +477,17 @@ p(\Theta|y) = \frac{\mathcal{L}(y|\Theta)p(\Theta)}{p(y)} \propto \mathcal{L}(y|
 An important insight is that our parameter vector \(\Theta\) does not only include
 parameters defined as distributional means, for instance \(\theta\), but also
 standard deviations like \(\sigma_{\theta}\). If our problem would not include those
-variation parameters, a more direct option would be to solve \(\mathcal{L}(y|\Theta)p(\Theta)\) with the usual optimization algorithms. Those would
+variation parameters, a more direct option would be to solve \(\mathcal{L}(y|\Theta)p(\Theta)\) directly with the usual optimization algorithms. These would
 propose new values of \(\Theta\), evaluate its prior probability and the likelihood of
-the data given \(\Theta\) until convergence and return the posterior mode or maximum a posteriori probability (MAP) estimate. Yet, since we need to estimate standard deviations,
-we have to generate the whole parameter distributions to compute mean and variation. To this end, we use a Markov chain Monte Carlo (MCMC) method, namely the Metropolis Hastings algorithm.
+the data given \(\Theta\) until convergence and return the posterior mode. The mode is also called the maximum a posteriori probability (MAP) estimate. Yet, since we need to estimate standard deviations,
+we have to generate the whole parameter distributions to compute mean and variation. To this end, we use a Markov chain Monte Carlo (MCMC) method, namely the Metropolis Hastings (MH) algorithm.
 
-Markov chains are stochastic processes that define distributions dependent on the values from only the previous period. The MH algorithm uses Markov chains to sample candidate parameters \(\Theta_i^*\) depending on \(\Theta_{i-1}\). For each candidate \(\Theta_i^*\), the algorithm uses the unscaled posterior, \(\mathcal{L}(y|\Theta_i)p(\Theta_i)\), and compares it with the posterior of \(\Theta_{i-1}\) (not requiring constant \(p(y)\)) to accept or reject new candidates. Comparing relative posterior probabilities thus allows us to sample from the posterior without knowing \(y\). The algorithm thus explores the domain proportionally to the posterior probability after a number of initial iterations. Besides the model specification using the MH algorithm requires the following choices: the choice of the prior distribution(s) \(p(\Theta)\), the choice of the proposal distribution \(g(y_i, y_{i-1})\), and the number of initial parameters to drop, i.e.~the length of the burnin-period. I include a more technical explanation of the MH algorithm with more general notation in the Appendix.
+Markov chains are stochastic processes that define distributions dependent on the values from the previous period only. Hence, the MH algorithm uses Markov chains to sample candidate parameters \(\Theta_i^*\) depending on \(\Theta_{i-1}\). For each candidate \(\Theta_i^*\), the algorithm uses the unscaled posterior, \(\mathcal{L}(y|\Theta_i)p(\Theta_i)\), and compares it with the posterior of \(\Theta_{i-1}\) (not requiring constant \(p(y)\)) to accept or reject new candidates. Comparing relative posterior probabilities and using this comparison for selecting new candidates proportional to their relative probability allows us to sample from the posterior without knowing \(y\). The algorithm thus explores the domain proportionally to the posterior probability after a number of initial iterations. Besides the model specification using the MH algorithm requires the following choices: the choice of the prior distribution(s) \(p(\Theta)\), the choice of the proposal distribution \(g(y_i, y_{i-1})\), and the number of initial parameters to drop, i.e.~the length of the warmup period. I include a more technical explanation of the MH algorithm with more general notation in the Appendix.
+
+\hypertarget{simulaton}{%
+\subsection{Simulaton}\label{simulaton}}
+
+We can now use the parameter estimates and the probabilistic model including the distributional assumptions to simulate the dense PSD panel data. It is important to note that Claassen does not use the actual PSD item data but replaces it by the average of multiple simulation runs. Therefore, his method is not a imputation but a smoothing and completion method.
 
 \hypertarget{analysis-and-results}{%
 \section{Analysis and Results}\label{analysis-and-results}}
@@ -494,6 +499,11 @@ Our goal is to analyze the sensitivity of the MH algorithm towards changes in it
 parameters representing the main results in Claassen (2020b) and Claassen (2020a) would be most illustrative in terms of substantial effects, this choice has the two following disadvantages. First, because these statistical parameters are estimated from simulated data, they are influenced by randomness from the data simulation that could not be distinguished from the estimation-inherent randomness. Second, the additional steps of simulating data and estimating statistical models would potentially double the computation time. Therefore, I choose the latent, dynamic, country-specific PSD \(\theta\) as the Quantity of Interest.
 
 The results for countries blabla by Classen2020 are shown in Figure blabla\ldots{}
+
+\hypertarget{selection-of-hyperparameters}{%
+\subsection{Selection of Hyperparameters}\label{selection-of-hyperparameters}}
+
+Why not models and priors (Claassen), proposal dist (Stan) but warmup, n\_chains and n\_iters. (Even though convergence diagnostics) -\textgreater{} Principle of minimal iterations
 
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
@@ -507,18 +517,7 @@ The results for countries blabla by Classen2020 are shown in Figure blabla\ldots
 \hypertarget{introduction-1}{%
 \subsection{Introduction}\label{introduction-1}}
 
-The Metropolis-Hastings (MH) algorithm is a method for sampling data points from a probability distribution from which direct sampling is difficult. It places among the top 10 algorithms with the greatest influence on science and engineering in the 20th century (Beichl and Sullivan 2000). The MH algorithm belongs to the class of Markov chain Monte Carlo (MCMC) methods. In my explanation I assume prior knowledge on Monte Carlo sampling. However, I will describe the basics of Markov Chains. This section is structured as follows. First, I motivate the usage of the MH algorithm. Second, I explain the basics of Markov Chains. Third, I derive the algorithm and make clear why it works.
-
-\hypertarget{motivation}{%
-\subsection{Motivation}\label{motivation}}
-
-One main application for the MH algorithm is Bayesian inference. Specifically, we want to estimate parameters \(\theta\) of some probabilistic model \(f\). We have only limited prior knowledge of the distribution of \(\theta\), \(p(\theta)\), and we have a likelihood sample of \(f\) given the unknown \(\theta\), namely \(p(X|\theta)\). The goal is to estimate the posterior distribution of \(\theta\), \(p(\theta|X)\), given all information that we have. In practice, we do not have a formal definition of the likelihood but only observations. Therefore, we can only approximate the posterior by numerical integration, i.e., we need to sample many points from the posterior to describe it. We can then use the posterior sample to estimate \(\theta\) with the maximum a posteriori probability estimate.\newline
-
-\noindent
-Claassen (2019) uses the MH algorithm to impute gaps in a panel data set. His approach consists of four steps: First, assume a data generating process \(f\) parameterized by \(\theta\). Second, provide the algorithm with the incomplete data \(X\) as likelihood and select priors for \(\theta\) to obtain the posterior distribution \(p(\theta|X) = \frac{p(X|\theta)p(\theta)}{P(X)} \propto p(X|\theta)p(\theta)\). Third, use the values for \(\theta\) with the highest posterior probability as estimates for \(\theta\). Finally, insert these estimates into the assumed probabilistic, data generating model \(f\) and use it to sample the missing data.\newline
-
-\noindent
-In general and abstracting from Bayesian inference, the MH algorithm generates a sample of random states according to the desired probability distribution \(P(X)\). For this purpose, the algorithm employs a Markov process that converges to a unique stationary distribution \(\pi(x)\) with \(\pi(x)=P(X)\). This distribution can then be used for further steps as previously described. The next section explains the conceptual basics.
+The Metropolis-Hastings (MH) algorithm is a method for sampling data points from a probability distribution from which direct sampling is difficult. It places among the top 10 algorithms with the greatest influence on science and engineering in the 20th century (Beichl and Sullivan (2000)). The MH algorithm belongs to the class of Markov chain Monte Carlo (MCMC) methods. In my explanation I assume prior knowledge on Monte Carlo sampling. However, I will describe the basics of Markov Chains. As motivation serves section 3.2. in the main part of this paper about estimating Claassen (2019)'s latent PSD model. There, I also provide a more intuitive, high-level explanation. This section has two parts. First, I explain the basics of Markov Chains. Second, I derive the algorithm and show why it works.
 
 \hypertarget{markov-chains}{%
 \subsection{Markov Chains}\label{markov-chains}}
@@ -772,7 +771,7 @@ Note that the minimizer in \(A(x',x)\) enforces that the probability is below 1.
 \noindent
 Obviously, the construction of the acceptance ratio ensures reversibility. Ergodicity is ensured by the random nature with which we accept proposed states: First, the chain is irreducible because each state is reachable from any other state with positive probability at every single step. Second, for each state \(x\), \(P(x'=x)\) is always positive and therefore the Markov chain is aperiodic.
 
-In a general setting, the choice for transition distribution \(g(x'|x)\) and the number of iterations until the limit distribution is reached are unclear. These two choices are the hyperparameters of the MH algorithm. In the Bayesian inference application in the article series staring from Claassen (2019), additional choices are the prior distribution \(p(\theta)\) and the model choice \(f\).
+In a general setting, the choice for transition distribution \(g(x'|x)\) and the number of iterations until the limit distribution is reached are unclear. These two choices are the hyperparameters of the MH algorithm. In the Bayesian inference application in the article series staring from Claassen (2019), additional important choices are the prior distribution \(p(\theta)\) and the model choice \(f\).
 
 \newpage
 
