@@ -1,6 +1,6 @@
 ## The Concept of Democratic Support
 
-There are two major conceptualizations of public support for democracy (PSD)^[Some studies also refer to PSD measured on the national level as "mood".]. First, the "implicit" approach that requires the support for broader sociopolitical values like post-materialism and egalitarianism. Here, people support democracy implicitly if they support the values that are framed as particularly democratic. Second, the "explicit" approach that requires both an appraisal of democracy and a rejection of aut ocratic alternatives. Different studies use different concepts although the explicit approach more direct.
+There are two major conceptualizations of public support for democracy (PSD)^[Some studies also refer to PSD measured on the national level as "mood".]. First, the "implicit" approach that requires the support for broader sociopolitical values like post-materialism and egalitarianism. Here, people support democracy implicitly if they support the values that are framed as particularly democratic. Second, the "explicit" approach that requires both an appraisal of democracy and a rejection of autocratic alternatives. Different studies use different concepts although the explicit approach more direct.
 
 ## Drivers of Democratic Support
 
@@ -82,7 +82,7 @@ length(unique(df2$Country))   # 137 countries with 2+ years of data
 
 
 
-```{r get-topk-data-countries-number-of-respondants}
+```{r get-topk-data-countries-number-of-respondents}
 sums_respondants_by_country = df2 %>%
     group_by(Country) %>%
     summarize(Sum_Sample = sum(Sample))
@@ -100,7 +100,7 @@ filter(df2, Country %in% cond)
 
 
 
-```{r sparse-data, label="sparse-data", include=TRUE, echo=FALSE, fig.cap="Sparseness of Aggregate Support for Democacy By Country, Year, and Survey Item. The figure is an update from Claassen (2019).", warning=FALSE, fig.pos="H"}
+```{r sparse-data, label="sparse-data", include=TRUE, echo=FALSE, fig.cap="Sparseness of Aggregate Support for Democacy By Country, Year, and Survey Item. The figure is an update of Figure 1 in Claassen (2019).", warning=FALSE, fig.pos="H"}
 
 ## Plot indicative grid showing data availability (figure 1)
 
@@ -198,8 +198,6 @@ mtext(text='Year', side=1, line=1.1, cex=0.7)
 box(lwd=0.75)
 
 #dev.off()
-
-
 
 ```
 

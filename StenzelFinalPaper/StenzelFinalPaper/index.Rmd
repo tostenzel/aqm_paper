@@ -76,7 +76,8 @@ p_needed <- c(# all packages you need to install here
   "loo",
   "rstan",
   "RColorBrewer",
-  "ggpubr" # for grid in fig
+  "ggpubr", # for grid in fig
+  "directlabels"# label for hline
   )
 # installs only the required packages 
 lapply(p_needed[!(p_needed %in% rownames(installed.packages()))], install.packages)

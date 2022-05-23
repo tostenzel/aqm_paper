@@ -297,7 +297,7 @@ Department of Political Science}}
 
 
          \vfill
-         Submission Date: Mai 22, 2022 \\ 
+         Submission Date: Mai 23, 2022 \\ 
         
 
 
@@ -359,7 +359,7 @@ The final paper is structured as follows: Section 2 reviews the literature of pu
 \hypertarget{the-concept-of-democratic-support}{%
 \subsection{The Concept of Democratic Support}\label{the-concept-of-democratic-support}}
 
-There are two major conceptualizations of public support for democracy (PSD)\footnote{Some studies also refer to PSD measured on the national level as \enquote{mood.}}. First, the \enquote{implicit} approach that requires the support for broader sociopolitical values like post-materialism and egalitarianism. Here, people support democracy implicitly if they support the values that are framed as particularly democratic. Second, the \enquote{explicit} approach that requires both an appraisal of democracy and a rejection of aut ocratic alternatives. Different studies use different concepts although the explicit approach more direct.
+There are two major conceptualizations of public support for democracy (PSD)\footnote{Some studies also refer to PSD measured on the national level as \enquote{mood.}}. First, the \enquote{implicit} approach that requires the support for broader sociopolitical values like post-materialism and egalitarianism. Here, people support democracy implicitly if they support the values that are framed as particularly democratic. Second, the \enquote{explicit} approach that requires both an appraisal of democracy and a rejection of autocratic alternatives. Different studies use different concepts although the explicit approach more direct.
 
 \hypertarget{drivers-of-democratic-support}{%
 \subsection{Drivers of Democratic Support}\label{drivers-of-democratic-support}}
@@ -389,7 +389,7 @@ The data, however, poses the following challenge: It is highly fractured across 
 Figure \ref{fig:sparse-data} gives an overview of the sparseness of the data. The first panel shows the availability of at least one survey item across a selection of eight countries from 1990 to 2017. The other three panels focus on the three most common question themes. We see that the single item data is indeed sparse and that even the aggregated data contains lots of gaps.
 
 \begin{figure}[H]
-\includegraphics[width=\textwidth]{figs/sparse-data-1} \caption[Sparseness of Aggregate Support for Democacy By Country, Year, and Survey Item]{Sparseness of Aggregate Support for Democacy By Country, Year, and Survey Item. The figure is an update from Claassen (2019).}\label{fig:sparse-data}
+\includegraphics[width=\textwidth]{figs/sparse-data-1} \caption[Sparseness of Aggregate Support for Democacy By Country, Year, and Survey Item]{Sparseness of Aggregate Support for Democacy By Country, Year, and Survey Item. The figure is an update of Figure 1 in Claassen (2019).}\label{fig:sparse-data}
 \end{figure}
 
 \noindent
@@ -482,7 +482,7 @@ propose new values of \(\Theta\), evaluate its prior probability and the likelih
 the data given \(\Theta\) until convergence and return the posterior mode. The mode is also called the maximum a posteriori probability (MAP) estimate. Yet, since we need to estimate standard deviations,
 we have to generate the whole parameter distributions to compute mean and variation. To this end, we use a Markov chain Monte Carlo (MCMC) method, namely the Metropolis Hastings (MH) algorithm.
 
-Markov chains are stochastic processes that define distributions dependent on the values from the previous period only. Hence, the MH algorithm uses Markov chains to sample candidate parameters \(\Theta_i^*\) depending on \(\Theta_{i-1}\). For each candidate \(\Theta_i^*\), the algorithm uses the unscaled posterior, \(\mathcal{L}(y|\Theta_i)p(\Theta_i)\), and compares it with the posterior of \(\Theta_{i-1}\) (not requiring constant \(p(y)\)) to accept or reject new candidates. Comparing relative posterior probabilities and using this comparison for selecting new candidates proportional to their relative probability allows us to sample from the posterior without knowing \(y\). The algorithm thus explores the domain proportionally to the posterior probability after a number of initial iterations. Besides the model specification using the MH algorithm requires the following choices: the choice of the prior distribution(s) \(p(\Theta)\), the choice of the proposal distribution \(g(y_i, y_{i-1})\), and the number of initial parameters to drop, i.e.~the length of the warmup period. I include a more technical explanation of the MH algorithm with more general notation in the Appendix.
+Markov chains are stochastic processes that define distributions dependent on the values from the previous period only. Hence, the MH algorithm uses Markov chains to sample candidate parameters \(\Theta_i^*\) depending on \(\Theta_{i-1}\). For each candidate \(\Theta_i^*\), the algorithm uses the unscaled posterior, \(\mathcal{L}(y|\Theta_i)p(\Theta_i)\), and compares it with the posterior of \(\Theta_{i-1}\) (not requiring constant \(p(y)\)) to accept or reject new candidates. Comparing relative posterior probabilities and using this comparison for selecting new candidates proportional to their relative probability allows us to sample from the posterior without knowing \(y\). The algorithm thus explores the domain proportionally to the posterior probability after a number of initial iterations. Besides the model specification using the MH algorithm requires a.o. the following choices\footnote{Note that there are much more potential choices depending on the MH variant and specific practical setup}: the choice of the prior distribution(s) \(p(\Theta)\), the choice of the proposal distribution \(g(y_i, y_{i-1})\), and the number of initial parameters to drop, i.e.~the length of the warmup period. Oftentimes, one initializes multiple Markov chains at once and combines the samples except of the warmup afterwards. This is done to reduce the dependence on the starting value. Hence, the number of chains is an additional hyperparameter. I include a more technical explanation of the MH algorithm with more general notation in the Appendix.
 
 \hypertarget{simulaton}{%
 \subsection{Simulaton}\label{simulaton}}
@@ -492,18 +492,42 @@ We can now use the parameter estimates and the probabilistic model including the
 \hypertarget{analysis-and-results}{%
 \section{Analysis and Results}\label{analysis-and-results}}
 
-\hypertarget{latent-opinion-as-quantity-of-interest}{%
-\subsection{Latent Opinion as Quantity of Interest}\label{latent-opinion-as-quantity-of-interest}}
+\hypertarget{hyperparameter-selection}{%
+\subsection{Hyperparameter Selection}\label{hyperparameter-selection}}
 
-Our goal is to analyze the sensitivity of the MH algorithm towards changes in its hyperparameters. Since Claassen (2019) already tested different priors, we are particularly interested in the effect of different choices for the proposal distribution \(g(y_i, y_{i-1})\) and the length of the burnin period. Although choosing
-parameters representing the main results in Claassen (2020b) and Claassen (2020a) would be most illustrative in terms of substantial effects, this choice has the two following disadvantages. First, because these statistical parameters are estimated from simulated data, they are influenced by randomness from the data simulation that could not be distinguished from the estimation-inherent randomness. Second, the additional steps of simulating data and estimating statistical models would potentially double the computation time. Therefore, I choose the latent, dynamic, country-specific PSD \(\theta\) as the Quantity of Interest.
+Our goal is to analyze the sensitivity of the MH algorithm towards changes in its hyperparameters. The main options are the models, the priors, the proposal distribution, the number of iterations, the warmup length, and the number of chains. Claassen (2019) already tests different models and priors. Testing different proposal distribution poses the following challenge: MCMC estimation of complex model with sparse data is computationally costly. For instance, one run with the default settings in Claassen (2019) takes 50 minutes on my machine\footnote{I use an Intel Core i7-8550U CPU with 8 1.80GHz cores}. Therefore, it is important to use highly optimized libraries such as STAN or JAGS. However, these libraries each implement only one proposal method. STAN uses a proposal distribution based on Hamiltonian dynamics (Stan Development Team (2018)), and JAGS uses Gibbs sampling (Plummer (2003)). The main idea of Gibbs sampling is to iteratively sample from the conditional distribution \(p(\Theta|X, \Theta_{-d})\) where \(\Theta_{-d}\) is \(\Theta\) without the \(d\)th parameter with acceptance probability 1. Learning and especially extending these frameworks for additional proposal distributions requires a substantial amount of time and is beyond the scope of this work. Therefore, I will not vary the proposal distributions but stick with Claassen's choice STAN. We therefore restrict ourselves to analyzing the effect of changes in the following hyperparameters: the number of iterations, the warmup length, and the number of chains. In the following analysis the default chain number is 4 and the default warmup is half the chain length used by Claassen and as recommend by STAN.
 
-The results for countries blabla by Classen2020 are shown in Figure blabla\ldots{}
+\hypertarget{quantitity-of-interest-selection}{%
+\subsection{Quantitity of Interest Selection}\label{quantitity-of-interest-selection}}
 
-\hypertarget{selection-of-hyperparameters}{%
-\subsection{Selection of Hyperparameters}\label{selection-of-hyperparameters}}
+Although choosing parameters representing the main results in Claassen (2020b) and Claassen (2020a) would be most illustrative in terms of substantial effects, this choice has the two following disadvantages. First, because these statistical parameters are estimated from simulated data, they are influenced by randomness from the data simulation that could not be distinguished from the estimation-inherent randomness. Second, the additional steps of simulating data and estimating statistical models would potentially double the computation time. Therefore, I choose the latent, dynamic, country-specific PSD \(\theta\) as the Quantity of Interest.
 
-Why not models and priors (Claassen), proposal dist (Stan) but warmup, n\_chains and n\_iters. (Even though convergence diagnostics) -\textgreater{} Principle of minimal iterations
+\hypertarget{the-effect-of-number-of-iterations}{%
+\subsection{The Effect of Number of Iterations}\label{the-effect-of-number-of-iterations}}
+
+Figure \ref{fig:niter} shows latent PSD for year 2008 in two sets of countries. The set shown by the reddish lines are the countries with the smallest number of years with available data: Austria, Azerbaijan and Bahrain. These three countries have only two years with at least two available PSD items. The bluish lines represent the countries with the highest data availability: Uruguay (22), Venezuela (22), Argentina (23). The vertical gray line shows the number of iterations that Claassen (2019) uses. We can make two observations: First, the parameter estimates have converged to a reasonable degree at least around 150. This is only a fraction of what Claassen (2019) chooses. Second, the parameter estimates for countries with less available data show a larger initial error and slower convergence. The main takeaway here is that we can save a lot of computational time in our estimation by using much shorter Markov chains.
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{figs/niter-1} \caption[The effect of changes in the number of MH iterations on latent PSD in 2008]{The effect of changes in the number of MH iterations on latent PSD in 2008.}\label{fig:niter}
+\end{figure}
+
+\hypertarget{the-effect-of-warmup-length}{%
+\subsection{The Effect of Warmup Length}\label{the-effect-of-warmup-length}}
+
+Figure \ref{fig:warmup} shows the distribution of 10 latent PSD estimates for 150 Markov chains with 150 iterations and warmup lengths between 0 and 135 (or 0 to 90 percent chain length). The red horizontal line shows the parameter estimate obtained from a run with 1000 iterations. We make two observations: First, the default warmup of half the chain indeed achieves the results closest to the benchmark. Second, it is much worse choosing a too small as choosing a too high warmup. This makes sense because generating a large sample with values that are drawn from a distribution that has not converged, i.e.~that contain a large degree of randomness, should be worse than generating a smaller sample from a distribution that already approximates the posterior quite well.
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{figs/warmup-1} \caption[The effect of changes in the warmup lengths on latent PSD in 2008 in the US]{The effect of changes in the warmup lengths on latent PSD in 2008 in the US.}\label{fig:warmup}
+\end{figure}
+
+\hypertarget{the-effect-of-number-of-chains}{%
+\subsection{The Effect of Number of Chains}\label{the-effect-of-number-of-chains}}
+
+Figure \ref{fig:chain} shows the distribution of three latent PSD estimates for MCMC samples with 1 to 8 chains. In this experiment the number of chains has no signicant effect on the latent PSD estimates. The higher the number of chains is, the smaller is each single change. Hence, there should be a configuration where the smaller subsamples have not converged to the posterior distribution. This, however, is also dependent on the warmup and the number of iterations. Unfortunately, ablating these three hyperparameters at once would take too many computations.
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{figs/chain-1} \caption[The effect of changes in the number of chains on latent PSD in 2008 in the US]{The effect of changes in the number of chains on latent PSD in 2008 in the US.}\label{fig:chain}
+\end{figure}
 
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
@@ -517,7 +541,7 @@ Why not models and priors (Claassen), proposal dist (Stan) but warmup, n\_chains
 \hypertarget{introduction-1}{%
 \subsection{Introduction}\label{introduction-1}}
 
-The Metropolis-Hastings (MH) algorithm is a method for sampling data points from a probability distribution from which direct sampling is difficult. It places among the top 10 algorithms with the greatest influence on science and engineering in the 20th century (Beichl and Sullivan (2000)). The MH algorithm belongs to the class of Markov chain Monte Carlo (MCMC) methods. In my explanation I assume prior knowledge on Monte Carlo sampling. However, I will describe the basics of Markov Chains. As motivation serves section 3.2. in the main part of this paper about estimating Claassen (2019)'s latent PSD model. There, I also provide a more intuitive, high-level explanation. This section has two parts. First, I explain the basics of Markov Chains. Second, I derive the algorithm and show why it works.
+The Metropolis-Hastings (MH) algorithm is a method for sampling data points from a probability distribution from which direct sampling is difficult. It places among the top 10 algorithms with the greatest influence on science and engineering in the 20th century (Beichl and Sullivan (2000)). The MH algorithm belongs to the class of Markov chain Monte Carlo (MCMC) methods. In my explanation I assume prior knowledge on Monte Carlo sampling. However, I will describe the basics of Markov Chains. As motivation serves section 3.2. in the main part of this paper about estimating Claassen (2019)'s latent PSD model. There, I also provide a more intuitive, high-level explanation. This section has two parts that both rely on Andrieu et al. (2003) as main reference. First, I explain the basics of Markov Chains. Second, I derive the algorithm and show why it works.
 
 \hypertarget{markov-chains}{%
 \subsection{Markov Chains}\label{markov-chains}}
@@ -783,6 +807,9 @@ In a general setting, the choice for transition distribution \(g(x'|x)\) and the
 
 \hypertarget{refs}{}
 \begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-Andrieu2003}{}}%
+Andrieu, Christophe, Nando De Freitas, Arnaud Doucet, and Michael I Jordan. 2003. {``An Introduction to MCMC for Machine Learning.''} \emph{Machine learning} 50(1): 5--43.
+
 \leavevmode\vadjust pre{\hypertarget{ref-Baker1981}{}}%
 Baker, Kendall L, Russell J Dalton, Kai Hildebrandt, et al. 1981. \emph{Germany Transformed: Political Culture and the New Politics}. Harvard University Press.
 
@@ -852,8 +879,14 @@ Niemi, Richard G. 1974. \emph{The Political Character of Adolescence: The Influe
 \leavevmode\vadjust pre{\hypertarget{ref-Norris2017}{}}%
 Norris, Pippa. 2017. {``Is Western Democracy Backsliding? Diagnosing the Risks.''} \emph{Forthcoming, The Journal of Democracy, April}.
 
+\leavevmode\vadjust pre{\hypertarget{ref-Plummer2003}{}}%
+Plummer, Martyn. 2003. {``JAGS: A Program for Analysis of Bayesian Graphical Models Using Gibbs Sampling.''}
+
 \leavevmode\vadjust pre{\hypertarget{ref-Qi2011}{}}%
 Qi, Lingling, and Doh Chull Shin. 2011. {``How Mass Political Attitudes Affect Democratization: Exploring the Facilitating Role Critical Democrats Play in the Process.''} \emph{International Political Science Review} 32(3): 245--62.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Stan}{}}%
+Stan Development Team. 2018. {``Stan Modeling Language Users Guide and Reference Manual, Version 2.18.0.''} \url{http://mc-stan.org/}.
 
 \leavevmode\vadjust pre{\hypertarget{ref-Stegmueller2011}{}}%
 Stegmueller, Daniel. 2011. {``Apples and Oranges? The Problem of Equivalence in Comparative Research.''} \emph{Political Analysis} 19(4): 471--87.

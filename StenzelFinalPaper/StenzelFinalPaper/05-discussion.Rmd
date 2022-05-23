@@ -1,0 +1,1 @@
+Talk on convergence measure (Claassen's internal and external validation) and restrictions of this paper.

@@ -1,25 +1,22 @@
-## Latent Opinion as Quantity of Interest
+## Hyperparameter Selection
 
-Our goal is to analyze the sensitivity of the MH algorithm towards changes in its hyperparameters. Since @Claassen2019estimating already tested different priors, we are particularly interested in the effect of different choices for the proposal distribution $g(y_i, y_{i-1})$ and the length of the burnin period. Although choosing
- parameters representing the main results in @Claassen2020mood and @Claassen2020support would be most illustrative in terms of substantial effects, this choice has the two following disadvantages. First, because these statistical parameters are estimated from simulated data, they are influenced by randomness from the data simulation that could not be distinguished from the estimation-inherent randomness. Second, the additional steps of simulating data and estimating statistical models would potentially double the computation time. Therefore, I choose the latent, dynamic, country-specific PSD $\theta$ as the Quantity of Interest.
- 
-The results for countries blabla by Classen2020 are shown in Figure blabla...
-
-## Selection of Hyperparameters
-
-Why not models and priors (Claassen), proposal dist (Stan) but warmup, n_chains and n_iters. (Even though convergence diagnostics) -> Principle of minimal iterations 
+Our goal is to analyze the sensitivity of the MH algorithm towards changes in its hyperparameters. The main options are the models, the priors, the proposal distribution, the number of iterations, the warmup length, and the number of chains. @Claassen2019estimating already tests different models and priors. Testing different proposal distribution poses the following challenge: MCMC estimation of complex model with sparse data is computationally costly. For instance, one run with the default settings in @Claassen2019estimating takes 50 minutes on my machine^[I use an Intel Core i7-8550U CPU with 8 1.80GHz cores]. Therefore, it is important to use highly optimized libraries such as STAN or JAGS. However, these libraries each implement only one proposal method. STAN uses a proposal distribution based on Hamiltonian dynamics (@Stan), and JAGS uses Gibbs sampling (@Plummer2003). The main idea of Gibbs sampling is to iteratively sample from the conditional distribution $p(\Theta|X, \Theta_{-d})$ where $\Theta_{-d}$ is $\Theta$ without the $d$th parameter with acceptance probability 1. Learning and especially extending these frameworks for additional proposal distributions requires a substantial amount of time and is beyond the scope of this work. Therefore, I will not vary the proposal distributions but stick with Claassen's choice STAN. We therefore restrict ourselves to analyzing the effect of changes in the following hyperparameters: the number of iterations, the warmup length, and the number of chains. In the following analysis the default chain number is 4 and the default warmup is half the chain length used by Claassen and as recommend by STAN. 
 
 
+## Quantitity of Interest Selection
 
-```{r generate-data}
-#### Stan estimation
+Although choosing parameters representing the main results in @Claassen2020mood and @Claassen2020support would be most illustrative in terms of substantial effects, this choice has the two following disadvantages. First, because these statistical parameters are estimated from simulated data, they are influenced by randomness from the data simulation that could not be distinguished from the estimation-inherent randomness. Second, the additional steps of simulating data and estimating statistical models would potentially double the computation time. Therefore, I choose the latent, dynamic, country-specific PSD $\theta$ as the Quantity of Interest.
 
-# time chunk execution
-start_time <- Sys.time()
+
+```{r prepare-stan-estimation}
+# for timing use:
+# start_time <- Sys.time()
+# end_time <- Sys.time()
+# time_passed = start_time - end_time
 
 # parallelization
 options(mc.cores = parallel::detectCores())
-#aa llows you to automatically save a bare version of a compiled Stan program to the hard disk so that it does not need to be recompiled (unless you change it). You will need to run these commands each time you load the rstan library.
+#allows to automatically save a bare version of a compiled Stan program to the hard disk so that it does not need to be recompiled (unless you change it).
 rstan_options(auto_write = TRUE)
 
 # prepare data for stan
@@ -52,31 +49,25 @@ sapply(dat.2, summary)
 pars.5 = c("mu_lambda","sigma_lambda","sigma_delta","sigma_theta","phi","lambda","delta","theta",
             "x_pred","log_lik")
 
-# iterations
-#n.iter = 500
+# hyperparams
 n.chn = 4
 n.thin = 1
-times = c()
-t = 1
-#itergrid = seq(from=12, to=24, by=2)
 iter1 =  seq(from=10, to=460, by=30)
 iter2 =  seq(from=500, to=1000, by=100)
 itergrid = c(iter1, iter2)
 ```
 
-```{r long-loop, eval=FALSE}
+```{r generate-data-from-different-niter, eval=FALSE}
+# takes too much time - don't execute for superficial replication
 for(n.iter in itergrid){
   n.warm = n.iter/2
-
 
   # best model from PA article (model 5)
   stan.mod.5 = stan(file='model5.stan', data=dat.2, pars=pars.5, 
                      iter=n.iter, warmup=n.warm, chains=n.chn, thin=n.thin, 
                      control=list(adapt_delta=0.99, stepsize=0.02, max_treedepth=11), seed=n.iter)
   
-  
   #### Extract theta estimates
-  
   theta.out = rstan::extract(stan.mod.5, pars = c("theta"))[[1]]
   theta.std = (theta.out - mean(as.vector(theta.out))) / sd(as.vector(theta.out)) # standardize
   theta.out.t = apply( theta.std, 1, function(x) t(x) )
@@ -99,16 +90,11 @@ for(n.iter in itergrid){
   path = paste("output/niter/stan_est_sup_dem_m5_run", as.character(n.iter), ".csv", sep="")
   write.csv(theta.pe, path , row.names=FALSE)
   
-  end_time <- Sys.time()
-  times[t] = end_time - start_time
-  t = t+1
 }
-save(times, itergrid, file = "output/comp_times.RData")
 ```
 
 
-
-```{r convergence-niter}
+```{r merge-iter-data}
 df_iter = read.csv("output/niter/stan_est_sup_dem_m5_run10.csv")
 names(df_iter)[names(df_iter) == 'SupDem_trim'] <- 'theta10'
 
@@ -117,15 +103,10 @@ for(n.iter in itergrid[-1]){#without first iteration
   df_temp = read.csv(temp_str)
   temp_str = paste("theta", as.character(n.iter), sep="")
   df_iter[temp_str] = df_temp$SupDem_trim
-
-  
-  
 }
 
 df_iter$First_yr = NULL
 df_iter$ISO_code = NULL
-
-
 
 cnt.obs.years = cnt.obs.years[cnt.obs.years > 1]
 bottom3_data_countries = names(sort(cnt.obs.years)[1:3])
@@ -138,44 +119,34 @@ Uruguay = as.numeric(df_iter[df_iter$Country=="Uruguay" & df_iter$Year==2008, ][
 Venezuela = as.numeric(df_iter[df_iter$Country=="Venezuela" & df_iter$Year==2008, ][, c(3:ncol(df_iter))])
 Argentina = as.numeric(df_iter[df_iter$Country=="Argentina" & df_iter$Year==2008, ][, c(3:ncol(df_iter))])
 
-
 df = data.frame(itergrid, Austria, Azerbaijan, Bahrain, Uruguay, Venezuela, Argentina)
-#rownames(df) = itergrid
-
-
-
-
-
-
 ```
 
-```{r}
+## The Effect of Number of Iterations
 
+Figure \@ref(fig:niter) shows latent PSD for year 2008 in two sets of countries. The set shown by the reddish lines are the countries with the smallest number of years with available data: Austria, Azerbaijan and Bahrain. These three countries have only two years with at least two available PSD items. The bluish lines represent the countries with the highest data availability: Uruguay (22), Venezuela (22), Argentina (23). The vertical gray line shows the number of iterations that @Claassen2019estimating uses. We can make two observations: First, the parameter estimates have converged to a reasonable degree at least around 150. This is only a fraction of what @Claassen2019estimating chooses. Second, the parameter estimates for countries with less available data show a larger initial error and slower convergence. The main takeaway here is that we can save a lot of computational time in our estimation by using much shorter Markov chains.
 
-
-library("tidyverse")
+```{r create-plot-niter, label="niter", include=TRUE, echo=FALSE, fig.cap="The effect of changes in the number of MH iterations on latent PSD in 2008.", warning=FALSE, fig.pos="H"}
 df_plot <- df %>%
-  #select(itergrid, Austria, Azerbaijan, Bahrain, Uruguay, Venezuela, Argentina) %>%
   gather(key = "Country", value = "theta", -itergrid)
-head(df_plot)
-
+#head(df_plot)
 
 # Visualization
 # Reorder following the value of another column:
 df_plot %>%
   mutate(Country = fct_relevel(Country,"Austria", "Azerbaijan", "Bahrain", "Uruguay", "Venezuela", "Argentina")) %>%
-  ggplot(aes(x = itergrid, y = theta, colour = Country))  + geom_line()  + geom_point() + xlab("Iteration") + ylab(TeX("$\\hat{\\theta}_{2008}$")) + scale_colour_brewer(palette="RdBu")
+  ggplot(aes(x = itergrid, y = theta, colour = Country))  + geom_line()  + geom_point() + xlab("Iteration") + ylab(TeX("$\\hat{\\theta}_{2008}$")) + scale_colour_brewer(palette="RdBu") + geom_vline(aes(xintercept=500), linetype="dashed", color = "black", show.legend = FALSE) + annotate("text", 625, 1.45 , vjust = -1, label = "Claassen (2019)", colour="black") + scale_x_continuous(labels= c(10, 250, 500, 750, 1000)) 
 
 ```
 
 
-```{r sim-warmup, eval=FALSE}
-# CHANGE NITER TO 150!!!!
+```{r generate-data-from-different-warmups, eval=FALSE}
+# BUG: Seed for 0 is always 0 -> no variation
+
 warm_grid = seq(0, 9, 1)
 
 # number of repititions for distr
 rep_grid = seq(1,3,1)
-
 
 n.chn = 4
 n.thin = 1
@@ -184,15 +155,12 @@ for(warm in warm_grid){
   n.warm = floor(n.iter* warm/10) # throw away warm_grid * 10 percent
   for (rep in rep_grid){
 
-  
     # best model from PA article (model 5)
     stan.mod.5 = stan(file='model5.stan', data=dat.2, pars=pars.5, 
                        iter=n.iter, warmup=n.warm, chains=n.chn, thin=n.thin, 
                        control=list(adapt_delta=0.99, stepsize=0.02, max_treedepth=11), seed=n.warm*rep)
     
-    
     #### Extract theta estimates
-    
     theta.out = rstan::extract(stan.mod.5, pars = c("theta"))[[1]]
     theta.std = (theta.out - mean(as.vector(theta.out))) / sd(as.vector(theta.out)) # standardize
     theta.out.t = apply( theta.std, 1, function(x) t(x) )
@@ -214,48 +182,49 @@ for(warm in warm_grid){
     }
     path = paste("output/warm/stan_est_sup_dem_m5_warm", as.character(n.warm), "_rep", as.character(rep), ".csv", sep="")
     write.csv(theta.pe, path , row.names=FALSE)
-    
-
   }
 }
+```
 
-
-
+```{r extract-QoI-benchmark}
+df_bl = read.csv("output/niter/stan_est_sup_dem_m5_run1000.csv")
+names(df_bl)[names(df_bl) == 'SupDem_trim'] <- 'theta0'
+bl = df_bl[df_bl$Year == 2008 & df_bl$Country == "United States of America","theta0"]
 ```
 
 
-```{r data-convergence-warmup}
+```{r merge-data-warmup}
 warm_grid = seq(0, 9, 1)
 
 # number of repititions for distr
-rep_grid = seq(1,3,1)
+rep_grid = seq(1,10,1)
 
 n.iter = 150
 df_warm= read.csv("output/warm/stan_est_sup_dem_m5_warm0_rep1.csv")
 names(df_warm)[names(df_warm) == 'SupDem_trim'] <- 'theta0'
-theta0 = c(df_warm[df_warm$Year == 2008 & df_warm$Country == "United States of America","theta0"], NA, NA)
+theta0 = c(df_warm[df_warm$Year == 2008 & df_warm$Country == "United States of America","theta0"], NA, NA, NA, NA, NA, NA, NA, NA, NA)
 df_warm <- data.frame(theta0)
 
 for(warm in warm_grid){
   n.warm = floor(n.iter* warm/10) # throw away warm_grid * 10 percent
   theta_str = paste(as.character(n.warm), sep="")
-  df_warm[theta_str] = c(NA, NA, NA)
+  df_warm[theta_str] = c(NA, NA, NA, NA, NA, NA, NA, NA, NA, NA)
 
   for (rep in rep_grid){
     
     path_str = paste("output/warm/stan_est_sup_dem_m5_warm", as.character(n.warm), "_rep", as.character(rep), ".csv", sep="")
     df_temp = read.csv(path_str)
     df_warm[theta_str][rep, ] = df_temp[df_temp$Year == 2008 & df_temp$Country == "United States of America",'SupDem_trim']
-    
-    
-    
-    
   }   
 }
 df_warm$theta0 = NULL
 ```
 
-```{r}
+## The Effect of Warmup Length
+
+Figure \@ref(fig:warmup) shows the distribution of 10 latent PSD estimates for 150 Markov chains with 150 iterations and warmup lengths between 0 and 135 (or 0 to 90 percent chain length). The red horizontal line shows the parameter estimate obtained from a run with 1000 iterations. We make two observations: First, the default warmup of half the chain indeed achieves the results closest to the benchmark. Second, it is much worse choosing a too small as choosing a too high warmup. This makes sense because generating a large sample with values that are drawn from a distribution that has not converged, i.e. that contain a large degree of randomness, should be worse than generating a smaller sample from a distribution that already approximates the posterior quite well.
+
+```{r create-plot-warmup, label="warmup", include=TRUE, echo=FALSE, results='hide',fig.keep='all', fig.cap="The effect of changes in the warmup lengths on latent PSD in 2008 in the US.", warning=FALSE, fig.pos="H", message=FALSE}
 sdf = stack(df_warm)
 sdf$Warmup <- as.factor(sdf$ind) # for different color tones
 sdf$ind = NULL
@@ -264,7 +233,7 @@ grids(axis = c("xy", "x", "y"), color = "grey92", size = NULL, linetype = NULL)
 
 #sdf["theta"] = sdf$ind
 ggplot(sdf, aes(x=Warmup, y=values, fill=Warmup)) + 
-  geom_dotplot(binaxis='y', stackdir='center') + scale_x_discrete(labels= floor(n.iter* warm_grid/10)) + xlab("Warmup") + ylab(TeX("$\\hat{\\theta}_{USA, 2008}$")) + scale_fill_brewer(palette="Blues") + grids(linetype = "dashed") + theme(legend.position="none")
+  geom_boxplot(binaxis='y', stackdir='center', show.legend = FALSE) + scale_x_discrete(labels= floor(n.iter* warm_grid/10)) + xlab("Warmup") + ylab(TeX("$\\hat{\\theta}_{USA, 2008}$")) + scale_fill_brewer(palette="Blues") + grids(linetype = "dashed") + theme(legend.position="none") + geom_hline(aes(yintercept=bl), linetype="dashed", color = "red", show.legend = TRUE) + annotate("text", 1.3, bl-0.025, vjust = -1, label = "Benchmark", colour="red")
 
 
 ```
@@ -273,29 +242,26 @@ ggplot(sdf, aes(x=Warmup, y=values, fill=Warmup)) +
 
 
 
-```{r sim-nchains, eval=FALSE}
+```{r generate-data-from-different-nchains, eval=FALSE}
 chain_grid = seq(1, 8, 1)
 
 # number of repititions for distr
 rep_grid = seq(1,3,1)
 
-
 n.chn = 4
 n.thin = 1
 n.iter = 150
 n.warm = floor(n.iter/2)
+
 for(n.chain in chain_grid){
   for (rep in rep_grid){
-  
   
     # best model from PA article (model 5)
     stan.mod.5 = stan(file='model5.stan', data=dat.2, pars=pars.5, 
                        iter=n.iter, warmup=n.warm, chains=n.chn, thin=n.thin, 
                        control=list(adapt_delta=0.99, stepsize=0.02, max_treedepth=11), seed=n.chain*rep)
     
-    
     #### Extract theta estimates
-    
     theta.out = rstan::extract(stan.mod.5, pars = c("theta"))[[1]]
     theta.std = (theta.out - mean(as.vector(theta.out))) / sd(as.vector(theta.out)) # standardize
     theta.out.t = apply( theta.std, 1, function(x) t(x) )
@@ -317,14 +283,12 @@ for(n.chain in chain_grid){
     }
     path = paste("output/chain/stan_est_sup_dem_m5_chain", as.character(n.chain), "_rep", as.character(rep), ".csv", sep="")
     write.csv(theta.pe, path , row.names=FALSE)
-    
-
   }
 }
-
 ```
 
-```{r data-convergence-chains}
+
+```{r merge-data-chains}
 chain_grid = seq(1, 8, 1)
 
 # number of repititions for distr
@@ -346,11 +310,23 @@ for(chain in chain_grid){
     path_str = paste("output/chain/stan_est_sup_dem_m5_chain", as.character(chain), "_rep", as.character(rep), ".csv", sep="")
     df_temp = read.csv(path_str)
     df_chain[theta_str][rep, ] = df_temp[df_temp$Year == 2008 & df_temp$Country == "United States of America",'SupDem_trim']
-    
-    
-    
-    
   }   
 }
 
+```
+
+## The Effect of Number of Chains
+
+Figure \@ref(fig:chain) shows the distribution of three latent PSD estimates for MCMC samples with 1 to 8 chains. In this experiment the number of chains has no signicant effect on the latent PSD estimates. The higher the number of chains is, the smaller is each single change. Hence, there should be a configuration where the smaller subsamples have not converged to the posterior distribution. This, however, is also dependent on the warmup and the number of iterations. Unfortunately, ablating these three hyperparameters at once would take too many computations.
+
+```{r create-plot-nchains, label="chain", include=TRUE, echo=FALSE, results='hide',fig.keep='all', fig.cap="The effect of changes in the number of chains on latent PSD in 2008 in the US.", warning=FALSE, fig.pos="H", message=FALSE}
+sdf = stack(df_chain)
+sdf$Chain <- as.factor(sdf$ind) # for different color tones
+sdf$ind = NULL
+
+grids(axis = c("xy", "x", "y"), color = "grey92", size = NULL, linetype = NULL)
+
+#sdf["theta"] = sdf$ind
+ggplot(sdf, aes(x=Chain, y=values, fill=Chain)) + 
+  geom_dotplot(binaxis='y', stackdir='center') + scale_x_discrete(labels= seq(1, 8, 1)) + xlab("Number of chains") + ylab(TeX("$\\hat{\\theta}_{USA, 2008}$")) + scale_fill_brewer(palette="Blues") + grids(linetype = "dashed") + theme(legend.position="none") + ylim(bl-0.05, bl+0.05)+ geom_hline(yintercept=bl, linetype="dashed", color = "red") + geom_hline(aes(yintercept=bl), linetype="dashed", color = "red", show.legend = TRUE) + annotate("text", 1.2, bl+0.0, vjust = -1, label = "Benchmark", colour="red")
 ```
