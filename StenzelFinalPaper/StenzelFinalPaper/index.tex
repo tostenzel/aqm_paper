@@ -297,7 +297,7 @@ Department of Political Science}}
 
 
          \vfill
-         Submission Date: Mai 23, 2022 \\ 
+         Submission Date: Mai 24, 2022 \\ 
         
 
 
@@ -495,7 +495,7 @@ We can now use the parameter estimates and the probabilistic model including the
 \hypertarget{hyperparameter-selection}{%
 \subsection{Hyperparameter Selection}\label{hyperparameter-selection}}
 
-Our goal is to analyze the sensitivity of the MH algorithm towards changes in its hyperparameters. The main options are the models, the priors, the proposal distribution, the number of iterations, the warmup length, and the number of chains. Claassen (2019) already tests different models and priors. Testing different proposal distribution poses the following challenge: MCMC estimation of complex model with sparse data is computationally costly. For instance, one run with the default settings in Claassen (2019) takes 50 minutes on my machine\footnote{I use an Intel Core i7-8550U CPU with 8 1.80GHz cores}. Therefore, it is important to use highly optimized libraries such as STAN or JAGS. However, these libraries each implement only one proposal method. STAN uses a proposal distribution based on Hamiltonian dynamics (Stan Development Team (2018)), and JAGS uses Gibbs sampling (Plummer (2003)). The main idea of Gibbs sampling is to iteratively sample from the conditional distribution \(p(\Theta|X, \Theta_{-d})\) where \(\Theta_{-d}\) is \(\Theta\) without the \(d\)th parameter with acceptance probability 1. Learning and especially extending these frameworks for additional proposal distributions requires a substantial amount of time and is beyond the scope of this work. Therefore, I will not vary the proposal distributions but stick with Claassen's choice STAN. We therefore restrict ourselves to analyzing the effect of changes in the following hyperparameters: the number of iterations, the warmup length, and the number of chains. In the following analysis the default chain number is 4 and the default warmup is half the chain length used by Claassen and as recommend by STAN.
+Our goal is to analyze the sensitivity of the MH algorithm towards changes in its hyperparameters. The main options are the models, the priors, the proposal distribution, the number of iterations, the warmup length, and the number of chains. Claassen (2019) already tests different models and priors. Testing different proposal distribution poses the following challenge: MCMC estimation of complex model with sparse data is computationally costly. For instance, one run with the default settings in Claassen (2019) takes 50 minutes on my machine\footnote{I use an Intel Core i7-8550U CPU with 8 1.80GHz cores}. Therefore, it is important to use highly optimized libraries such as STAN or JAGS. However, these libraries each implement only one proposal method. STAN uses a proposal distribution based on Hamiltonian dynamics (Stan Development Team (2018)), and JAGS uses Gibbs sampling (Plummer (2003)). The main idea of Gibbs sampling is to iteratively sample from the conditional distribution \(p(\Theta|X, \Theta_{-d})\) where \(\Theta_{-d}\) is \(\Theta\) without the \(d\)th parameter with acceptance probability 1. Learning and especially extending these frameworks for additional proposal distributions requires a substantial amount of time and is beyond the scope of this work. Therefore, I will not vary the proposal distributions but stick with Claassen's choice STAN. We therefore restrict ourselves to analyzing the effect of changes in the following hyperparameters: the number of iterations, the warmup length, and the number of chains. Finally, we will also look at the effect of adding three additional years, namely 2016-2018, to the dataset. Claassen uses this data in his two most recent publication in the series on PSD but in the first one. In the following analysis the default chain number is 4 and the default warmup is half the chain length used by Claassen and as recommend by STAN.
 
 \hypertarget{quantitity-of-interest-selection}{%
 \subsection{Quantitity of Interest Selection}\label{quantitity-of-interest-selection}}
@@ -529,8 +529,19 @@ Figure \ref{fig:chain} shows the distribution of three latent PSD estimates for 
 \includegraphics[width=\textwidth]{figs/chain-1} \caption[The effect of changes in the number of chains on latent PSD in 2008 in the US]{The effect of changes in the number of chains on latent PSD in 2008 in the US.}\label{fig:chain}
 \end{figure}
 
+\hypertarget{the-effect-of-three-additional-years-of-data}{%
+\subsection{The Effect of Three Additional Years of Data}\label{the-effect-of-three-additional-years-of-data}}
+
+Figure \ref{fig:data} shows the effect that adding years 2016-2018 to the dataset from 1998 - 15 has for the USA, China and South Africa. We observe two points. First, the differences from the standardized latent PSD mean get more pronounced per year. However, the relative differences between countries remain similar. Therefore, the more data is added, the better we can differentiate between latent PSD in different countries. Second, there is a pronounced shift in directions between the old estimates and the updated estimates in the period from 2006 to 2007. This can potentially have an impact on the data simulations and statistical results that rely on these estimates.
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{figs/data-1} \caption[The effect of adding data from 2016 to 2018 on latent PSD in the US, China and South Africa]{The effect of adding data from 2016 to 2018 on latent PSD in the US, China and South Africa.}\label{fig:data}
+\end{figure}
+
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
+
+In the previous section we find three results: First, the number of chains does not have an effect and the warmup length is ideal at the value recommended by STAN. The takeaway here is that it does not add much value to look at changes to these hyperparameters from the defaults that are recommended by experts on MCMC methods as long as the posterior sample has converged. Second, updating the dataset from 1997 to 2015 by three additional years lead to noticable changes in latent PSD for one of three cases. In particular the direction of the change in latent PSD has changed for 2/5 of the observed period. If this finding is representative, the substantial results of Claassen's subsequent analyses differ significantly between one dataset and a dataset with only 3 year more. It would be interesting to see the findings in Claassen (2020b) and Claassen (2020a) based on the smaller dataset and compare those with the reported findings. If the results differ too much this could mean that Claassen's model does not capture the data sufficiently and that it could indeed be more appropriate to research smaller panels, i.e.~less country and/or years, until sufficient data is available. Third, Claassen's estimation is very inefficient. The reason is not the method as such but simply that he chooses to run much more iterations than required. Instead of 500 iterations less than 150 are actually sufficient for convergence. On my machine, this reduces the estimation time from 50 to 20 minutes or 60 \(\%\). Therefore, it would have been a good investment to try models with less iterations. This has two advantages: First, more robustness or sensitivity tests can be done to secure the results. Second, it is easier for others to replicate the results and to build on Claassen's work in own research.\footnote{As Claassen notes in the Readme file of his replication directory the estimation runtime is 12 hours in his setup.} However, instead of looking at convergence plots for a small subset of important QoIs to find the most efficient number of iterations as done here, I suggest the a different procedure: If a satisfying estimation setup is found, re-run it with a set of smaller iteration numbers. After each step compute either the convergence diagostic by Geweke (1992) or by Brooks and Gelman (1998). The first measure requires only one MCMC chain. It divides the chain less the warmup into multiple partitions and tests whether they are similar enough to reject the hypothesis that the chain has not converged. The second measures requires multiple chains and tests for differences between chains and also within each single chain. This approach is more systematic and scales better to many QoIs then the approach used here.
 
 \hypertarget{conclusion}{%
 \section{Conclusion}\label{conclusion}}
@@ -819,6 +830,9 @@ Beichl, Isabel, and Francis Sullivan. 2000. {``The Metropolis Algorithm.''} \emp
 \leavevmode\vadjust pre{\hypertarget{ref-Booth2009}{}}%
 Booth, John A, and Mitchell A Seligson. 2009. \emph{The Legitimacy Puzzle in Latin America: Political Support and Democracy in Eight Nations}. Cambridge University Press.
 
+\leavevmode\vadjust pre{\hypertarget{ref-Brooks1998}{}}%
+Brooks, Stephen P, and Andrew Gelman. 1998. {``General Methods for Monitoring Convergence of Iterative Simulations.''} \emph{Journal of computational and graphical statistics} 7(4): 434--55.
+
 \leavevmode\vadjust pre{\hypertarget{ref-Claassen2019estimating}{}}%
 Claassen, Christopher. 2019. {``Estimating Smooth Country--Year Panels of Public Opinion.''} \emph{Political Analysis} 27(1): 1--20.
 
@@ -842,6 +856,9 @@ Foa, Roberto Stefan, and Yascha Mounk. 2016. {``The Danger of Deconsolidation: T
 
 \leavevmode\vadjust pre{\hypertarget{ref-Foa2017}{}}%
 ---------. 2017. {``The Signs of Deconsolidation.''} \emph{Journal of democracy} 28(1): 5--15.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Geweke1992}{}}%
+Geweke, John. 1992. {``Evaluating the Accuracy of Sampling-Based Approaches to the Calculations of Posterior Moments.''} \emph{Bayesian statistics} 4: 641--49.
 
 \leavevmode\vadjust pre{\hypertarget{ref-Graham2004}{}}%
 Graham, Carol, and Sandip Sukhtankar. 2004. {``Does Economic Crisis Reduce Support for Markets and Democracy in Latin America? Some Evidence from Surveys of Public Opinion and Well Being.''} \emph{Journal of Latin American Studies} 36(2): 349--77.

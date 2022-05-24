@@ -148,6 +148,9 @@ theme_set(theme_classic() + # start with classic theme
 
 # Discussion
 
+```{r child = '05-discussion.Rmd'}
+```
+
 # Conclusion
 
 # Appendix: Mathematical Background

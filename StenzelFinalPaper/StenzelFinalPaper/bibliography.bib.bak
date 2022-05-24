@@ -366,4 +366,20 @@ year = {2018}
   url    = {http://mc-stan.org/},
 }
 
+@Misc{Plummer2003,
+  author = {Martyn Plummer},
+  title  = {JAGS: A program for analysis of Bayesian graphical models using Gibbs sampling},
+  year   = {2003},
+}
+
+@Article{Geweke1992,
+  author    = {Geweke, John},
+  journal   = {Bayesian statistics},
+  title     = {Evaluating the accuracy of sampling-based approaches to the calculations of posterior moments},
+  year      = {1992},
+  pages     = {641--649},
+  volume    = {4},
+  publisher = {Clarendon Press},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

@@ -1,6 +1,6 @@
 ## Hyperparameter Selection
 
-Our goal is to analyze the sensitivity of the MH algorithm towards changes in its hyperparameters. The main options are the models, the priors, the proposal distribution, the number of iterations, the warmup length, and the number of chains. @Claassen2019estimating already tests different models and priors. Testing different proposal distribution poses the following challenge: MCMC estimation of complex model with sparse data is computationally costly. For instance, one run with the default settings in @Claassen2019estimating takes 50 minutes on my machine^[I use an Intel Core i7-8550U CPU with 8 1.80GHz cores]. Therefore, it is important to use highly optimized libraries such as STAN or JAGS. However, these libraries each implement only one proposal method. STAN uses a proposal distribution based on Hamiltonian dynamics (@Stan), and JAGS uses Gibbs sampling (@Plummer2003). The main idea of Gibbs sampling is to iteratively sample from the conditional distribution $p(\Theta|X, \Theta_{-d})$ where $\Theta_{-d}$ is $\Theta$ without the $d$th parameter with acceptance probability 1. Learning and especially extending these frameworks for additional proposal distributions requires a substantial amount of time and is beyond the scope of this work. Therefore, I will not vary the proposal distributions but stick with Claassen's choice STAN. We therefore restrict ourselves to analyzing the effect of changes in the following hyperparameters: the number of iterations, the warmup length, and the number of chains. In the following analysis the default chain number is 4 and the default warmup is half the chain length used by Claassen and as recommend by STAN. 
+Our goal is to analyze the sensitivity of the MH algorithm towards changes in its hyperparameters. The main options are the models, the priors, the proposal distribution, the number of iterations, the warmup length, and the number of chains. @Claassen2019estimating already tests different models and priors. Testing different proposal distribution poses the following challenge: MCMC estimation of complex model with sparse data is computationally costly. For instance, one run with the default settings in @Claassen2019estimating takes 50 minutes on my machine^[I use an Intel Core i7-8550U CPU with 8 1.80GHz cores]. Therefore, it is important to use highly optimized libraries such as STAN or JAGS. However, these libraries each implement only one proposal method. STAN uses a proposal distribution based on Hamiltonian dynamics (@Stan), and JAGS uses Gibbs sampling (@Plummer2003). The main idea of Gibbs sampling is to iteratively sample from the conditional distribution $p(\Theta|X, \Theta_{-d})$ where $\Theta_{-d}$ is $\Theta$ without the $d$th parameter with acceptance probability 1. Learning and especially extending these frameworks for additional proposal distributions requires a substantial amount of time and is beyond the scope of this work. Therefore, I will not vary the proposal distributions but stick with Claassen's choice STAN. We therefore restrict ourselves to analyzing the effect of changes in the following hyperparameters: the number of iterations, the warmup length, and the number of chains. Finally, we will also look at the effect of adding three additional years, namely 2016-2018, to the dataset. Claassen uses this data in his two most recent publication in the series on PSD but in the first one.  In the following analysis the default chain number is 4 and the default warmup is half the chain length used by Claassen and as recommend by STAN. 
 
 
 ## Quantitity of Interest Selection
@@ -135,7 +135,7 @@ df_plot <- df %>%
 # Reorder following the value of another column:
 df_plot %>%
   mutate(Country = fct_relevel(Country,"Austria", "Azerbaijan", "Bahrain", "Uruguay", "Venezuela", "Argentina")) %>%
-  ggplot(aes(x = itergrid, y = theta, colour = Country))  + geom_line()  + geom_point() + xlab("Iteration") + ylab(TeX("$\\hat{\\theta}_{2008}$")) + scale_colour_brewer(palette="RdBu") + geom_vline(aes(xintercept=500), linetype="dashed", color = "black", show.legend = FALSE) + annotate("text", 625, 1.45 , vjust = -1, label = "Claassen (2019)", colour="black") + scale_x_continuous(labels= c(10, 250, 500, 750, 1000)) 
+  ggplot(aes(x = itergrid, y = theta, colour = Country))  + geom_line()  + geom_point() + xlab("Iteration") + ylab(TeX("$\\hat{\\theta}_{2008}$")) + scale_colour_brewer(palette="RdYlBu") + geom_vline(aes(xintercept=500), linetype="dashed", color = "black", show.legend = FALSE) + annotate("text", 625, 1.45 , vjust = -1, label = "Claassen (2019)", colour="black") + scale_x_continuous(labels= c(10, 250, 500, 750, 1000)) 
 
 ```
 
@@ -151,38 +151,40 @@ rep_grid = seq(1,3,1)
 n.chn = 4
 n.thin = 1
 n.iter = 150
-for(warm in warm_grid){
-  n.warm = floor(n.iter* warm/10) # throw away warm_grid * 10 percent
-  for (rep in rep_grid){
 
-    # best model from PA article (model 5)
-    stan.mod.5 = stan(file='model5.stan', data=dat.2, pars=pars.5, 
-                       iter=n.iter, warmup=n.warm, chains=n.chn, thin=n.thin, 
-                       control=list(adapt_delta=0.99, stepsize=0.02, max_treedepth=11), seed=n.warm*rep)
-    
-    #### Extract theta estimates
-    theta.out = rstan::extract(stan.mod.5, pars = c("theta"))[[1]]
-    theta.std = (theta.out - mean(as.vector(theta.out))) / sd(as.vector(theta.out)) # standardize
-    theta.out.t = apply( theta.std, 1, function(x) t(x) )
-    theta.out.df = data.frame(Country=rep(cnt.names, length.out=n.cntrys*30), 
-                              ISO_code=rep(cnt.code, length.out=n.cntrys*30),
-                              Year=rep(1988:2017, each=n.cntrys), theta.out.t)
-    theta.pe = theta.out.df[,1:3]
-    theta.dim = dim(theta.out.df)[2]
-    theta.pe$SupDem_trim = apply(theta.out.df[,4:theta.dim], 1, mean)
-    
-    first.yr = data.frame(Country=levels(df2$Country),
-                          First_yr = as.vector(by(df2, df2$Country, function(x) min(as.numeric(x$Year))+1987)))
-    
-    theta.pe = merge(theta.pe, first.yr, by="Country", all.x=TRUE)
-    cnts = theta.pe[theta.pe$Year==2008, "Country"]
-    frst.yr = theta.pe[theta.pe$Year==2008, "First_yr"]
-    for(i in 1:length(cnts)) {
-      theta.pe[theta.pe$Country==cnts[i] & theta.pe$Year<frst.yr[i], "SupDem_trim"] = NA
-    }
-    path = paste("output/warm/stan_est_sup_dem_m5_warm", as.character(n.warm), "_rep", as.character(rep), ".csv", sep="")
-    write.csv(theta.pe, path , row.names=FALSE)
+#for(warm in warm_grid){
+n.warm = floor(n.iter* warm/10) # throw away warm_grid * 10 percent
+n.warm = 0
+for (rep in rep_grid){
+
+  # best model from PA article (model 5)
+  stan.mod.5 = stan(file='model5.stan', data=dat.2, pars=pars.5, 
+                     iter=n.iter, warmup=n.warm, chains=n.chn, thin=n.thin, 
+                     control=list(adapt_delta=0.99, stepsize=0.02, max_treedepth=11), seed=(n.warm + 10)*rep)
+  
+  #### Extract theta estimates
+  theta.out = rstan::extract(stan.mod.5, pars = c("theta"))[[1]]
+  theta.std = (theta.out - mean(as.vector(theta.out))) / sd(as.vector(theta.out)) # standardize
+  theta.out.t = apply( theta.std, 1, function(x) t(x) )
+  theta.out.df = data.frame(Country=rep(cnt.names, length.out=n.cntrys*30), 
+                            ISO_code=rep(cnt.code, length.out=n.cntrys*30),
+                            Year=rep(1988:2017, each=n.cntrys), theta.out.t)
+  theta.pe = theta.out.df[,1:3]
+  theta.dim = dim(theta.out.df)[2]
+  theta.pe$SupDem_trim = apply(theta.out.df[,4:theta.dim], 1, mean)
+  
+  first.yr = data.frame(Country=levels(df2$Country),
+                        First_yr = as.vector(by(df2, df2$Country, function(x) min(as.numeric(x$Year))+1987)))
+  
+  theta.pe = merge(theta.pe, first.yr, by="Country", all.x=TRUE)
+  cnts = theta.pe[theta.pe$Year==2008, "Country"]
+  frst.yr = theta.pe[theta.pe$Year==2008, "First_yr"]
+  for(i in 1:length(cnts)) {
+    theta.pe[theta.pe$Country==cnts[i] & theta.pe$Year<frst.yr[i], "SupDem_trim"] = NA
   }
+  path = paste("output/warm/stan_est_sup_dem_m5_warm", as.character(n.warm), "_rep", as.character(rep), ".csv", sep="")
+  write.csv(theta.pe, path , row.names=FALSE)
+#  }
 }
 ```
 
@@ -222,6 +224,8 @@ df_warm$theta0 = NULL
 
 ## The Effect of Warmup Length
 
+NOTE ON 3 OUTLIERS
+
 Figure \@ref(fig:warmup) shows the distribution of 10 latent PSD estimates for 150 Markov chains with 150 iterations and warmup lengths between 0 and 135 (or 0 to 90 percent chain length). The red horizontal line shows the parameter estimate obtained from a run with 1000 iterations. We make two observations: First, the default warmup of half the chain indeed achieves the results closest to the benchmark. Second, it is much worse choosing a too small as choosing a too high warmup. This makes sense because generating a large sample with values that are drawn from a distribution that has not converged, i.e. that contain a large degree of randomness, should be worse than generating a smaller sample from a distribution that already approximates the posterior quite well.
 
 ```{r create-plot-warmup, label="warmup", include=TRUE, echo=FALSE, results='hide',fig.keep='all', fig.cap="The effect of changes in the warmup lengths on latent PSD in 2008 in the US.", warning=FALSE, fig.pos="H", message=FALSE}
@@ -233,7 +237,7 @@ grids(axis = c("xy", "x", "y"), color = "grey92", size = NULL, linetype = NULL)
 
 #sdf["theta"] = sdf$ind
 ggplot(sdf, aes(x=Warmup, y=values, fill=Warmup)) + 
-  geom_boxplot(binaxis='y', stackdir='center', show.legend = FALSE) + scale_x_discrete(labels= floor(n.iter* warm_grid/10)) + xlab("Warmup") + ylab(TeX("$\\hat{\\theta}_{USA, 2008}$")) + scale_fill_brewer(palette="Blues") + grids(linetype = "dashed") + theme(legend.position="none") + geom_hline(aes(yintercept=bl), linetype="dashed", color = "red", show.legend = TRUE) + annotate("text", 1.3, bl-0.025, vjust = -1, label = "Benchmark", colour="red")
+  geom_boxplot(binaxis='y', stackdir='center', show.legend = FALSE) + scale_x_discrete(labels= floor(n.iter* warm_grid/10)) + xlab("Warmup") + ylab(TeX("$\\hat{\\theta}_{USA, 2008}$")) + scale_fill_brewer(palette="Blues") + grids(linetype = "dashed") + theme(legend.position="none") + geom_hline(aes(yintercept=bl), linetype="dashed", color = "red", show.legend = TRUE) + annotate("text", 1.3, bl-0.025, vjust = -1, label = "Benchmark", colour="red") + ylim(0.1, 0.9)
 
 
 ```
@@ -329,4 +333,61 @@ grids(axis = c("xy", "x", "y"), color = "grey92", size = NULL, linetype = NULL)
 #sdf["theta"] = sdf$ind
 ggplot(sdf, aes(x=Chain, y=values, fill=Chain)) + 
   geom_dotplot(binaxis='y', stackdir='center') + scale_x_discrete(labels= seq(1, 8, 1)) + xlab("Number of chains") + ylab(TeX("$\\hat{\\theta}_{USA, 2008}$")) + scale_fill_brewer(palette="Blues") + grids(linetype = "dashed") + theme(legend.position="none") + ylim(bl-0.05, bl+0.05)+ geom_hline(yintercept=bl, linetype="dashed", color = "red") + geom_hline(aes(yintercept=bl), linetype="dashed", color = "red", show.legend = TRUE) + annotate("text", 1.2, bl+0.0, vjust = -1, label = "Benchmark", colour="red")
+```
+
+
+## The Effect of Three Additional Years of Data
+
+Figure \@ref(fig:data) shows the effect that adding years 2016-2018 to the dataset from 1998 - 15 has for the USA, China and South Africa. We observe two points. First, the differences from the standardized latent PSD mean get more pronounced per year. However, the relative differences between countries remain similar. Therefore, the more data is added, the better we can differentiate between latent PSD in different countries. Second, there is a pronounced shift in directions between the old estimates and the updated estimates in the period from 2006 to 2007. This can potentially have an impact on the data simulations and statistical results that rely on these estimates.
+
+```{r create-plot-data, label="data", include=TRUE, echo=FALSE, fig.cap="The effect of adding data from 2016 to 2018 on latent PSD in the US, China and South Africa.", warning=FALSE, fig.pos="H"}
+
+years = c(2005, 2006, 2007, 2008, 2009)
+us_old = c(0.36, 0.29, 0.21, 0.18, 0.22)
+sa_old = c(-0.26, -0.32, -0.38, -0.38, -0.38)
+china_old = c(-0.52, -0.75, -0.74, -0.67, -0.61)
+ 
+df = read.csv("output/niter/stan_est_sup_dem_m5_run1000.csv")
+names(df)[names(df) == 'SupDem_trim'] <- 'theta'
+
+df$First_yr = NULL
+df$ISO_code = NULL
+
+# as.numeric
+df_temp = df[which(df["Country"]=="United States of America" & 2004 < df["Year"] & df["Year"] < 2010), ]
+df_temp <-df_temp[order(df_temp$Year),]
+us = df_temp[["theta"]]
+
+df_temp = df[which(df["Country"]=="South Africa" & 2004 < df["Year"] & df["Year"] < 2010), ]
+df_temp <-df_temp[order(df_temp$Year),]
+sa = df_temp[["theta"]]
+
+df_temp = df[which(df["Country"]=="China" & 2004 < df["Year"] & df["Year"] < 2010), ]
+df_temp <-df_temp[order(df_temp$Year),]
+china = df_temp[["theta"]]
+
+df = data.frame(years, us_old, us, china_old, china, sa_old, sa)
+
+df_plot <- df %>%
+  gather(key = "Country", value = "theta", -years)
+#head(df_plot)
+
+# Visualization
+# Reorder following the value of another column:
+df_plot %>%
+  mutate(Country = fct_relevel(Country, "us_old", "us", "china_old", "china", "sa_old", "sa")) %>%
+  ggplot(aes(x = years, y = theta, colour = Country))  + geom_line()  + geom_point() + xlab("Year") + ylab(TeX("$\\hat{\\theta}$")) + scale_colour_brewer(palette="Paired", labels = c("US",  "US updated", "China", "China updated", "South Africa", "South Africa updated"))
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
