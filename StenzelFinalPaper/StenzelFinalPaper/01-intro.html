@@ -60,6 +60,7 @@ if (window.hljs) {
 
 
 
+
 <style type="text/css">
 .main-container {
   max-width: 940px;
@@ -80,6 +81,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -167,12 +171,12 @@ pre code {
 </div>
 
 
-<p>In recent years scholars have found declining support for democracy in long-established democracies. <span class="citation">[@Norris2017; @Foa2016; @Foa2017; @Voeten2016; @Denemark2016]</span>. This finding raises two important questions: First, what are the reasons for this decline, and second, what are its implications, i.e., does a decline in democratic support endanger the survival of these democracies?</p>
-<p>A series of recent articles <span class="citation">[@Claassen2019estimating; @Claassen2020support; @Claassen2020mood]</span> researches these questions and presents novel results. Regarding the first question, <span class="citation">@Claassen2020support</span> finds – in contrary to the the widely held belief of self-reinforcing democracies – that democratic support naturally fluctuates over time. The reasons is that increases in democracy levels lead to decreases in public support and vice versa. Regarding question two, so far the results about the relationship between democratic support and its survival have been mixed. <span class="citation">@Claassen2020support</span>, however, finds supporting evidence for the natural theory that democratic support plays a positive role in the system’s survival.</p>
-<p>A main obstacle for researching democratic support is that current panel data contains a large number of missing values. <span class="citation">@Claassen2019estimating</span> finds an approach to simulate dense panel data from the actual fractured data. The two most recent studies both rely on this data. His approach consists of three steps: First, assume a probabilistic structural model of democratic support. Second, estimate its parameters via the Metropolis Hastings algorithm using the fractured data. Third, simulate the data using the model and the large number of parameter estimates.</p>
-<p>The objective of this work is to evaluate the robustness of Claassen’s findings towards changes in the method’s hyperparameters. In other words, I incorparate the uncertainty about the right choice of hyperparameters into Claassen’s results to test their reliability. In particular, I propagate a random set of hyperparameters through Claassen’s estimation procedure. This is important because arbitrary hyperparameter choices can potentially lead to false or at least random results. Therefore, the respective parametric uncertainty should always be reported along the point estimate.</p>
-<p>I come to the following results:</p>
-<p>The final paper is structured as follows: Section 2 reviews the literature of public support with a focus on Claassen’s papers and defines the concept. Section 3 explains Claassen’s model of public support, its estimation and my approach for the uncertainty propagation. Section 4 presents the results and Section 5 discusses the findings. Section 6 concludes.</p>
+<p>In recent years scholars have found declining support for democracy in long-established democracies. <span class="citation">[@Norris2017; @Foa2016; @Foa2017; @Voeten2016; @Denemark2016]</span>. This finding raises two important questions: First, what are the reasons for this decline, and second, what are its implications, in particular, does a decline in democratic support endanger the survival of democracy?</p>
+<p>A series of recent articles <span class="citation">[@Claassen2019estimating; @Claassen2020support; @Claassen2020mood]</span> researches these questions and presents novel results. Regarding the first question, <span class="citation">@Claassen2020support</span> finds – in contrary to the widely held belief of self-reinforcing democracies – that democratic support naturally fluctuates over time. The reasons is that increases in democracy levels lead to decreases in public support and vice versa. Regarding the second question, so far the results about the relationship between democratic support and its survival have been mixed. <span class="citation">@Claassen2020support</span>, however, finds supporting evidence for the natural theory that democratic support plays a positive role in the system’s survival.</p>
+<p>A main obstacle for researching democratic support is that current panel data contains a large number of missing values. <span class="citation">@Claassen2019estimating</span> develops an approach to deal with this problem by simulating dense panel data from the actual fractured data. The two most recent studies both rely on this simulated data. His approach consists of three steps: First, assume a probabilistic structural model of democratic support. Second, estimate its parameters via the Metropolis Hastings algorithm from the fractured data. Third, simulate new data using the model and the parameter estimates.</p>
+<p>The objective of this work is to evaluate the robustness of Claassen’s findings. First, I incorparate the uncertainty about the right choice of hyperparameters into Claassen’s results. In particular, I propagate a number of different hyperparameters through Claassen’s estimation procedure. This is important because arbitrary hyperparameter choices can potentially lead to false or at least random results. Therefore, the respective parametric uncertainty should always be reported along the point estimate. Second, I compare the results obtained from old data with the results from slightly updated data. If the results differ too much, this suggests that the structural model overfits the data.</p>
+<p>I come to the following results: First, Claassen uses too many iteration for his estimation procedure. By determining the minimal number of iterations necessary for convergence he could have saved about two third of the computation time. To not waste too much computational resources is important for two reasons: First, it allows spending more time on further robustness checks and second, it makes it easier for other researchers to replicate and build upon the work of others. The second result is that updating the dataset by 3 additional years (about one tenth) changes the results noticebly. This finding suggests that Claassen’s approach would still require more data for robust results. The third finding is that the default hyperparameters recommended by <span class="citation">@Stan</span> deliver the benchmark results with the smallest variation.</p>
+<p>The final paper is structured as follows: Section 2 reviews the literature of public support with a focus on Claassen’s papers, defines the concept and looks at the data. Section 3 explains Claassen’s model of public support, its estimation and my approach for the uncertainty propagation. Section 4 presents the results and Section 5 discusses the findings. Section 6 concludes.</p>
 
 
 

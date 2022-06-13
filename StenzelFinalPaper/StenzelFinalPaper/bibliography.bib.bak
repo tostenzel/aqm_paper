@@ -382,4 +382,15 @@ year = {2018}
   publisher = {Clarendon Press},
 }
 
+@Article{Brooks1998,
+  author    = {Brooks, Stephen P and Gelman, Andrew},
+  journal   = {Journal of computational and graphical statistics},
+  title     = {General methods for monitoring convergence of iterative simulations},
+  year      = {1998},
+  number    = {4},
+  pages     = {434--455},
+  volume    = {7},
+  publisher = {Taylor \& Francis},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
