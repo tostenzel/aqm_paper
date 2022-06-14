@@ -129,8 +129,6 @@ theme_set(theme_classic() + # start with classic theme
 ```{r child = '01-intro.Rmd'}
 ```
 
-
-
 # Literature Review and Data
 
 ```{r child = '02-literature-review.Rmd'}
@@ -152,6 +150,9 @@ theme_set(theme_classic() + # start with classic theme
 ```
 
 # Conclusion
+
+```{r child = '06-conclusion.Rmd'}
+```
 
 # Appendix: Mathematical Background
 
