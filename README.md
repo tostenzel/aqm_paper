@@ -1,6 +1,6 @@
 # Final Paper with Reproduction Files for AQM 2022
 
-The pdf is ``/StenzelFinalPaper/00-main.pdf``.
+The pdf is ``signed-paper.pdf``.
 
 ## Paper
 
