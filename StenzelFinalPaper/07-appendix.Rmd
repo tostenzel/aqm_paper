@@ -1,6 +1,6 @@
 ## Introduction
 
-The Metropolis-Hastings (MH) algorithm is a method for sampling data points from a probability distribution from which direct sampling is difficult. It places among the top 10 algorithms with the greatest influence on science and engineering in the 20th century (@beichl2000metropolis). The MH algorithm belongs to the class of Markov chain Monte Carlo (MCMC) methods. In my explanation I assume prior knowledge on Monte Carlo sampling. However, I will describe the basics of Markov Chains. As motivation serves section 3.2. in the main part of this paper about estimating @Claassen2019estimating's latent PSD model. There, I also provide a more intuitive, high-level explanation. This section has two parts that both rely on @Andrieu2003 as main reference. First, I explain the basics of Markov Chains. Second, I derive the algorithm and show why it works.
+The Metropolis-Hastings (MH) algorithm is a method for sampling data points from a probability distribution from which direct sampling is difficult. It places among the top 10 algorithms with the greatest influence on science and engineering in the 20th century (@beichl2000metropolis). The MH algorithm belongs to the class of Markov chain Monte Carlo (MCMC) methods. In my explanation I assume prior knowledge on Monte Carlo sampling. However, I will describe the basics of Markov Chains. As motivation serves section 3.2. in the main part of this paper about estimating @Claassen2019estimating's latent PSD model. There, I also provide a more intuitive, high-level explanation. This section has two parts that both rely on @Andrieu2003 as main reference. First, I explain the basics of Markov chains. Second, I derive the algorithm and show why it works.
 
 ## Markov Chains
 
@@ -12,7 +12,7 @@ P(X_{t+1} |X_{t}, X_{t-1}, ..., X_{0}) = P(X_{t+1} |X_{t}).
 \end{equation}
 
 \noindent
-Under some conditions, the stochastic process described by a Markov chain converges to a time-invariant probability distribution, i.e. $P(X_{t+k} |X_{t+k-1}) = P(X_{t} |X_{t-1}), \forall k>0$. The crucial step for understanding the MH is to see how it samples a Markov Chain that is certain to converge to a stable posterior distribution. Before exploring how the MH algorithm achieves this result, however, it is necessary to understand its conditions conceptually. To this end, we will use the example depicted by the following graph in Figure 1 that shows the intertemporal transition probabilities between three states representing random events.
+Under some conditions, the stochastic process described by a Markov chain converges to a time-invariant probability distribution, i.e. $P(X_{t+k} |X_{t+k-1}) = P(X_{t} |X_{t-1}), \forall k>0$. The crucial step for understanding the MH algorithm is to see how it samples a Markov chain that is certain to converge to a stable posterior distribution. Before exploring how the algorithm achieves this result, however, it is necessary to understand the required conditions conceptually. To this end, we will use the example depicted by the following graph in Figure 6 that shows the intertemporal transition probabilities between three states representing random events.
 
 
 \begin{figure}[H]
@@ -55,7 +55,7 @@ T=
 
 ### Limit Distribution
 
-As touched upon in the previous subsection, interesting questions can be what the probabilities of each state $j \in \{1, ..., s\}$ are after a finite number or infinitely many steps. For this purpose let $\pi_t (j) = P(X_t = j)$ denote the probability of being in state $j$ in period $t$. Of course, the probabilities in $t>0$ depend on the probabilities for the  the initial state $\pi_0$. We can use the law of total probability to calculate the probability of each state for the next period $t=1$ by 
+As touched upon in the previous subsection, an interesting question can be what the probabilities of each state $j \in \{1, ..., s\}$ are after a finite number or infinitely many steps. For this purpose let $\pi_t (j) = P(X_t = j)$ denote the probability of being in state $j$ in period $t$. Of course, the probabilities in $t>0$ depend on the probabilities for the  the initial state $\pi_0$. We can use the law of total probability to calculate the probability of each state for the next period $t=1$ by 
 
 \begin{equation}
 (\#eq:tot-prob)
@@ -73,7 +73,7 @@ Now we are ready to define the limit distribution that describes the probability
 \end{equation}
 
 \noindent
-We can further ask two additional important questions. First, does a limit distribution exist? And second, is it unique, or in other word, do we have the same limit distribution independent from the realization of the initial state $X_0$? In our example, there does not only exist a limit distribution with $\pi_{\infty} = (0.2, 0.4, 0.4)$, it is even unique regardless of start distribution $\pi_0$. This means that independent of the start state, the probability of each state converges to the same number. For the context of the MH algorithm, this is an important property because we always want to compute the same estimates for our parameters $\theta$, regardless of the starting values of our simulation. In the next section, we introduce and simplify conditions that guarantee a unique limit distribution.
+We can further ask two additional important questions. First, does a limit distribution exist? And second, is it unique, or in other words, do we have the same limit distribution independent from the realization of the initial state $X_0$? In our example, there does not only exist a limit distribution with $\pi_{\infty} = (0.2, 0.4, 0.4)$, it is even unique regardless of start distribution $\pi_0$. This means that independent of the start state, the probability of each state converges to the same number. For the context of the MH algorithm, this is an important property because we always want to compute the same estimates for our parameters $\theta$, regardless of the starting values of our simulation. In the next section, we introduce and simplify conditions that guarantee a unique limit distribution.
 
 ### Irreducibility, Periodicity and Stationarity
 
@@ -82,7 +82,7 @@ A Markov chain is called \textit{irreducible} if each state is reachable from an
 \end{definition}
 
 \noindent
-Figure 2 shows a Markov chain represented by a bipartite graph. This graph is composed by two times the graph in Figure 1. Obviously, this chain is not irreducible because the initial state impacts all future distributions. More precisely, starting in one subgraph sets the probability of reaching states in the other subgraph to zero. We see that a Markov Chain is only irreducible if there is at least an indirect link between every pair of states. We also observe that if the Markov Chain is not irreducible there can be no limit distribution.
+Figure 7 shows a Markov chain represented by a bipartite graph. This graph is composed by two times the graph in Figure 6. Obviously, this chain is not irreducible because the initial state impacts all future distributions. More precisely, starting in one subgraph sets the probability of reaching states in the other subgraph to zero. We see that a Markov Chain is only irreducible if there is at least an indirect link between every pair of states. We also observe that if the Markov Chain is not irreducible there can be no limit distribution.
 
 \begin{figure}[H]
 \label{fig:ex2}
@@ -121,7 +121,7 @@ A state $i$ has a period $k$ if the greatest common denominator of possible revi
 \end{definition}
 
 \noindent
-Consider the five-state Markov chain in Figure 3 as an illustration for the above definition and suppose we start in state 1. Observe that, independent of the random draw for next period, we will arrive again in state 1 after two or four steps. Therefore, state 1 has a period of 2. If a state is revisited in random rather than a fixed time period then the state has period 1. This is automatically the case if a state has a positive edge with itself.
+Consider the five-state Markov chain in Figure 8 as an illustration for the above definition and suppose we start in state 1. Observe that, independent of the random draw for next period, we will arrive again in state 1 after two or four steps. Therefore, state 1 has a period of 2. If a state is revisited in random rather than a fixed time period then the state has period 1. This is automatically the case if a state has a strictly positive edge with itself.
 
 \begin{figure}[H]
 \label{fig:ex3}
@@ -161,17 +161,17 @@ Consider the five-state Markov chain in Figure 3 as an illustration for the abov
 
 
 \begin{definition}
-$\pi^*$ is the \textit{stationary distribution} of a Markov Chain with Transition matrix T if $\pi^* = \pi^* T$ and $\pi^*$ is a probability vector.
+$\pi^*$ is the \textit{stationary distribution} of a Markov Chain with Transition matrix in Equation (11) T if $\pi^* = \pi^* T$ and $\pi^*$ is a probability vector.
 \end{definition}
 
 \noindent
-Verbally, this means that the probability distribution $\pi^*$ does not change anymore over time. If $\pi^*$ is also unique, then $\pi^*$ is our aim, the limit distribution introduces in section 1.3.1, i.e., $\pi^*=\pi_{\infty}$.
+Verbally, this means that the probability distribution $\pi^*$ does not change anymore over time. If $\pi^*$ is also unique, then $\pi^*$ , the limit distribution that we are looking for in section 7.3.1, i.e., $\pi^*=\pi_{\infty}$.
 
 These three definitions are enough to understand the next fundamental theorem.
 
 ### The Fundamental Theorem of Markov Chains
 
-The next theorem defines formally the condition when a Markov Chain converges to a unique distribution, i.e. the limit distribution.
+This theorem formally defines the condition when a Markov Chain converges to a unique distribution, i.e. the limit distribution.
 
 \begin{theorem} (Fundamental Theorem of Markov Chains)
 If a Markov chain is irreducible and aperiodic (called ergodic) then it has a stationary distribution $\pi^*$ that is unique ($\lim_{t \rightarrow \infty} P(X_t = i) = \pi_i^*, \forall i$).
@@ -230,7 +230,7 @@ A(x',x) = \text{min}\left( 1, \frac{P(x')}{P(x)}\frac{g(x|x')}{g(x'|x)} \right)
 \end{equation}
 
 \noindent
-Note that the minimizer in $A(x',x)$ enforces that the probability is below 1. The MH algorithm writes as follows:
+Note that the minimizer in $A(x',x)$ enforces that the probability is smaller/equal 1. The MH algorithm writes as follows:
 
 
 \begin{algorithm}[H]
