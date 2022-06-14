@@ -1,5 +1,7 @@
 # Final Paper with Reproduction Files for AQM 2022
 
+The pdf is ``/StenzelFinalPaper/00-main.pdf``.
+
 ## Paper
 
 The paper is written in R Markdown. All required files are in ``/StenzelFinalPaper``.
